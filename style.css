@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-size: 16px;
     overflow: hidden;
+    font-family: ;
 }
 /*Global setting*/
 
@@ -12,48 +13,62 @@
 .sideBar{
     position: fixed;
     background-color: #272627;
-    width: 15%;
     height: 100vh;
-    
 }
 
 #rightMenu{
     right: 0;
     top: 0;
+    width: 20%;
     border-radius: 50px 0 0 50px;
 }
 
 #leftMenu{
     left: 0;
     top: 0;
+    width: 15%;
 }
 
 #centerContet{
     position: relative;
-    width: 70%;
+    width: 65%;
     left: 15%;
     height: 100vh;
     border: 2px solid red;
 }
 
 /*Style for burgerMenu in leftMenu bar */
-#burgerMenu{
+#burgerMenu, #burgerMenuOut{
     position: relative;
-    
-    left: 70%;
     top: 5vh;
     width: 25px;
     height: 15px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+
 }
 
-.menuLines{
+#burgerMenu{
+    left: 70%;
+}
+#burgerMenuOut{
+    display: none;
+    left: 10.5%;
+}
+
+.menuLines, .menuLinesOut{
     width: 100%;
     height: 10%;
+}
+.menuLines{
     background-color: white;
 }
+
+.menuLinesOut{
+    background-color: #272627;
+}
+
 /*Style for burgerMenu in leftMenu bar */
 
 /*Circle user photo in leftMenu bar*/
@@ -78,13 +93,21 @@
     position: relative;
     left: 0;
     top: 20vh;
-    border: blue solid 2px;
 }
 
 .leftMenuLi{
     width: 100%;
     height: 15%;
-    
+    color: white;
+    font-size: 1em;
+    padding-left: 20%;
+    padding-right: 20%;
+
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 20%;
 }
 
 .leftMenuLi:hover{
@@ -92,3 +115,7 @@
 }
 
 /*leftMenu navigation list*/
+
+
+
+
