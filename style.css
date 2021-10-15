@@ -5,7 +5,7 @@
     box-sizing: border-box;
     font-size: 16px;
     overflow: hidden;
-    font-family: ;
+    
 }
 /*Global setting*/
 
@@ -34,9 +34,9 @@
     width: 65%;
     left: 15%;
     height: 100vh;
-    border: 2px solid red;
 }
 
+/*LEFTMENU*/
 /*Style for burgerMenu in leftMenu bar */
 #burgerMenu, #burgerMenuOut{
     position: relative;
@@ -46,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-
+    
 }
 
 #burgerMenu{
@@ -69,7 +69,7 @@
     background-color: #272627;
 }
 
-/*Style for burgerMenu in leftMenu bar */
+/*!Style for burgerMenu in leftMenu bar */
 
 /*Circle user photo in leftMenu bar*/
 #userPhoto{
@@ -84,12 +84,12 @@
     background-size: cover;
     background-position: center;
 }
-/*Circle user photo in leftMenu bar*/
+/*!Circle user photo in leftMenu bar*/
 
 /*leftMenu navigation list*/
 #leftMenu ul{
     width: 100%;
-    height: 50vh;
+    height: 45vh;
     position: relative;
     left: 0;
     top: 20vh;
@@ -114,7 +114,84 @@
     background-color: #3d3d3d;
 }
 
-/*leftMenu navigation list*/
+/*!leftMenu navigation list*/
+/*!LEFTMENU*/
+
+/*rightMenu*/
+#rightMenu h2{
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+#rightMenu form{
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 3vh;
+}
+
+
+#rightMenu .textInput{
+    background-color: #272627;
+    border-bottom: #aaaaaa solid 2px;
+    border-top: none;
+    width: 80%;
+    border-left: none;
+    border-right: none;
+    height: 5vh;
+    font-size: 1em;
+    outline: none;
+}
+
+#rightMenu .textInput:focus{
+    color: #dddddd;
+    font-size: 1em;
+    border-bottom: #aaaaaa solid 2px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+#rightArrowCircle{
+    position: relative;
+    border: white solid 2px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    left: 5%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;    
+}
+
+#topLine, #bottomLine{
+    position: relative;
+    width: 55%;
+    height: 7%;
+    left: 30%;
+    background-color: white;
+}
+
+#topLine{
+    transform: rotateZ(45deg);  
+}
+
+#bottomLine{
+    transform: rotateZ(-45deg);  
+    
+}
+
+
+
+
+/*!rightMenu*/
+
 
 
 
