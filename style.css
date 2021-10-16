@@ -4,7 +4,6 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 16px;
-    overflow: hidden;
     scroll-behavior: smooth;
     
 }
@@ -30,12 +29,6 @@
     width: 15%;
 }
 
-#centerContet{
-    position: relative;
-    width: 65%;
-    left: 15%;
-    height: 100vh;
-}
 
 /*LEFTMENU*/
 /*Style for burgerMenu in leftMenu bar */
@@ -103,7 +96,7 @@
     font-size: 1em;
     padding-left: 20%;
     padding-right: 20%;
-
+    
     line-height: 100%;
     display: flex;
     align-items: center;
@@ -151,7 +144,7 @@
 }
 
 #rightMenu #taskDescription{
-    overflow-y: initial;
+    
     height: 8vh;
 }
 
@@ -282,8 +275,53 @@ fieldset{
     color: white;
 }
 
-
 /*!rightMenu*/
+
+/*center Content*/
+
+#centerContet{
+    
+    position: relative;
+    width: 65%;
+    left: 15%;
+    height: 150vh;
+}
+
+#matrix{
+    position: absolute;
+    top: 20vh;
+    left: 30%;
+    display: flex;
+    row-gap: 0;
+    column-gap: 0;
+    width: 55%;
+    height: 50vh;
+    flex-wrap: wrap;
+}
+
+.matrixKvadrant{
+    width: 50%;
+    height: 50%;
+}
+
+#leftTop{
+    background-color: rgb(252, 158, 158);
+}
+
+#rightTop{
+    background-color: rgb(166, 166, 255);
+}
+
+#leftBottom{
+    background-color: rgb(255, 255, 168);
+}
+
+#rightBottom{
+    background-color: rgb(164, 255, 164);
+}
+
+
+/*!center Content*/
 
 
 
