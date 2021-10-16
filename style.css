@@ -300,6 +300,7 @@ fieldset{
 }
 
 .matrixKvadrant{
+    position: relative;
     width: 50%;
     height: 50%;
 }
@@ -320,7 +321,48 @@ fieldset{
     background-color: rgb(164, 255, 164);
 }
 
+.matrixSettings, .matrixSettings::after, .matrixSettings::before{
+    background-color: #3d3d3d;
+    position: absolute;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+}
 
+.matrixSettings{
+    right: 5.5%;
+    top: 1.5vh;
+}
+
+
+
+.matrixSettings::before{
+    content: '';
+    right: 5%;
+    top: 1vh;  
+}
+
+.matrixSettings::after{
+    content: '';
+    right: 5%;
+    top: 2vh;
+}
+
+
+
+.addTaskButton{
+    position: absolute;
+    right: 2%;
+    bottom: 1vh;
+    width: 20px;
+    height: 20px;
+    font-size: 1.2em;
+    border-radius: 50%;
+    background-color: #cccccc;
+    color: black;
+    text-align: center;
+    font-weight: 800;
+}
 /*!center Content*/
 
 
