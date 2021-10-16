@@ -55,14 +55,27 @@
             Task Manager
         </h2>
         <form id="textInputForm">
-            <input class="textInput" type="text" placeholder="Task name">
-            <input class="textInput" type="text" placeholder="Description">            
+            <input class="textInput" type="text" id="taskName"        placeholder="Task name">
+            <input class="textInput" type="text" id="taskDescription" placeholder="Description">            
         </form>
 
         <div id="rightArrowCircle">
             <div id="topLine"></div>
             <div id="bottomLine"></div>
         </div>
+
+        <form id="listForm">
+            <label for="priorityList">Task Priority:</label>
+            <select id="priorityList" placeholder="Task priority">
+                <option value="None">None</option>
+                <option value="Urgent - Important">Urgent - Important</option>
+                <option value="Urgent - Not Important">Urgent - Not Important</option>
+                <option value="Not Urgent - Important">Not Urgent - Important</option>
+                <option value="Not Urgent - Not Important">Not Urgent - Not Important</option>
+            </select>
+
+        </form>
+
 
         <form id="dateInputForm">
             <label for="calendar"><img src="calendar.png"></label>
