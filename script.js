@@ -12,10 +12,14 @@ function createNewTask(e){
 }
 
 function settingsOfMatrix(){
-
+    
 }
 
 
+
+/**
+ * Function which react on click on right Burger Menu
+ */
 function burgerMenuTrigger(){
     let leftMenu = document.getElementById("leftMenu");
     leftMenu.classList.toggle("notVisibleLeft");
@@ -35,22 +39,24 @@ function burgerMenuTrigger(){
     })
 }
 
+/**
+ * Function which react on click on Arrow circle
+ */
 function arrowCircleTrigger(){
     let rightMenu = document.getElementById("rightMenu");
     rightMenu.classList.toggle("notVisibleRight");
-        
+    
+    /*Toggle class to Arrow Circle*/
     var arrow = document.getElementById("rightArrowCircle");
     arrow.classList.toggle("notVisibleArrowCircle");
 
+    /*Toggle class to lines of Arrwo Circle */
     Array.from(arrow.children).forEach(element =>{
         element.classList.toggle("notVisibleArrowLine");
     })
     
-    Array.from(rightMenu.children).forEach(element =>{
-        if(element.id != "rightArrowCircle"){
-            element.classList.toggle("notVisibleElements");
-        }
-    })
+    /*Toggle class to child elements of rightMenu except Arrow circle*/
+    document.getElementById("inputForm").classList.toggle("notVisibleElements");
     
     
     

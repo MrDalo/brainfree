@@ -142,6 +142,7 @@
 
 
 
+
 /*!LEFTMENU*/
 
 /*rightMenu*/
@@ -288,7 +289,7 @@ fieldset{
 
 input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, #taskComplete label{
     cursor: pointer;
-
+    
 }
 
 #inputForm input[type=checkbox]{
@@ -325,6 +326,10 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 .notVisibleRight{
     background-color: white;
     transform: translateX(80%);
+}
+
+#inputForm.notVisibleElements{
+    display: none !important;
 }
 
 #rightArrowCircle.notVisibleArrowCircle{
