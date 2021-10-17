@@ -17,14 +17,43 @@ function settingsOfMatrix(){
 
 
 function burgerMenuTrigger(){
-    document.getElementById("leftMenu").classList.toggle("triggered");
+    let leftMenu = document.getElementById("leftMenu");
+    leftMenu.classList.toggle("notVisibleLeft");
+    
+    let menuLinesArray = document.querySelectorAll(".menuLines");
+
+    /*Prekonvertuje premennu 'menuLinesArray' na array, prejde kazdy prvok a togglne jeho class na 'notTriggered'*/
+    Array.from(menuLinesArray).forEach(element =>{
+        element.classList.toggle("notVisibleLine");
+    })
+    
+    /*Hide every element except burgerMenu */
+    Array.from(leftMenu.children).forEach(element =>{
+        if(element.id != "burgerMenu"){
+            element.classList.toggle("notVisibleElements");
+        }
+    })
 }
 
 function arrowCircleTrigger(){
-    document.getElementById("rightMenu").classList.toggle("triggered");
+    let rightMenu = document.getElementById("rightMenu");
+    rightMenu.classList.toggle("notVisibleRight");
+        
+    var arrow = document.getElementById("rightArrowCircle");
+    arrow.classList.toggle("notVisibleArrowCircle");
 
+    Array.from(arrow.children).forEach(element =>{
+        element.classList.toggle("notVisibleArrowLine");
+    })
+    
+    Array.from(rightMenu.children).forEach(element =>{
+        if(element.id != "rightArrowCircle"){
+            element.classList.toggle("notVisibleElements");
+        }
+    })
+    
+    
+    
 }
 
 
-
-console.log(document.getElementById("taskComplete"));

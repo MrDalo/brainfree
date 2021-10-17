@@ -11,6 +11,8 @@
 
 
 .sideBar{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
     position: fixed;
     background-color: #272627;
     height: 100vh;
@@ -32,7 +34,7 @@
 
 /*LEFTMENU*/
 /*Style for burgerMenu in leftMenu bar */
-#burgerMenu, #burgerMenuOut{
+#burgerMenu{
     position: relative;
     top: 5vh;
     width: 25px;
@@ -47,15 +49,13 @@
     cursor: pointer;
     left: 70%;
 }
-#burgerMenuOut{
-    display: none;
-    left: 10.5%;
-}
+
 
 .menuLines, .menuLinesOut{
     width: 100%;
     height: 10%;
 }
+
 .menuLines{
     background-color: white;
 }
@@ -68,6 +68,8 @@
 
 /*Circle user photo in leftMenu bar*/
 #userPhoto{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
     border-radius: 50%;
     position: relative;
     width: 7vw;
@@ -83,6 +85,8 @@
 
 /*leftMenu navigation list*/
 #leftMenu ul{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
     width: 100%;
     height: 45vh;
     position: relative;
@@ -114,8 +118,30 @@
 .leftMenuLi:hover{
     background-color: #3d3d3d;
 }
-
 /*!leftMenu navigation list*/
+
+/*Not Visible leftMenu*/
+
+.notVisibleLeft{
+    background-color: white;
+    transform: translateX(-50%);
+}
+
+
+
+.notVisibleLine{
+    background-color: #272627 !important;
+
+}
+
+.notVisibleElements{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    display: none;
+}
+
+
+
 /*!LEFTMENU*/
 
 /*rightMenu*/
@@ -195,12 +221,22 @@
 }
 
 #topLine{
-    transform: rotateZ(45deg);  
+    animation: topLineAnimationVisible 0.5s linear forwards;
+}
+
+@keyframes topLineAnimationVisible {
+    50%{transform: rotateZ(0deg);}
+    100%{transform: rotateZ(45deg) translateX(0) translateY(0);}
 }
 
 #bottomLine{
-    transform: rotateZ(-45deg);  
+    animation: bottomLineAnimationVisible 0.5s linear forwards;
     
+}
+
+@keyframes bottomLineAnimationVisible {
+    50%{transform: rotateZ(0deg);}
+    100%{transform: rotateZ(-45deg) translateX(0) translateY(0);}
 }
 /*!Circle Arrow*/
 
@@ -284,6 +320,37 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     color: white;
 }
 
+/*Not Visible Rifht Menu*/
+
+.notVisibleRight{
+    background-color: white;
+    transform: translateX(80%);
+}
+
+#rightArrowCircle.notVisibleArrowCircle{
+    border-color: #272627;
+}
+
+#topLine.notVisibleArrowLine{
+    background-color: #272627;
+    animation: topLineAnimationNotVisible 0.5s linear forwards;
+}
+
+@keyframes topLineAnimationNotVisible {
+    50%{transform: rotateZ(0);}
+    100%{transform: rotateZ(-45deg) translateX(-2px) translateY(-2px);}
+}
+
+
+#bottomLine.notVisibleArrowLine{
+    background-color: #272627;
+    animation: bottomLineAnimationNotVisible 0.5s linear forwards;  
+}
+
+@keyframes bottomLineAnimationNotVisible {
+    50%{transform: rotateZ(0);}
+    100%{transform: rotateZ(45deg) translateX(-2px) translateY(2px);}
+}
 /*!rightMenu*/
 
 /*center Content*/
