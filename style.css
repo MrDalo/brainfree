@@ -187,6 +187,7 @@
     height: 5vh;
     font-size: 1em;
     outline: none;
+    color: white;
 }
 
 #rightMenu .textInput:focus{
@@ -265,6 +266,7 @@
 }
 
 #inputForm select{
+    width: 100%;
     background-color: #555555;
     color: white;
 }
@@ -418,22 +420,14 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     height: 4px;
 }
 
-.settingsDot{
-    
-    
-}
-
-
 
 .settingsDot::before{
-    content: '';
-    
+    content: '';    
     top: 1vh;  
 }
 
 .settingsDot::after{
     content: '';
-    
     top: 2vh;
 }
 

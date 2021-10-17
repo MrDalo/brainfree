@@ -98,20 +98,20 @@
     <!--!Creating centerContent-->   
     
     <!--Creating rightMenu-->   
-    <div id="rightMenu" class="sideBar">
+    <div id="rightMenu" class="sideBar notVisibleRight">
         
         <h2>
             Task Manager
         </h2>
 
         <!--Creating leftMenu Arrow Circle-->   
-        <div id="rightArrowCircle" onclick="arrowCircleTrigger()">
-            <div id="topLine"></div>
-            <div id="bottomLine"></div>
+        <div id="rightArrowCircle" class="notVisibleArrowCircle" onclick="arrowCircleTrigger()">
+            <div id="topLine" class="notVisibleArrowLine"></div>
+            <div id="bottomLine" class="notVisibleArrowLine"></div>
         </div>
         <!--!Creating leftMenu Arrow Circle-->   
         
-        <form id="inputForm" method="post" onsubmit="return getData()">
+        <form id="inputForm" class="notVisibleElements" method="post" onsubmit="return getData()">
             
             
             <fieldset id="textInputForm">

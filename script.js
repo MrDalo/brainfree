@@ -1,15 +1,10 @@
-/*Animaciu side barov sprav tak, ze arrow a burger menu ostane len, ostatne das do display:none a zmenis pozadie, bdue sa lepsie robit animacia 
-a nebude s tym problem. Dokazes spravit jedno burger menu a jednu arrow in circle*/
+
 
 function getData(){
 
    return false;
 }
 
-
-function createNewTask(e){
-    console.log(e);
-}
 
 function settingsOfMatrix(){
     
@@ -57,9 +52,14 @@ function arrowCircleTrigger(){
     
     /*Toggle class to child elements of rightMenu except Arrow circle*/
     document.getElementById("inputForm").classList.toggle("notVisibleElements");
-    
-    
-    
 }
 
+
+    /**
+     * Function which react on click on '+' in matrix
+     */
+function createNewTask(parent){
+    arrowCircleTrigger();
+    
+}
 
