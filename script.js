@@ -37,7 +37,8 @@ function burgerMenuTrigger(){
 /**
  * Function which react on click on Arrow circle
  */
-function arrowCircleTrigger(){
+function arrowCircleTrigger(index){
+
     let rightMenu = document.getElementById("rightMenu");
     rightMenu.classList.toggle("notVisibleRight");
     
@@ -52,14 +53,23 @@ function arrowCircleTrigger(){
     
     /*Toggle class to child elements of rightMenu except Arrow circle*/
     document.getElementById("inputForm").classList.toggle("notVisibleElements");
+    
+    /*Selection of priority depends where user want to create task*/
+    const priority = ["Urgent - Important", "Urgent - Not Important", "Not Urgent - Important", "Not Urgent - Not Important"];
+    let dropPriorityMenu = document.getElementById("priorityList");
+    dropPriorityMenu.value = priority[index];
 }
 
 
-    /**
+/**
      * Function which react on click on '+' in matrix
      */
-function createNewTask(parent){
-    arrowCircleTrigger();
+function createNewTask(index){
+    
+    arrowCircleTrigger(index);
+
+    let matrixes = document.querySelectorAll(".contentOfMatrix");
+    console.log(matrixes[index]);
     
 }
 

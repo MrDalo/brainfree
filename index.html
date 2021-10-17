@@ -10,6 +10,8 @@
     <meta name="author" content="Dalibor Králik dadokralik@gmail.com" />
     <meta name="copyright" content="dadokralik@gmail.com" />
 
+    <!--Import of font awesome library-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <!--Links for Javasript and CSS-->
     <script src="script.js" type="text/javascript" defer></script>
     <link href="style.css" type="text/css" rel="stylesheet">
@@ -52,44 +54,52 @@
                 <div class="matrixSettings" onclick="settingsOfMatrix()">
                     <div class="settingsDot"></div>
                 </div>
-                
-                
-                
-                
-                <div class="addTaskButton" onclick="createNewTask(this.parentElement)">+</div>
+                <p>Do</p>
+
+                <div class="contentOfMatrix" data-indexOfMatrix="0">
+
+                </div>
+
+                <div class="addTaskButton" onclick="createNewTask(0)">+</div>
             </div>
 
             <div class="matrixKvadrant" id="rightTop" data-indexOfMatrix="1">
                 <div class="matrixSettings" onclick="settingsOfMatrix()">
                     <div class="settingsDot"></div>
                 </div>
-                
-                
-                
-                
-                <div class="addTaskButton" onclick="createNewTask(this.parentElement)">+</div>
+                <p>Schedule</p>
+
+                <div class="contentOfMatrix" data-indexOfMatrix="1">
+
+                </div>
+
+                <div class="addTaskButton" onclick="createNewTask(1)">+</div>
             </div>
 
-            <div class="matrixKvadrant" id="leftBottom" data-indexOfMatrix="2">
+            <div class="matrixKvadrant" id="leftBottom" data-indexOfMatrix="2" >
                 <div class="matrixSettings" onclick="settingsOfMatrix()">
                     <div class="settingsDot"></div>
                 </div>
+                <p>Delegate</p>
+
+                <div class="contentOfMatrix" data-indexOfMatrix="2">
+
+                </div>
                 
-                
-                
-                
-                <div class="addTaskButton" onclick="createNewTask(this.parentElement)">+</div>
+                <div class="addTaskButton" onclick="createNewTask(2)">+</div>
             </div>
             
             <div class="matrixKvadrant" id="rightBottom" data-indexOfMatrix="3">
                 <div class="matrixSettings" onclick="settingsOfMatrix()">
                     <div class="settingsDot"></div>
                 </div>
+                <p>Delete</p>
                 
+                <div class="contentOfMatrix" data-indexOfMatrix="3">
+
+                </div>          
                 
-                
-                
-                <div class="addTaskButton" onclick="createNewTask(this.parentElement)">+</div>
+                <div class="addTaskButton" onclick="createNewTask(3)">+</div>
             </div>
         </div>
         <!--!Creating matrix with tasks-->
@@ -105,7 +115,7 @@
         </h2>
 
         <!--Creating leftMenu Arrow Circle-->   
-        <div id="rightArrowCircle" class="notVisibleArrowCircle" onclick="arrowCircleTrigger()">
+        <div id="rightArrowCircle" class="notVisibleArrowCircle" onclick="arrowCircleTrigger(-1)">
             <div id="topLine" class="notVisibleArrowLine"></div>
             <div id="bottomLine" class="notVisibleArrowLine"></div>
         </div>
