@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-size: 16px;
     scroll-behavior: smooth;
+    font-family: 'Roboto', 'Poppins', 'Source Sans Pro','Ubuntu', sans-serif;
     
 }
 /*Global setting*/
@@ -451,7 +452,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     bottom: 1vh;
     width: 20px;
     height: 20px;
-    font-size: 1.2em;
+    font-size: 1em;
     border-radius: 50%;
     background-color: #cccccc;
     color: black;
@@ -516,7 +517,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 }
 
 .settingsWindow input{
-    width: 10%;
+    width: 20px;
 }
 
 

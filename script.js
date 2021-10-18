@@ -6,10 +6,21 @@ function getData(){
 }
 
 
+function colorChangeBackground(input, index){
+    let arrayOfKvadrants = document.getElementsByClassName("matrixKvadrant");    
+    arrayOfKvadrants[index].style.backgroundColor = input.value;
+}
+
+function colorChangeText(input, index){
+    let arrayOfKvadrants = document.getElementsByClassName("matrixKvadrant");
+    arrayOfKvadrants[index].getElementsByTagName('p')[0].style.color = input.value;
+}
+
+
 function settingsOfMatrix(index){
+    
     let settingsWindwos = document.getElementsByClassName("settingsWindow");
     settingsWindwos[index].classList.toggle("showWindow");
-    
 }
 
 

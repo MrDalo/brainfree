@@ -12,6 +12,12 @@
 
     <!--Import of font awesome library-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    
+    <!--Import of google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@400;600;700;900&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <!--Links for Javasript and CSS-->
     <script src="script.js" type="text/javascript" defer></script>
     <link href="style.css" type="text/css" rel="stylesheet">
@@ -56,10 +62,10 @@
                 </div>
                 <div class="settingsWindow">
                     <form>
-                        <label for="kvadrantColor0">Choose color of kvadrant:</label>
-                        <input id="kvadrantColor0" class="kvadrantColor" type="color">
-                        <label for="textKvadrantColor0">Choose color of background text:</label>
-                        <input id="textKvadrantColor0" class="textKvadrantColor" type="color">
+                        <label for="kvadrantColor0">Color of background:</label>
+                        <input id="kvadrantColor0" class="kvadrantColor" type="color" onchange="colorChangeBackground(this, 0)">
+                        <label for="textKvadrantColor0">Color of text:</label>
+                        <input id="textKvadrantColor0" class="textKvadrantColor" type="color" onchange="colorChangeText(this, 0)">
                         <svg xmlns="http://www.w3.org/2000/svg" onclick="settingsOfMatrix(0)" width="10" height="10" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
                         
                     </form>
@@ -79,10 +85,10 @@
                 </div>
                 <div class="settingsWindow">
                     <form>
-                        <label for="kvadrantColor1">Choose color of kvadrant:</label>
-                        <input id="kvadrantColor1" class="kvadrantColor" type="color">
-                        <label for="textKvadrantColor1">Choose color of background text:</label>
-                        <input id="textKvadrantColor1" class="textKvadrantColor" type="color">
+                        <label for="kvadrantColor1">Color of background:</label>
+                        <input id="kvadrantColor1" class="kvadrantColor" type="color" onchange="colorChangeBackground(this, 1)">
+                        <label for="textKvadrantColor1">Color of text:</label>
+                        <input id="textKvadrantColor1" class="textKvadrantColor" type="color" onchange="colorChangeText(this, 1)">
                         <svg xmlns="http://www.w3.org/2000/svg" onclick="settingsOfMatrix(1)" width="10" height="10" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
                         
                     </form>
@@ -102,10 +108,10 @@
                 </div>
                 <div class="settingsWindow">
                     <form>
-                        <label for="kvadrantColor2">Choose color of kvadrant:</label>
-                        <input id="kvadrantColor2" class="kvadrantColor" type="color">
-                        <label for="textKvadrantColor2">Choose color of background text:</label>
-                        <input id="textKvadrantColor2" class="textKvadrantColor" type="color">
+                        <label for="kvadrantColor2">Color of background:</label>
+                        <input id="kvadrantColor2" class="kvadrantColor" type="color" onchange="colorChangeBackground(this, 2)">
+                        <label for="textKvadrantColor2">Color of text:</label>
+                        <input id="textKvadrantColor2" class="textKvadrantColor" type="color" onchange="colorChangeText(this, 2)">
                         <svg xmlns="http://www.w3.org/2000/svg" onclick="settingsOfMatrix(2)" width="10" height="10" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
                         
                     </form>
@@ -125,10 +131,10 @@
                 </div>
                 <div class="settingsWindow">
                     <form>
-                        <label for="kvadrantColor3">Choose color of kvadrant:</label>
-                        <input id="kvadrantColor3" class="kvadrantColor" type="color">
-                        <label for="textKvadrantColor3">Choose color of background text:</label>
-                        <input id="textKvadrantColor3" class="textKvadrantColor" type="color">
+                        <label for="kvadrantColor3">Color of background:</label>
+                        <input id="kvadrantColor3" class="kvadrantColor" type="color" onchange="colorChangeBackground(this, 3)">
+                        <label for="textKvadrantColor3">Color of text:</label>
+                        <input id="textKvadrantColor3" class="textKvadrantColor" type="color" onchange="colorChangeText(this, 3)">
                         <svg xmlns="http://www.w3.org/2000/svg" onclick="settingsOfMatrix(3)" width="10" height="10" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
                         
                     </form>
