@@ -316,7 +316,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 
 
 #inputForm input[type=checkbox]:checked{
-    content: url("/check.png");
+    content: url("check.png");
     background-color: white;
     color: #272627;
 }
