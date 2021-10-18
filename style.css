@@ -11,6 +11,11 @@
 /*Global setting*/
 
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 .sideBar{
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
@@ -103,8 +108,11 @@
     font-size: 1em;
     padding-left: 20%;
     padding-right: 20%;
-    
     line-height: 100%;
+}
+
+.leftMenuLi a{
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -299,14 +307,16 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     appearance: none;
     border: #ffffff 2px solid;
     border-radius: 3px;
-    width: 1.5vw;
-    height: 1.5vw;
+    width: 20px;
+    height: 20px;
     /*TODO Dorob checkbox style*/    
 }
 
 
 
+
 #inputForm input[type=checkbox]:checked{
+    content: url("/check.png");
     background-color: white;
     color: #272627;
 }
@@ -485,13 +495,14 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     background-color: white;
     width: 12vw;
     height: 20vh;
-    border: #272627 solid 2px;
+    border: #272627 solid 1px;
     border-radius: 10px;
     left: 20%;
     top: 10%;
     z-index: 4;
     display: none;
     padding-left: 5%;    
+    box-shadow: 3px 3px 5px #eeeeee ;
     
 }
 
