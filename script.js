@@ -82,7 +82,7 @@ function createNewTask(index){
     arrowCircleTrigger(index);
 
     let matrixes = document.querySelectorAll(".contentOfMatrix");
-    console.log(matrixes[index]);
+   
     
 }
 
