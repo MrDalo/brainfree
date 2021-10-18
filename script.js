@@ -6,7 +6,9 @@ function getData(){
 }
 
 
-function settingsOfMatrix(){
+function settingsOfMatrix(index){
+    let settingsWindwos = document.getElementsByClassName("settingsWindow");
+    settingsWindwos[index].classList.toggle("showWindow");
     
 }
 
