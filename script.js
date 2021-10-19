@@ -68,7 +68,7 @@ function arrowCircleTrigger(index){
     document.getElementById("inputForm").classList.toggle("notVisibleElements");
     
     /*Selection of priority depends where user want to create task*/
-    const priority = ["Urgent - Important", "Urgent - Not Important", "Not Urgent - Important", "Not Urgent - Not Important"];
+    const priority = ["Urgent - Important", "Urgent - Not Important", "Not Urgent - Important", "Not Urgent - Not Important", "None"];
     let dropPriorityMenu = document.getElementById("priorityList");
     dropPriorityMenu.value = priority[index];
 }

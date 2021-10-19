@@ -538,6 +538,41 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     top: 5px;
     right: 5px;
 }
+
+
+#taskList{
+    background-color: #cccccc;
+    position: relative;
+    top: 95vh;
+    width: 65%;
+    height: 50vh;
+    left: 25%;
+}
+
+
+#headOfTaskList{
+    background-color: rgb(253, 89, 89);
+    border-radius: 100px;
+    width: 100%;
+    position: absolute;
+    top: -5vh;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#headOfTaskList h1{
+    color: white;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+#headOfTaskList .addTaskButton{
+    background-color: white;
+    bottom: 3.5vh;
+    right: 4%;
+}
 /*!center Content*/
 
 
