@@ -541,14 +541,25 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 
 
 #taskList{
-    background-color: #cccccc;
+    background-color: #eeeeee;
     position: relative;
     top: 95vh;
     width: 65%;
-    height: 50vh;
+    
+    min-height: 10vh;
     left: 25%;
+    padding-top: 10vh;
+    padding-bottom: 1vh;
+    
 }
 
+
+.objectOfList{
+    width: 90%;
+    border: 2px red solid;
+    height: 10vh;
+    margin: 3%;
+}
 
 #headOfTaskList{
     background-color: rgb(253, 89, 89);
