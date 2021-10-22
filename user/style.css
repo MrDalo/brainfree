@@ -394,11 +394,11 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 #matrix{
     position: absolute;
     top: 20vh;
-    left: 30%;
+    left: 25%;
     display: flex;
     row-gap: 0;
     column-gap: 0;
-    width: 55%;
+    width: 65%;
     height: 50vh;
     flex-wrap: wrap;
 }
@@ -512,7 +512,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 }
 
 .settingsWindow form{
-    padding-top: 10%;
+    padding-top: 5%;
     font-size: 1em;
     display: flex;
     justify-content: center;
@@ -529,6 +529,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 
 .settingsWindow input{
     width: 20px;
+    
 }
 
 
@@ -587,6 +588,41 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 /*!center Content*/
 
 
+@media only screen and (min-width: 1024px) and (max-width: 1199px){
+    *{
+        font-size: 13px;
+    }
+
+    #matrix{
+        position: absolute;
+        top: 20vh;
+        left: 10%;
+        right: 10%;
+        width: 80%;
+        height: 50vh;
+       
+    }
 
 
+    #taskList{
+        top: 95vh;
+        width: 70%;
+        left: 15%;
+        
+        
+    }
+    
+
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+
+
+
+
+
+
+    
+}
 
