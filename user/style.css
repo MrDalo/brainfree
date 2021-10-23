@@ -691,6 +691,13 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
         flex-wrap: nowrap;
         
     }
+    #leftMenu ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+    }
     
     .leftMenuLi{
         width: 20%;
@@ -701,7 +708,6 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
         padding-right: 0%;
         line-height: 100%;
         list-style-type: none;
-        padding-top: 3%;
     }
     
     .leftMenuLi a{
@@ -709,7 +715,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
         display: flex;
         align-items: center;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         row-gap: 15%;
     }
     
@@ -723,8 +729,8 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     .leftMenuLi#leftMenuAddTask{
         display: initial;       
         display: flex; 
-        padding-top: 2%;
-        
+        padding-top: 0;
+        align-items: center;
         justify-content: center;
     }
 
