@@ -41,7 +41,7 @@
         <ul>
             <li class="leftMenuLi"><a href="#centerContent"><img src="home.png">Home</a></li>
             <li class="leftMenuLi"><a href="#taskList"><img src="clipboard.png">My tasks</a></li>
-           <!-- <li class="leftMenuLi"><a href="#"><img src="user.png">Account</a></li>-->
+            <!-- <li class="leftMenuLi"><a href="#"><img src="user.png">Account</a></li>-->
            <li class="leftMenuLi" id="leftMenuAddTask" onclick="createNewTask(4)"><a href="#">+</a></li>
             <li class="leftMenuLi"><a href="#"><img src="help.png">Guide</a></li>
             <!--<li class="leftMenuLi"><a href="#"><img src="gear.png">Settings</a></li>-->
@@ -52,12 +52,18 @@
     </div>
     <!--!Creating leftMenu-->
 
-
+    
     <!--Creating centerContent-->
     <div id="centerContent">
         <!--Creating matrix with tasks-->
         <div id="matrix">
             <div class="matrixKvadrant" id="leftTop" data-indexOfMatrix="0">
+                
+                <!--Priority legend-->
+                <div class="priorityLegend urgentment">Urgent</div>
+                <div class="priorityLegend importance">Important</div>
+                
+                <!--Mastrix settings-->
                 <div class="matrixSettings" onclick="settingsOfMatrix(0)">
                     <div class="settingsDot"></div>
                 </div>
@@ -72,15 +78,21 @@
                     </form>
                 </div>
                 <p>Do</p>
-
+                
+                
+                <!--Content of the matrix, task in matrix-->
                 <div class="contentOfMatrix" data-indexOfMatrix="0">
-
+                    
                 </div>
 
                 <div class="addTaskButton" onclick="createNewTask(0)">+</div>
             </div>
 
             <div class="matrixKvadrant" id="rightTop" data-indexOfMatrix="1">
+                <!--Priority legend-->
+                <div class="priorityLegend urgentment">Not Urgent</div>
+                
+                <!--Mastrix settings-->
                 <div class="matrixSettings" onclick="settingsOfMatrix(1)">
                     <div class="settingsDot"></div>
                 </div>
@@ -95,15 +107,21 @@
                     </form>
                 </div>
                 <p>Schedule</p>
-
+                
+                <!--Content of the matrix, task in matrix-->
                 <div class="contentOfMatrix" data-indexOfMatrix="1">
-
+                    
                 </div>
-
+                
                 <div class="addTaskButton" onclick="createNewTask(1)">+</div>
             </div>
-
+            
             <div class="matrixKvadrant" id="leftBottom" data-indexOfMatrix="2">
+
+                <!--Priority legend-->
+                <div class="priorityLegend importance">Not Important</div>
+
+                <!--Mastrix settings-->
                 <div class="matrixSettings" onclick="settingsOfMatrix(2)">
                     <div class="settingsDot"></div>
                 </div>
@@ -118,15 +136,17 @@
                     </form>
                 </div>
                 <p>Delegate</p>
-
+                
+                <!--Content of the matrix, task in matrix-->
                 <div class="contentOfMatrix" data-indexOfMatrix="2">
-
+                    
                 </div>
-
+                
                 <div class="addTaskButton" onclick="createNewTask(2)">+</div>
             </div>
-
+            
             <div class="matrixKvadrant" id="rightBottom" data-indexOfMatrix="3">
+                <!--Mastrix settings-->
                 <div class="matrixSettings" onclick="settingsOfMatrix(3)">
                     <div class="settingsDot"></div>
                 </div>
@@ -141,9 +161,11 @@
                     </form>
                 </div>
                 <p>Delete</p>
-
+                
+                
+                <!--Content of the matrix, task in matrix-->
                 <div class="contentOfMatrix" data-indexOfMatrix="3">
-
+                    
                 </div>
 
                 <div class="addTaskButton" onclick="createNewTask(3)">+</div>

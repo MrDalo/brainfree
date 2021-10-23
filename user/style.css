@@ -553,15 +553,36 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 }
 
 
+.priorityLegend{
+    width: 28%;
+    
+    position: absolute;
+    background-color: #bbbbbb;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #cccccc;
+    font-size: 0.6em;
+    font-weight: 600;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.urgentment{
+    top: -7vh;
+    left: 40%;
+}
+
+.importance{
+    left: -35%;
+    top: 50%;
+}
+
 #taskList{
     background-color: #eeeeee;
     position: relative;
     width: 65%;
     min-height: 10vh;
-    /*
-    top: 95vh;
-    left: 25%;
-    */
     padding-top: 10vh;
     padding-bottom: 1vh;
     
@@ -606,6 +627,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
         font-size: 13px;
     }
 
+
     #matrix{
         left: 10%;
         right: 12%;
@@ -639,9 +661,17 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     #matrix{
         left: 0;
         right: 0;
-        width: 100%;
+        width: 80%;
     }
 
+    .priorityLegend{
+        font-size: 1em ;
+        width: 35%;
+    }
+
+    .importance{
+        left: -40%;
+    }
 
     #taskList{
        
@@ -708,9 +738,19 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
         font-size: 1.4em;
     }
 
-    @media only screen and (min-width: 640px) and (max-width: 767px){
+    @media only screen and (min-width: 640px) and (max-width: 769px){
         .leftMenuLi a{
             font-size: 1em;
+        }
+
+        .priorityLegend{
+            font-size: 0.8em ;
+            width: 40%;
+            
+        }
+
+        .importance{
+            left: -50%;
         }
 
     }
@@ -803,7 +843,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
         font-size: 1em;
     }
 
-    
+
     .addTaskButton{
         font-size: 1.2em;
         width: 30px;
@@ -938,12 +978,20 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 
     }
 
+
+
     .notVisibleRight{
         background-color: white;
         transform: translateX(100%);
         z-index: 0;
     }
 
+
+    .priorityLegend{
+        display: none;
+    }
+
+    
     .settingsWindow{
         left: 10%;
         right: 10%;
