@@ -649,7 +649,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
 
 @media only screen and (min-width: 640px) and (max-width: 1024px){
     *{
-        font-size: 16px;        
+        font-size: 12px;        
     }
 
     #centerContent{
@@ -735,7 +735,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
         flex-direction: column;
         justify-content: center;
         row-gap: 15%;
-        font-size: 1.4em;
+        font-size: 1em;
     }
 
     @media only screen and (min-width: 640px) and (max-width: 769px){
@@ -756,8 +756,8 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     }
     
     .leftMenuLi img{
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
     }
     
     
@@ -773,8 +773,8 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     #leftMenuAddTask a{
         color: black;
         font-size: 2em;
-        width: 8vw;
-        height: 8vw;
+        width: 5vw;
+        height: 5vw;
        
         background-color: white;
         justify-content: center;
