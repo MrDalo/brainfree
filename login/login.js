@@ -43,4 +43,15 @@ app.post('/doLogin', function(request, response) {
 		response.end();
 	}
 });
+app.post('/register', function(request, response) {
+	var username = request.body.username;
+    var email = request.body.email;
+	var password = request.body.password;
+    console.log("adding user " + username);
+	if (username && password && email) {
+		connection.query('INSERT INTO users (username, password, email) VALUES ("' + username + '", "' + password + '", "' + email + '")');
+        response.end;
+        response.redirect('/');
+    }
+});
 app.listen(3000);
