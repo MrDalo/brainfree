@@ -450,13 +450,14 @@ footer{
 }
 
 #createdBy{
+  font-size: 0.6em;
   width: 40%;
   height: 60%;
   align-items: flex-end;
 }
 
 footer #leftNav a{
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 #contact{
@@ -469,5 +470,5 @@ footer #leftNav a{
 #contact a{
   text-decoration: none;
   color: #202020;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
