@@ -16,6 +16,39 @@ function createClock(){
     document.getElementById("timeCircle").innerHTML=clockSVGImg;
 }
 
+function isInViewport(element, offset){
+    const rect = element.getBoundingClientRect();
+    return ((window.innerHeight || document.documentElement.clientHeight) - offset - rect.top > 0 && rect.bottom - offset > 0); 
+}
+
+
+window.addEventListener("scroll", ()=>{
+    if(isInViewport(document.getElementById("lastBottomPart"), 0)){
+        
+        let valueOfScroll = window.scrollY;
+        const rect = document.getElementById("lastBottomPart").getBoundingClientRect();
+        console.log("yes: "+ valueOfScroll+ "Rect top: "+document.getElementById("lastBottomPart").offsetTop);
+        
+        
+
+
+
+        lines.forEach(line=>{
+            line.style.transform = `translateY(${+(valueOfScroll-2500) * 0.25}px)`;
+        })
+
+    }
+
+
+
+})
+
+
+let lines = document.querySelectorAll('.svgLines');
+
+console.log(lines);
+
+
 /* 192, 150 for svh width and height*/
 
 let clockSVGImg='<svg width="318" height="248" viewBox="0 0 318 248" fill="none" xmlns="http://www.w3.org/2000/svg">'+

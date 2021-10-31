@@ -23,14 +23,23 @@
   transition-duration: 2s;
   position: fixed;
   width: 40%;
-  top: 20vh;
+  
   left: 30%;
   right: 30%;
   background-color: #ffffff;
   opacity: 1;
   z-index: 11;
   border: #202020 solid 1px;
+  box-shadow: #ffffff 10px -10px 10px ;
   border-radius: 50px;
+}
+
+#loginForm{
+  top: 20vh;
+}
+
+#registerForm{
+  top: 10vh;
 }
 
 form {
@@ -153,8 +162,8 @@ a{
 #frontPage {
   position: relative;
   width: 100%;
-  height: 140vh;
-  background: linear-gradient(to right bottom, #ae91ff 5%, #ff9191 95%);
+  height: 125vh;
+  background: linear-gradient(to right bottom, #ae91ff 10%, #ff9191 90%);
 }
 
 #timeCircle {
@@ -263,7 +272,7 @@ a{
 }
 
 #prioritizeNadpis h1 {
-  font-size: 2.5em;
+  font-size: 3em;
 }
 
 #login {
@@ -286,10 +295,12 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 #rightPrioritize img {
   width: 60%;
+  z-index: 5;
 }
 
 #scheduleParagraph {
@@ -299,6 +310,7 @@ a{
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  z-index: 4;
 }
 
 #rightSchedule,
@@ -340,4 +352,122 @@ li::before {
   background-repeat: no-repeat;
   background-image: url("fajka.png");
   margin-right: 2vw;
+}
+
+
+#lastBottomPart{
+  position: relative;
+  width: 100%;
+  height: 120vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#lastBottomPart svg{
+  position: absolute;
+  z-index: -1;
+}
+
+#svg1{
+  left: 10%;
+  top: -30%;
+}
+
+#svg2{
+  left: 30%;
+  top: -38%;
+  
+}
+#svg3{
+  left: 50%;
+  top: -25%;
+}
+
+#svg4{
+  left: 75%;
+  top: -25%;
+  
+}
+
+#svg5{
+  left: 90%;
+  top: -20%;
+}
+
+
+
+
+#lastBottomPartLeft, #lastBottomPartRight{
+  width: 50%;
+  height: 100%;
+}
+
+#lastBottomPartLeft{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8vh;
+
+}
+
+#lastBottomPartLeft h1{
+  text-align: center;
+  font-size: 3.5em;
+  font-weight: 200;
+  
+}
+
+#lastBottomPartLeft h1 b{
+  font-size: 1em;
+  font-weight: 800;
+}
+
+
+#lastBottomPartRight img{
+  padding-top: 15vh;
+  width: 80%;
+
+}
+
+footer{
+  position: relative;
+  width: 100%;
+  height: 30vh;
+  background-color: #dddddd;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+#createdBy, #contact{
+  display: flex;
+  justify-content: center;
+}
+
+#createdBy{
+  width: 40%;
+  height: 60%;
+  align-items: flex-end;
+}
+
+footer #leftNav a{
+  font-size: 1.3em;
+}
+
+#contact{
+  
+  width: 30%;
+  height: 100%;
+  align-items: center;
+}
+
+#contact a{
+  text-decoration: none;
+  color: #202020;
+  font-size: 1.5em;
 }
