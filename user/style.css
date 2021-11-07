@@ -1,0 +1,1009 @@
+/*Global setting*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    font-family: 'Roboto', 'Poppins', 'Source Sans Pro','Ubuntu', sans-serif;
+    
+}
+/*Global setting*/
+
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.sideBar{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    position: fixed;
+    background-color: #272627;
+    height: 100vh;
+}
+
+#rightMenu{
+    right: 0;
+    top: 0;
+    width: 20%;
+    border-radius: 50px 0 0 50px;
+}
+
+#leftMenu{
+    left: 0;
+    top: 0;
+    width: 15%;
+}
+
+
+/*LEFTMENU*/
+/*Style for burgerMenu in leftMenu bar */
+#burgerMenu{
+    position: relative;
+    top: 5vh;
+    width: 25px;
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+
+#burgerMenu{
+    cursor: pointer;
+    left: 70%;
+}
+
+
+.menuLines, .menuLinesOut{
+    width: 100%;
+    height: 10%;
+}
+
+.menuLines{
+    background-color: white;
+}
+
+.menuLinesOut{
+    background-color: #272627;
+}
+
+/*!Style for burgerMenu in leftMenu bar */
+
+/*Circle user photo in leftMenu bar*/
+#userPhoto{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    border-radius: 50%;
+    position: relative;
+    width: 7vw;
+    height: 7vw;
+    left:  25%;
+    right: 25%;
+    top: 15vh;
+    background: url(account.png);
+    background-size: cover;
+    background-position: center;
+}
+/*!Circle user photo in leftMenu bar*/
+
+/*leftMenu navigation list*/
+#leftMenu ul{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    width: 100%;
+    height: 55vh;
+    position: relative;
+    left: 0;
+    top: 20vh;
+}
+
+.leftMenuLi{
+    cursor: pointer;
+    width: 100%;
+    height: 15%;
+    color: white;
+    font-size: 1em;
+    padding-left: 20%;
+    padding-right: 20%;
+    line-height: 100%;
+}
+
+.leftMenuLi a{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 20%;
+}
+
+.leftMenuLi img{
+    width: 16px;
+    height: 16px;
+}
+
+.leftMenuLi:hover{
+    background-color: #3d3d3d;
+}
+
+.leftMenuLi#leftMenuAddTask{
+    display: none;
+}
+
+
+/*!leftMenu navigation list*/
+
+/*Not Visible leftMenu*/
+
+.notVisibleLeft{
+    background-color: white;
+    transform: translateX(-50%);
+}
+
+
+
+.notVisibleLine{
+    background-color: #272627 !important;
+
+}
+
+.notVisibleElements{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    display: none;
+}
+
+
+
+
+/*!LEFTMENU*/
+
+/*rightMenu*/
+#rightMenu h2{
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+#rightMenu #inputForm, #listForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3vh;
+    justify-content: center;
+}
+
+#rightMenu #textInputForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 25vh;
+    row-gap: 5vh;
+    align-items: center;
+}
+
+#rightMenu #taskDescription{
+    
+    height: 8vh;
+}
+
+#rightMenu .textInput{
+    background-color: #272627;
+    border-bottom: #aaaaaa solid 2px;
+    border-top: none;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+    height: 5vh;
+    font-size: 1em;
+    outline: none;
+    color: white;
+}
+
+#rightMenu .textInput:focus{
+    color: #dddddd;
+    font-size: 1em;
+    border-bottom: #aaaaaa solid 2px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+/*Circle Arrow*/
+#rightArrowCircle{
+    cursor: pointer;  
+    position: absolute;
+    border: white solid 2px;
+    border-radius: 50%;
+    top: 50vh;
+    width: 30px;
+    height: 30px;
+    left: 5%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;    
+}
+
+#topLine, #bottomLine{
+    position: relative;
+    width: 55%;
+    height: 7%;
+    left: 30%;
+    background-color: white;
+}
+
+#topLine{
+    animation: topLineAnimationVisible 0.5s linear forwards;
+}
+
+@keyframes topLineAnimationVisible {
+    50%{transform: rotateZ(0deg);}
+    100%{transform: rotateZ(45deg) translateX(0) translateY(0);}
+}
+
+#bottomLine{
+    animation: bottomLineAnimationVisible 0.5s linear forwards;
+    
+}
+
+@keyframes bottomLineAnimationVisible {
+    50%{transform: rotateZ(0deg);}
+    100%{transform: rotateZ(-45deg) translateX(0) translateY(0);}
+}
+/*!Circle Arrow*/
+
+#rightMenu #dateInputForm{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    column-gap: 3vh;
+    margin-top: 5vh;
+    
+}
+
+#listForm{
+    height: 10vh;
+    align-items: flex-start;
+}
+
+#inputForm label{
+    color: white;
+    font-size: 1em;
+
+}
+
+#inputForm select{
+    width: 100%;
+    background-color: #555555;
+    color: white;
+}
+
+fieldset{
+    border: none;
+    padding-right: 10%;
+    padding-left: 20%;
+}
+
+
+#taskComplete{
+    margin-top: 3vh;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 5vh;
+    
+}
+
+input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, #taskComplete label{
+    cursor: pointer;
+    
+}
+
+#inputForm input[type=checkbox]{
+    appearance: none;
+    border: #ffffff 2px solid;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;  
+}
+
+
+
+
+#inputForm input[type=checkbox]:checked{
+    content: url("check.png");
+    background-color: white;
+    color: #272627;
+}
+
+
+#inputSubmit{
+    position: absolute;
+    bottom: 10vh;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputForm input[type=submit]{
+    cursor: pointer;
+    height: 100%;
+    width: 50%;
+    border-radius: 20px;    
+}
+
+#inputForm input[type=submit]:active{
+    background-color: #3d3d3d;
+    color: white;
+}
+
+/*Not Visible Rifht Menu*/
+
+.notVisibleRight{
+    background-color: white;
+    transform: translateX(80%);
+}
+
+#inputForm.notVisibleElements{
+    display: none !important;
+}
+
+#rightArrowCircle.notVisibleArrowCircle{
+    border-color: #272627;
+}
+
+#topLine.notVisibleArrowLine{
+    background-color: #272627;
+    animation: topLineAnimationNotVisible 0.5s linear forwards;
+}
+
+@keyframes topLineAnimationNotVisible {
+    50%{transform: rotateZ(0);}
+    100%{transform: rotateZ(-45deg) translateX(-2px) translateY(-2px);}
+}
+
+
+#bottomLine.notVisibleArrowLine{
+    background-color: #272627;
+    animation: bottomLineAnimationNotVisible 0.5s linear forwards;  
+}
+
+@keyframes bottomLineAnimationNotVisible {
+    50%{transform: rotateZ(0);}
+    100%{transform: rotateZ(45deg) translateX(-2px) translateY(2px);}
+}
+/*!rightMenu*/
+
+/*center Content*/
+
+#centerContent{
+    
+    position: relative;
+    width: 65%;
+    left: 15%;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30vh;
+}
+
+#matrix{
+    position: relative;
+    display: flex;
+    row-gap: 0;
+    column-gap: 0;
+    width: 65%;
+    height: 50vh;
+    flex-wrap: wrap;
+}
+
+.matrixKvadrant{
+    position: relative;
+    width: 50%;
+    height: 50%;
+}
+
+#leftTop{
+    background-color: rgb(252, 158, 158);
+}
+
+#rightTop{
+    background-color: rgb(166, 166, 255);
+}
+
+#leftBottom{
+    background-color: rgb(255, 255, 168);
+}
+
+#rightBottom{
+    background-color: rgb(164, 255, 164);
+}
+
+.matrixSettings{
+    cursor: pointer;
+    position: absolute;
+    right: 5.5%;
+    top: 1vh;
+    height: 3vh;
+    width: 6px;
+    z-index: 5;
+}
+.settingsDot, .settingsDot::after, .settingsDot::before{
+    background-color: #3d3d3d;
+    position: absolute;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+}
+
+
+.settingsDot::before{
+    content: '';    
+    top: 1vh;  
+}
+
+.settingsDot::after{
+    content: '';
+    top: 2vh;
+}
+
+
+
+.addTaskButton{
+    cursor: pointer;
+    position: absolute;
+    right: 2%;
+    bottom: 1vh;
+    width: 20px;
+    height: 20px;
+    font-size: 1em;
+    border-radius: 50%;
+    background-color: #cccccc;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+}
+
+
+.matrixKvadrant p{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: #6b6b6b;
+    height: 100%;
+
+}
+
+.contentOfMatrix{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+.settingsWindow{
+    position: absolute;
+    background-color: white;
+    width: 12vw;
+    height: 20vh;
+    border: #272627 solid 1px;
+    border-radius: 10px;
+    left: 20%;
+    top: 10%;
+    z-index: 4;
+    display: none;
+    padding-left: 5%;    
+    box-shadow: 3px 3px 5px #eeeeee ;
+    
+}
+
+.settingsWindow.showWindow{
+    
+    display: initial;
+}
+
+.settingsWindow form{
+    padding-top: 5%;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.settingsWindow label{
+    position: relative;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    width: 100%;
+    font-size: 0.6em;
+}
+
+.settingsWindow input{
+    width: 20px;
+    
+}
+
+
+.settingsWindow svg{
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    right: 5px;
+}
+
+
+.priorityLegend{
+    width: 28%;
+    
+    position: absolute;
+    background-color: #bbbbbb;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #cccccc;
+    font-size: 0.6em;
+    font-weight: 600;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.urgentment{
+    top: -7vh;
+    left: 40%;
+}
+
+.importance{
+    left: -35%;
+    top: 50%;
+}
+
+#taskList{
+    background-color: #eeeeee;
+    position: relative;
+    width: 65%;
+    min-height: 10vh;
+    padding-top: 10vh;
+    padding-bottom: 1vh;
+    
+}
+
+
+.objectOfList{
+    width: 90%;
+    border: 2px red solid;
+    height: 10vh;
+    margin: 3%;
+}
+
+#headOfTaskList{
+    background-color: rgb(253, 89, 89);
+    border-radius: 100px;
+    width: 100%;
+    position: absolute;
+    top: -5vh;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#headOfTaskList h1{
+    color: white;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+#headOfTaskList .addTaskButton{
+    background-color: white;
+    bottom: 3.5vh;
+    right: 4%;
+}
+/*!center Content*/
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px){
+    *{
+        font-size: 13px;
+    }
+
+
+    #matrix{
+        left: 10%;
+        right: 12%;
+        width: 78%;
+    }
+    
+    
+    #taskList{
+        
+        left: 10%;
+        right: 12%;
+        width: 78%;
+                
+    }
+    
+
+}
+
+
+@media only screen and (min-width: 640px) and (max-width: 1024px){
+    *{
+        font-size: 12px;        
+    }
+
+    #centerContent{
+
+        width: 80%;
+        left: 10%;
+    }
+
+    #matrix{
+        left: 0;
+        right: 0;
+        width: 80%;
+    }
+
+    .priorityLegend{
+        font-size: 1em ;
+        width: 35%;
+    }
+
+    .importance{
+        left: -40%;
+    }
+
+    #taskList{
+       
+        width: 100%;
+        left: 0;        
+    }
+
+    #leftMenu{
+        left: 0;
+        bottom: 0;
+        top: initial;
+        z-index: 10;
+        width: 100%;
+        height: 10vh;
+    }
+    #leftMenu #burgerMenu{
+        display: none;
+    }
+
+    #userPhoto{
+        display: none;
+    }
+
+    #leftMenu ul{
+        transition-duration: 0.5s;
+        transition-timing-function: ease-out;
+        width: 100%;
+        height: 10vh;
+        position: relative;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        
+    }
+    #leftMenu ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    .leftMenuLi{
+        width: 20%;
+        height: 100%;
+        color: white;
+        font-size: 1em;
+        padding-left: 0%;
+        padding-right: 0%;
+        line-height: 100%;
+        list-style-type: none;
+    }
+    
+    .leftMenuLi a{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 15%;
+        font-size: 1em;
+    }
+
+    @media only screen and (min-width: 640px) and (max-width: 769px){
+        .leftMenuLi a{
+            font-size: 1em;
+        }
+
+        .priorityLegend{
+            font-size: 0.8em ;
+            width: 40%;
+            
+        }
+
+        .importance{
+            left: -50%;
+        }
+
+    }
+    
+    .leftMenuLi img{
+        width: 20px;
+        height: 20px;
+    }
+    
+    
+
+    .leftMenuLi#leftMenuAddTask{
+        display: initial;       
+        display: flex; 
+        padding-top: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #leftMenuAddTask a{
+        color: black;
+        font-size: 2em;
+        width: 5vw;
+        height: 5vw;
+       
+        background-color: white;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+
+    
+    #rightMenu{
+        right: 0;
+        top: 0;
+        width: 100%;
+        border-radius: 50px 0 0 50px;
+        z-index: 9;
+        font-size: 16px;
+
+    }
+
+    #rightMenu h2{
+        font-size: 3em;
+    }
+
+    .notVisibleRight{
+        background-color: white;
+        transform: translateX(100%);
+        z-index: 0;
+    }
+    
+    #rightMenu #inputForm{
+           row-gap: 1vh;
+           
+    }
+
+    #taskComplete label{
+        font-size: 1.5em;
+    }
+
+    #dateInputForm img{
+        width: 30px;
+        height: 30px;
+    }
+    
+    #priorityList{
+        font-size: 1em;
+    }
+
+    fieldset{
+        font-size: 1.5em;
+    }
+
+    #inputForm input{
+        font-size: 0.8em;
+    }
+
+    #inputSubmit{
+        bottom: 17vh;
+    }
+    
+    .settingsWindow{
+        left: 10%;
+        right: 10%;
+        width: 80%;
+    }
+
+    .settingsWindow label{
+        font-size: 1em;
+    }
+
+
+    .addTaskButton{
+        font-size: 1.2em;
+        width: 30px;
+        height: 30px;
+    }
+
+
+
+
+
+
+}
+
+
+
+@media only screen and (max-width: 639px){
+    *{
+        font-size: 12px;        
+    }
+
+    #centerContent{
+
+        width: 80%;
+        left: 10%;
+    }
+
+    #matrix{
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+
+    #taskList{
+       
+        width: 100%;
+        left: 0;        
+    }
+
+    #leftMenu{
+        left: 0;
+        bottom: 0;
+        top: initial;
+        z-index: 10;
+        width: 100%;
+        height: 10vh;
+    }
+    #leftMenu #burgerMenu{
+        display: none;
+    }
+
+    #userPhoto{
+        display: none;
+    }
+
+    #leftMenu ul{
+        transition-duration: 0.5s;
+        transition-timing-function: ease-out;
+        width: 100%;
+        height: 10vh;
+        position: relative;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        
+    }
+    #leftMenu ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    .leftMenuLi{
+        width: 20%;
+        height: 100%;
+        color: white;
+        font-size: 0.8em;
+        padding-left: 0%;
+        padding-right: 0%;
+        line-height: 100%;
+        list-style-type: none;
+    }
+    
+    .leftMenuLi a{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 15%;
+    }
+    
+    .leftMenuLi img{
+        width: 15px;
+        height: 15px;
+    }
+    
+    
+
+    .leftMenuLi#leftMenuAddTask{
+        display: initial;       
+        display: flex; 
+        padding-top: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #leftMenuAddTask a{
+        color: black;
+        font-size: 2em;
+        width: 8vw;
+        height: 8vw;
+       
+        background-color: white;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+
+    
+    #rightMenu{
+        right: 0;
+        top: 0;
+        width: 100%;
+        border-radius: 50px 0 0 50px;
+        z-index: 9;
+
+    }
+
+
+
+    .notVisibleRight{
+        background-color: white;
+        transform: translateX(100%);
+        z-index: 0;
+    }
+
+
+    .priorityLegend{
+        display: none;
+    }
+
+    
+    .settingsWindow{
+        left: 10%;
+        right: 10%;
+        width: 80%;
+    }
+
+    #rightMenu #inputForm{
+        row-gap: 1vh;
+    }
+
+    #inputSubmit{
+        bottom: 17vh;
+    }
+
+}
