@@ -1,3 +1,4 @@
+const { user } = require("../config/db.config.js");
 const connection = require("./db.js");
 
 const User = function(user) {
@@ -19,7 +20,7 @@ User.create = (newUser, result) => {
 };
 
 User.find = (username, result) => {
-    connection.query("SELECT * FROM users WHERE username = '" + username  + "'", (err, res) => {
+    connection.query("SELECT * FROM users WHERE username = ?", username, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -35,4 +36,24 @@ User.find = (username, result) => {
         result({kind : "not_found"}, null);
     });
 };
+
+User.remove = (username, result) => {
+    connection.query("DELETE FROM users WHERE username = ?", username, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+          }
+      
+          if (res.affectedRows == 0) {
+            result({ kind: "not_found" }, null);
+            return;
+          }
+      
+          console.log("deleted user: ", username);
+          result(null, res);
+    });
+};
+
+
 module.exports = User;

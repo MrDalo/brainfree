@@ -42,3 +42,21 @@ exports.find = (req, res) => {
         }
     });
 };
+
+exports.remove = (req, res) => {
+    User.remove(req.params.username, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message : "No user with username: " + req.params.username
+                });
+            } else {
+                res.status(500).send({
+                    message : "Error deleting user " + req.params.username
+                });
+            }
+        } else {
+            res.send({message : "User deleted successfully"});
+        }
+    });
+};

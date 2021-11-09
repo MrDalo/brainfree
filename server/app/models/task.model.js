@@ -22,7 +22,7 @@ Task.create = (newTask, result) => {
 };
 
 Task.find = (username, result) => {
-    connection.query("SELECT * FROM tasks WHERE user = '" + username  + "'", (err, res) => {
+    connection.query("SELECT * FROM tasks WHERE user = ?", username , (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -36,6 +36,42 @@ Task.find = (username, result) => {
         }
 
         result({kind : "not_found"}, null);
+    });
+};
+
+Task.removeById = (id, result) => {
+    connection.query("DELETE FROM tasks WHERE id = ?", id, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+          }
+      
+          if (res.affectedRows == 0) {
+            result({ kind: "not_found" }, null);
+            return;
+          }
+      
+          console.log("deleted task: ", id);
+          result(null, res);
+    });
+};
+
+Task.removeByUser = (user, result) => {
+    connection.query("DELETE FROM tasks WHERE user = ?", user, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+          }
+      
+          if (res.affectedRows == 0) {
+            result({ kind: "not_found" }, null);
+            return;
+          }
+      
+          console.log("deleted tasks by: ", user);
+          result(null, res);
     });
 };
 module.exports = Task;
