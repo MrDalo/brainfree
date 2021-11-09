@@ -33,15 +33,51 @@ exports.find = (req, res) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message : "No task associated with user: " + req.params.username
+                    message : "No task associated with user: " + req.params.user
                 });
             } else {
                 res.status(500).send({
-                    message : "Error finding task " + req.params.username
+                    message : "Error finding task " + req.params.user
                 });
             }
         } else {
             res.send(data);
+        }
+    });
+};
+
+exports.removeById = (req, res) => {
+    Task.removeById(req.params.taskId, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message : "No task with id: " + req.params.taskId
+                });
+            } else {
+                res.status(500).send({
+                    message : "Error deleting task " + req.params.taskId
+                });
+            }
+        } else {
+            res.send({message : "Task deleted successfully"});
+        }
+    });
+};
+
+exports.removeByUser = (req, res) => {
+    Task.removeByUser(req.params.user, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message : "No tasks from: " + req.params.user
+                });
+            } else {
+                res.status(500).send({
+                    message : "Error deleting tasks from: " + req.params.user
+                });
+            }
+        } else {
+            res.send({message : "Tasks deleted successfully"});
         }
     });
 };
