@@ -60,3 +60,36 @@ exports.remove = (req, res) => {
         }
     });
 };
+
+exports.loginCheck = (req, res) => {
+    if (Object.keys(req.body).length === 0){
+        req.status(400).send({
+            message: "Request cannot be empty"
+        });
+    }
+
+    User.find(req.body.username, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message : "No user with username: " + req.params.username
+                });
+            } else {
+                res.status(500).send({
+                    message : "Error finding user " + req.params.username
+                });
+            }
+        } else {
+            if (data.password == req.body.password){
+                res.status(200).send({
+                    message : "OK" 
+                });
+            } else {
+                res.status(200).send({
+                    message : "BAD" 
+                });
+            }
+        }
+    });
+
+}
