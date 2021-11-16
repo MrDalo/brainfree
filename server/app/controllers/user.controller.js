@@ -82,11 +82,7 @@ exports.loginCheck = (req, res) => {
         } else {
             if (data.password == req.body.password){
                 res.status(200).send({
-                    message : "OK" 
-                });
-            } else {
-                res.status(200).send({
-                    message : "BAD" 
+                    token : data.username
                 });
             }
         }
