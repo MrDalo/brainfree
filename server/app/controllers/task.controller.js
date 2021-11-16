@@ -81,3 +81,25 @@ exports.removeByUser = (req, res) => {
         }
     });
 };
+
+exports.update = (req, res) => {
+    if (Object.keys(req.body).length === 0) {
+        res.status(400).send({
+          message: "Request cannot be empty"
+        });
+    }
+    console.log(req.body);
+    Task.update(req.params.taskId, new Task(req.body), (err, data) => {
+          if (err) {
+            if (err.kind === "not_found") {
+              res.status(404).send({
+                message: "Not found task with id>:" + req.params.taskId
+              });
+            } else {
+              res.status(500).send({
+                message: "Error updating task with id " + req.params.taskId
+              });
+            }
+          } else res.send(data);
+    });
+};

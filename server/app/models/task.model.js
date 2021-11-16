@@ -74,4 +74,25 @@ Task.removeByUser = (user, result) => {
           result(null, res);
     });
 };
+
+Task.update = (id, task, result) => {
+    connection.query(
+        "UPDATE tasks SET name = ?, description = ?, priority = ?, deadline = ?, complete = ? WHERE id = ?",
+        [task.name, task.description, task.priority, task.deadline, task.complete, id], (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(null, err);
+                return;
+              }
+        
+              if (res.affectedRows == 0) {
+                result({ kind: "not_found" }, null);
+                return;
+              }
+        
+              console.log("updated task: ", { id: id, ...task });
+              result(null, { id: id, ...task });
+        }
+    );
+};
 module.exports = Task;
