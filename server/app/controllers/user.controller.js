@@ -63,7 +63,7 @@ exports.remove = (req, res) => {
 
 exports.loginCheck = (req, res) => {
     if (Object.keys(req.body).length === 0){
-        req.status(400).send({
+        res.status(400).send({
             message: "Request cannot be empty"
         });
     }
@@ -82,11 +82,7 @@ exports.loginCheck = (req, res) => {
         } else {
             if (data.password == req.body.password){
                 res.status(200).send({
-                    message : "OK" 
-                });
-            } else {
-                res.status(200).send({
-                    message : "BAD" 
+                    token : data.username
                 });
             }
         }
