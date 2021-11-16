@@ -8,6 +8,7 @@ module.exports = app => {
     app.post("/login", users.loginCheck);
 
     app.post("/tasks", tasks.create);
+    //TODO: GET 1 task
     app.get("/tasks/:user", tasks.find);
     app.put("/tasks/:taskId", tasks.update);
     app.delete("/taskById/:taskId", tasks.removeById);
