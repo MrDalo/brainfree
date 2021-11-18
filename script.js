@@ -1,3 +1,13 @@
+function loginFromAction(){
+    let name = document.getElementById("userNameLog");
+  
+
+    sessionStorage.setItem("token", name.value);
+    window.location.replace(window.location.href+'user');
+    
+}
+
+
 function closeForm(){
     document.getElementById("logForm").classList.add("hide");
     document.getElementById("loginForm").classList.add("hide");
@@ -46,7 +56,6 @@ window.addEventListener("scroll", ()=>{
 
 let lines = document.querySelectorAll('.svgLines');
 
-console.log(lines);
 
 
 /* 192, 150 for svh width and height*/

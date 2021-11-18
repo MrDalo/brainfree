@@ -1,3 +1,58 @@
+function createXmlHttpRequestObject()
+{
+    var request;
+
+    try
+    {
+        request = new XMLHttpRequest(); // should work on all browsers except IE6 or older
+    }
+    catch (e)
+    {
+        try
+        {
+            request = new ActiveXObject("Microsoft.XMLHttp"); // browser is IE6 or older
+        }
+        catch (e)
+        {
+            // ignore error
+        }
+    }
+
+    if (!request)
+    {
+        alert("Error creating the XMLHttpRequest object.");
+    }
+    else
+    {
+        return request;
+    }
+}
+
+
+
+function dataRequest(){
+
+
+    var data = createXmlHttpRequestObject();
+
+    data.open("GET", "http://wedevs.sk:8080/tasks/example", true);
+    data.onreadystatechange = function(){
+        if ((data.readyState == 4) && (data.status == 200)){
+            var pole = JSON.parse(data.responseText);
+                for (var i in pole) {
+                  console.log(pole[i].description);
+                }
+            
+            
+ 
+        }
+
+    }
+    
+    data.send();
+
+
+}
 
 
 function getData(){
@@ -86,3 +141,35 @@ function createNewTask(index){
     
 }
 
+
+let userName = sessionStorage.getItem("token");
+
+
+window.addEventListener('load', ()=>{
+    //osetrenie ak sa uzivatel prepne na tuto stranku bez loginu
+    if(userName === ""){
+        window.location.replace(window.location.href.replace('/user/', ''));
+        return;
+    }
+
+    
+
+    var data = createXmlHttpRequestObject();
+    userName = "example";
+    data.open("GET", `http://wedevs.sk:8080/tasks/${userName}`, true);
+    data.onreadystatechange = function(){
+        if ((data.readyState == 4) && (data.status == 200)){
+            var pole = JSON.parse(data.responseText);
+                for (var i in pole) {
+                  console.log(pole);
+                }
+            
+            
+ 
+        }
+
+    }
+    
+    data.send();
+    
+});
