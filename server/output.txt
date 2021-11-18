@@ -1,0 +1,2 @@
+Server is running on port 8080.
+Successfully connected to the database.
