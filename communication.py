@@ -20,7 +20,6 @@ def check_response_code(code: int) -> bool:
 #                                         password : "example",
 #                                         email : "example"
 #                                     }
-# TODO: nefunguje
 def create_new_user(username: str, password: str, email: str) -> None:
     new_user = {\
         "username": username,\
@@ -138,7 +137,26 @@ def create_new_task(name: str, info: str, prior: str, date: str, complete: int, 
 #                                        "priority" : "example",
 #                                        "deadline" : "1111-11-11",
 #                                        "complete" : 0
+#                                        "user" : "example"
 #                                    }
+def update_task(user_id: int, name: str, info: str, prior: str, date: str, complete: int, username: str) -> None:
+    task_data = {\
+        "name": name,\
+        "description": info,\
+        "priority": prior,\
+        "deadline": date,\
+        "complete": str(complete),\
+        "user": username\
+    }
+
+    response = requests.put(f"{url}/tasks/{user_id}", json=task_data, headers=headers, verify=False)
+
+    print(response)
+    print(response.text)
+    if response.status_code == 200:
+        pass
+    else:
+        pass
 
 
 # Delete all tasks by user
@@ -154,10 +172,11 @@ def delete_user_tasks(username : str) -> None:
         pass
 
 
+
 # Delete task by id
 #DELETE http://localhost:8080/taskById/1
 def delete_task_by_id(id: str) -> None:
-    response = requests.delete(f"{url}/taskByUser/{id}")
+    response = requests.delete(f"{url}/taskById/{id}")
 
     print(response)
     print(response.text)
@@ -165,7 +184,6 @@ def delete_task_by_id(id: str) -> None:
         pass
     else:
         pass
-
 
 
 """---------- Testy ----------"""
@@ -181,13 +199,19 @@ print("### LOAD user tasks: ")
 load_user_tasks("example0")
 print("### CREATE new task: ")
 create_new_task("nova", "toto je novy task od pata", "do", "1111-11-11", 1, "example0")
+print("### CREATE new task: ")
+create_new_task("nove2", "task na vymazanie", "do", "9999-11-11", 1, "example0")
+print("### DELETE task by id: ")
+delete_task_by_id(24)
+print("### UPDATE new task: ")
+update_task(23, "update sprava", "toto je novy task od pata", "do", "1111-11-11", 1, "example0")
 print("### LOAD user tasks: ")
 load_user_tasks("example0")
 print("### DELETE all user tasks: ")
 delete_user_tasks("example0")
 print("### LOAD user tasks: ")
 load_user_tasks("example0")
-print("### DELETE users: ")
+print("### DELETE user: ")
 delete_user("example0")
 print("### FIND user: ")
 find_user("example0")
