@@ -1,11 +1,73 @@
-function loginFromAction(){
-    let name = document.getElementById("userNameLog");
-  
+function createXmlHttpRequestObject()
+{
+    var request;
 
+    try
+    {
+        request = new XMLHttpRequest(); // should work on all browsers except IE6 or older
+    }
+    catch (e)
+    {
+        try
+        {
+            request = new ActiveXObject("Microsoft.XMLHttp"); // browser is IE6 or older
+        }
+        catch (e)
+        {
+            // ignore error
+        }
+    }
+
+    if (!request)
+    {
+        alert("Error creating the XMLHttpRequest object.");
+    }
+    else
+    {
+        return request;
+    }
+}
+
+
+
+
+function loginFormAction(){
+    let name = document.getElementById("userNameLog");
+    let password = document.getElementById("passwdLogin");
+    console.log("dfasdf");
+    
     sessionStorage.setItem("token", name.value);
     window.location.replace(window.location.href+'user');
-    
+    console.log("dfasdf");
+    return false;
 }
+
+
+function createUser(){
+    var request = createXmlHttpRequestObject();
+
+    let username = document.getElementById("userNameReg").value;
+    let userpasswd = document.getElementById("passwdRegister").value;
+    let useremail = document.getElementById("userEmail").value;
+
+
+    request.open("POST","http://wedevs.sk:8080/users", true);
+    request.onreadystatechange = function()
+        {
+            if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK
+            {
+
+                sessionStorage.setItem("token", username);
+                window.location.replace(window.location.href+'user');
+            }
+        }
+
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(`username=${username}&password=${userpasswd}&email=${useremail}`);
+
+}
+
+
 
 
 function closeForm(){
