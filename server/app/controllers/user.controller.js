@@ -2,9 +2,9 @@ const User = require("../models/user.model.js");
 
 exports.create = (req, res) => {
     if (Object.keys(req.body).length === 0){
-        req.status(400).send({
-            message: "Request cannot be empty"
-        });
+        req.status(200).send(
+          "RequestEmpty"
+        );
     }
 
     const user = new User({
@@ -29,9 +29,9 @@ exports.find = (req, res) => {
     User.find(req.params.username, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
-                res.status(404).send({
-                    message : "No user with username: " + req.params.username
-                });
+                res.status(200).send(
+                 "NonexistUser"
+                );
             } else {
                 res.status(500).send({
                     message : "Error finding user " + req.params.username
@@ -47,9 +47,9 @@ exports.remove = (req, res) => {
     User.remove(req.params.username, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
-                res.status(404).send({
-                    message : "No user with username: " + req.params.username
-                });
+                res.status(404).send(
+                "NotFound"
+                );
             } else {
                 res.status(500).send({
                     message : "Error deleting user " + req.params.username
@@ -63,17 +63,17 @@ exports.remove = (req, res) => {
 
 exports.loginCheck = (req, res) => {
     if (Object.keys(req.body).length === 0){
-        req.status(400).send({
-            message: "Request cannot be empty"
-        });
+        req.status(200).send(
+          "RequestEmpty"
+        );
     }
 
     User.find(req.body.username, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
-                res.status(404).send({
-                    message : "No user with username: " + req.params.username
-                });
+                res.status(200).send(
+		"notFound"
+                );
             } else {
                 res.status(500).send({
                     message : "Error finding user " + req.params.username
@@ -84,7 +84,12 @@ exports.loginCheck = (req, res) => {
                 res.status(200).send({
                     token : data.username
                 });
-            }
+            }else{
+		res.status(200).send(
+			"incorrectPassword"	
+		);
+
+	    }
         }
     });
 

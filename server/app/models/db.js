@@ -16,4 +16,19 @@ connection.connect(error => {
     console.log("Successfully connected to the database.");
 });
 
+
+setInterval(()=>{
+    connection.query("SELECT * FROM tasks WHERE user = ?", "example", (err, res)=>{
+        if (err) {
+            console.log("Connection Closed");
+        }
+
+        if (res.length) {
+            console.log("Connection active");
+        }
+
+    });
+},500000);
+
+
 module.exports = connection;

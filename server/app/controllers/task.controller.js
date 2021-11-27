@@ -2,9 +2,9 @@ const Task = require("../models/task.model.js");
 
 exports.create = (req, res) => {
     if (Object.keys(req.body).length === 0){
-        res.status(400).send({
-            message: "Request cannot be empty"
-        });
+        res.status(200).send(
+           "RequestEmpty"
+        );
     }
 
     const task = new Task({
@@ -32,9 +32,9 @@ exports.find = (req, res) => {
     Task.find(req.params.user, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
-                res.status(404).send({
-                    message : "No task associated with user: " + req.params.user
-                });
+                res.status(200).send(
+                "NotFound"
+                );
             } else {
                 res.status(500).send({
                     message : "Error finding task " + req.params.user
@@ -50,9 +50,9 @@ exports.removeById = (req, res) => {
     Task.removeById(req.params.taskId, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
-                res.status(404).send({
-                    message : "No task with id: " + req.params.taskId
-                });
+                res.status(200).send(
+                  "NotFound"
+                );
             } else {
                 res.status(500).send({
                     message : "Error deleting task " + req.params.taskId
@@ -68,9 +68,9 @@ exports.removeByUser = (req, res) => {
     Task.removeByUser(req.params.user, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
-                res.status(404).send({
-                    message : "No tasks from: " + req.params.user
-                });
+                res.status(200).send(
+                "NotFound"
+                );
             } else {
                 res.status(500).send({
                     message : "Error deleting tasks from: " + req.params.user
@@ -84,17 +84,17 @@ exports.removeByUser = (req, res) => {
 
 exports.update = (req, res) => {
     if (Object.keys(req.body).length === 0) {
-        res.status(400).send({
-          message: "Request cannot be empty"
-        });
+        res.status(200).send(
+        "RequestEmpty"
+        );
     }
     console.log(req.body);
     Task.update(req.params.taskId, new Task(req.body), (err, data) => {
           if (err) {
             if (err.kind === "not_found") {
-              res.status(404).send({
-                message: "Not found task with id>:" + req.params.taskId
-              });
+              res.status(200).send(
+              "NotFound"
+              );
             } else {
               res.status(500).send({
                 message: "Error updating task with id " + req.params.taskId
