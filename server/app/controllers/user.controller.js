@@ -16,9 +16,9 @@ exports.create = (req, res) => {
     console.log("user controller here, new user details:", user);
     User.create(user, (err, data) => {
         if (err) {
-            res.status(500).send({
-                message : err.message || "Error occured while creating user"
-            });
+            res.status(200).send(
+              "UserExists" // message : err.message || "Error occured while creating user"
+            );
         } else {
             res.send(data);
         }
@@ -47,7 +47,7 @@ exports.remove = (req, res) => {
     User.remove(req.params.username, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
-                res.status(404).send(
+                res.status(200).send(
                 "NotFound"
                 );
             } else {

@@ -1,2 +1,72 @@
 Server is running on port 8080.
 Successfully connected to the database.
+user controller here, new user details: User {
+  username: 'example1',
+  password: 'sdfasdf',
+  email: 'safsdf@gmail.com' }
+errror:  { Error: Duplicate entry 'example1' for key 'PRIMARY'
+    at Packet.asError (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/packets/packet.js:728:17)
+    at Query.execute (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/commands/command.js:29:26)
+    at Connection.handlePacket (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:456:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:85:12)
+    at PacketParser.executeStart (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:92:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+  code: 'ER_DUP_ENTRY',
+  errno: 1062,
+  sqlState: '23000',
+  sqlMessage: 'Duplicate entry \'example1\' for key \'PRIMARY\'',
+  sql:
+   'INSERT INTO users SET `username` = \'example1\', `password` = \'sdfasdf\', `email` = \'safsdf@gmail.com\'' }
+user controller here, new user details: User {
+  username: 'example8',
+  password: 'sdfasdf',
+  email: 'safsdf@gmail.com' }
+created user:  { id: 0,
+  username: 'example8',
+  password: 'sdfasdf',
+  email: 'safsdf@gmail.com' }
+user controller here, new user details: User { username: '', password: '', email: '' }
+errror:  { Error: Duplicate entry '' for key 'PRIMARY'
+    at Packet.asError (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/packets/packet.js:728:17)
+    at Query.execute (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/commands/command.js:29:26)
+    at Connection.handlePacket (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:456:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:85:12)
+    at PacketParser.executeStart (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:92:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+  code: 'ER_DUP_ENTRY',
+  errno: 1062,
+  sqlState: '23000',
+  sqlMessage: 'Duplicate entry \'\' for key \'PRIMARY\'',
+  sql:
+   'INSERT INTO users SET `username` = \'\', `password` = \'\', `email` = \'\'' }
+user controller here, new user details: User { username: 'sdfa', password: '', email: '' }
+created user:  { id: 0, username: 'sdfa', password: '', email: '' }
+user controller here, new user details: User {
+  username: 'example1',
+  password: 'asd',
+  email: 'sdafs@gmail.com' }
+errror:  { Error: Duplicate entry 'example1' for key 'PRIMARY'
+    at Packet.asError (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/packets/packet.js:728:17)
+    at Query.execute (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/commands/command.js:29:26)
+    at Connection.handlePacket (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:456:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:85:12)
+    at PacketParser.executeStart (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (/var/www/wedevs.sk/public_html/brainfree/server/node_modules/mysql2/lib/connection.js:92:25)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+  code: 'ER_DUP_ENTRY',
+  errno: 1062,
+  sqlState: '23000',
+  sqlMessage: 'Duplicate entry \'example1\' for key \'PRIMARY\'',
+  sql:
+   'INSERT INTO users SET `username` = \'example1\', `password` = \'asd\', `email` = \'sdafs@gmail.com\'' }
