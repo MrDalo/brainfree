@@ -1,5 +1,5 @@
 const mysql = require("mysql2");
-const Pool = require("mysql2/typings/mysql/lib/Pool");
+//const Pool = require("mysql2/typings/mysql/lib/Pool");
 const db = require("../config/db.config.js");
 
 const connection = mysql.createConnection({
@@ -18,7 +18,6 @@ connection.connect(error => {
     console.log("Successfully connected to the database.");
 });
 
-<<<<<<< HEAD
 
 setInterval(()=>{
     connection.query("SELECT * FROM tasks WHERE user = ?", "example", (err, res)=>{
