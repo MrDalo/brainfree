@@ -32,21 +32,37 @@ function createXmlHttpRequestObject()
 }
 
 
+function checkTest(){
+    let taskComplete = document.getElementById("taskCompleteCheckbox").checked;
+    
+    console.log(taskComplete);
+    
+}
+
 
 function dataTaskSend(){
     try{
         var request = createXmlHttpRequestObject();
         console.log(userName);
-
+        
         
         let taskName = document.getElementById("taskName").value;
         let taskDescription = document.getElementById("taskDescription").value;
         let taskPriority = document.getElementById("priorityList").value;
         let taskDeadline = document.getElementById("calendar").value;
-        let taskComplete = document.getElementById("taskCompleteCheckbox").value;
+        let taskComplete = document.getElementById("taskCompleteCheckbox").checked;
         let taskOwner = userName;
         
-        console.log(taskDeadline);
+        
+        if(taskComplete === true){
+            taskComplete = 1;
+        }
+        else
+            taskComplete = 0;
+        
+
+        console.log(taskDescription);
+        console.log(taskComplete);
         request.open("POST","http://wedevs.sk:8080/tasks", true);
         request.onreadystatechange = function()
             {
@@ -58,7 +74,9 @@ function dataTaskSend(){
             }
 
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        request.send(`name=${taskName}&deadline=${taskDeadline}&user=${userName}`);
+       // request.send(`name=${taskName}&description=${taskDescription}&deadline=${taskDeadline}&complete=${taskComplete}&user=${userName}`);
+       request.send(`name=${taskName}&deadline=${taskDeadline}&user=${taskOwner}&description=${taskDescription}&priority=${taskPriority}`);//&complete=${taskComplete}&user=${userName}`);
+    
     }
     catch(e){
     }
@@ -66,6 +84,16 @@ function dataTaskSend(){
 }
 
 
+
+function showLoadedTasks(arrayOfTasks){
+    let doMatrix = document.getElementById("leftTop");
+    let scheduleMatrix = document.getElementById("rightTop");
+    let delegateMatrix = document.getElementById("leftBottom");
+    let deleteMatrix = document.getElementById("rightBottom");
+
+
+
+}
 
 window.addEventListener('load', ()=>{
     
@@ -85,10 +113,12 @@ window.addEventListener('load', ()=>{
                     for (let i in pole) {
                       console.log(pole);
                     }
+                showLoadedTasks(pole);
             }
         }
 
         data.send();
+
     }
     catch(e){
     }

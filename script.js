@@ -34,11 +34,44 @@ function createXmlHttpRequestObject()
 function loginFormAction(){
     let name = document.getElementById("userNameLog");
     let password = document.getElementById("passwdLogin");
-    console.log("dfasdf");
+   
+    var request = createXmlHttpRequestObject();
     
-    sessionStorage.setItem("token", name.value);
-    window.location.replace(window.location.href+'user');
-    console.log("dfasdf");
+
+    request.open("POST","http://wedevs.sk:8080/login", true);
+    request.onreadystatechange = function()
+    {
+        if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK
+        {
+               
+                if(request.responseText == "notFound"){
+                    console.log("Account doesnt exist");
+                }
+                else if(request.responseText == "incorrectPassword"){
+                    console.log("Incorrect password");
+                    
+                }
+                else{
+                    console.log("log in");
+                    sessionStorage.setItem("token", name.value);
+                    window.location.replace(window.location.href+'user');     
+                }
+            }
+        }
+
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(`username=${name.value}&password=${password.value}`);
+
+    
+    
+    
+    
+    
+   // sessionStorage.setItem("token", name.value);
+    
+    
+   // window.location.replace(window.location.href+'user');
+   // console.log("dfasdf");
     return false;
 }
 
