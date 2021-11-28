@@ -123,9 +123,9 @@ def create_new_task(name: str, info: str, prior: str, date: str, complete: int, 
     print(response)
     print(response.text)
     if response.status_code == 200:
-        pass
+        return response.text
     else:
-        pass
+        return "Error"
 
 
 # Update task

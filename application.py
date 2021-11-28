@@ -16,6 +16,39 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.setupUi(self)
 
         self.logOutButton.clicked.connect(self.log_out)
+        self.saveTaskButton.clicked.connect(self.save_task)
+
+    @staticmethod
+    def date_format(date):
+        new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
+        return new_format
+
+    def save_task(self):
+        # TODO: asi vymazat
+        completed = self.completeCheckBox.isChecked()
+        task_name = self.taskNameInput.text()
+        description = self.taskDescription.toPlainText()
+        priority = str(self.choosePriority.currentText())
+        date = self.dateEdit.text()
+        date = self.date_format(date)
+
+
+        if priority == "None" or task_name == "":
+            # TODO: chyba
+            print("Vyplnte vsetky potrebne informacie")
+            return
+
+        if len(description) > 256:
+            # TODO: chyba
+            print("Opis tasku je moc dlhy")
+            return
+
+        message = create_new_task(task_name, description, priority, date, int(completed), controller.token)
+
+        if message == "Error":
+            # TODO: chyba
+            pass
+
 
     # TODO: mozno pred log out ulozit vypisat nejaku hlasku, ak nema user
     # ulozenu aktivitu
@@ -26,12 +59,9 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         loginpage = LoginPage()
         multiple_screens.insertWidget(0, loginpage)
         multiple_screens.setCurrentIndex(0)
-        #multiple_screens.show()
 
 
 class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
-
-    token = ""
 
     def __init__(self):
         super().__init__()
@@ -45,8 +75,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
     def log_in(self):
         if self.check_login():
             print("Bol si uspesne prihlaseny")
-            print(self.token)
-            multiple_screens.setMinimumSize(1180, 720)
+            multiple_screens.setMinimumSize(1150, 720)
             multiple_screens.setMaximumSize(1920, 1080)
             multiple_screens.removeWidget(multiple_screens.widget(1))
             window = Window()
@@ -79,7 +108,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             self.loginError.setVisible(True)
             return False
         else:
-            self.token = message[10:len(message)-2]
+            controller.change_token(message[10:len(message)-2])
             return True
 
     def register_user(self):
@@ -112,6 +141,17 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         else:
             # TODO: token
             return True
+
+
+# Application Controller
+class Controller:
+    token = ""
+
+    def change_token(self, token):
+        self.token = token;
+
+
+controller = Controller()
 
 
 # Spustenie aplikacie
