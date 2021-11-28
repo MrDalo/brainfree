@@ -5,6 +5,7 @@ from communication import *
 from PyQt5 import QtGui
 from PyQt5.QtGui import *
 
+
 class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
 
     token = ""
@@ -14,6 +15,8 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         self.setupUi(self)
         self.show()
 
+        self.loginError.setVisible(False)
+        self.registrationError.setVisible(False)
         self.loginBtn.clicked.connect(self.log_in)
         self.registerBtn.clicked.connect(self.register_user)
 
@@ -21,39 +24,37 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         if self.check_login():
             print("Bol si uspesne prihlaseny")
             print(self.token)
-        else: # TODO vymazat
-            print("Nieco sa pokazilo")
 
     def check_login(self):
         passwd = self.loginPassword.text()
         user_name = self.loginUserName.text()
 
         if passwd == "" or user_name == "":
+            self.loginError.setText("Vyplňte všetky potrebné informácie")
+            self.loginError.setVisible(True)
             return False
 
         message = log_in_user(user_name, passwd)
 
         if message == "Error":
+            self.loginError.setText("Internal Error: 500 :(")
+            self.loginError.setVisible(True)
             return False
         elif message == "incorrectPassword":
-            self.loginUserName.setText("Incorrect Password")
-            self.loginPassword.setText("")
+            self.loginError.setText("Nesprávne heslo")
+            self.loginError.setVisible(True)
             return False
         elif message == "notFound":
-            self.loginUserName.setText("User does not exists")
-            self.loginPassword.setText("")
+            self.loginError.setText("Užívateľ so zadaným menom neexistuje")
+            self.loginError.setVisible(True)
             return False
         else:
-            # TODO: prebrat format tejto spravy
             self.token = message[10:len(message)-2]
             return True
 
     def register_user(self):
-        print("siomtu")
         if self.check_registration():
             print("Bol si uspesne registrovany")
-        else: # TODO: vymazat
-            print("Nieco sa pokazilo")
 
     def check_registration(self):
         user_name = self.userNameLineEdit.text()
@@ -62,27 +63,24 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         passwd_again = self.registerPasswordAgain.text()
 
         if user_name == "" or email == "" or passwd == "" or passwd_again == "":
+            self.registrationError.setText("Vyplňte všetky potrebné informácie")
+            self.registrationError.setVisible(True)
             return False
         elif passwd != passwd_again:
-            self.userNameLineEdit.setText("Hesla sa nezhoduju")
-            self.registerEmail.setText("")
-            self.registerPassword.setText("")
-            self.registerPasswordAgain.setText("")
+            self.registrationError.setText("Heslá sa nezhodujú")
+            self.registrationError.setVisible(True)
             return False
 
         message = create_new_user(user_name, passwd, email)
         if message == "Error":
-            self.userNameLineEdit.setText("500 Internal Error")
-            self.registerEmail.setText("")
-            self.registerPassword.setText("")
-            self.registerPasswordAgain.setText("")
+            self.registrationError.setText("Internal Error 500 :(")
+            self.registrationError.setVisible(True)
         elif message == "UserExists":
-            self.userNameLineEdit.setText("Uzivatel so zadanym menom uz existuje")
-            self.registerEmail.setText("")
-            self.registerPassword.setText("")
-            self.registerPasswordAgain.setText("")
+            self.registrationError.setText("Užívateľ so zadaným menom už existuje")
+            self.registrationError.setVisible(True)
             return False
         else:
+            # TODO: token
             return True
 
 
