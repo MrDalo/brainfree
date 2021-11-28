@@ -146,7 +146,7 @@ QLabel{
 </string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="login">
          <attribute name="title">
@@ -186,6 +186,9 @@ QLabel{
              <widget class="QLineEdit" name="loginPassword">
               <property name="styleSheet">
                <string notr="true"/>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
               </property>
              </widget>
             </item>
@@ -244,7 +247,11 @@ QLabel{
              </widget>
             </item>
             <item row="4" column="1">
-             <widget class="QLineEdit" name="registerPassword"/>
+             <widget class="QLineEdit" name="registerPassword">
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+             </widget>
             </item>
             <item row="5" column="0">
              <widget class="QLabel" name="registerPasswordAgainLabel">
@@ -257,7 +264,11 @@ QLabel{
              </widget>
             </item>
             <item row="5" column="1">
-             <widget class="QLineEdit" name="registerPasswordAgain"/>
+             <widget class="QLineEdit" name="registerPasswordAgain">
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+             </widget>
             </item>
             <item row="6" column="0">
              <widget class="QPushButton" name="registerBtn">
