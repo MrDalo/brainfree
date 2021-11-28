@@ -1,9 +1,32 @@
 from PyQt5 import QtWidgets, QtCore
 from login import Ui_LoginPage
+from responsive import Ui_Window
 from communication import *
+
+import sys
+from PyQt5.QtWidgets import QApplication, QStackedWidget
 
 from PyQt5 import QtGui
 from PyQt5.QtGui import *
+
+
+class Window(QtWidgets.QMainWindow, Ui_Window):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.logOutButton.clicked.connect(self.log_out)
+
+    # TODO: mozno pred log out ulozit vypisat nejaku hlasku, ak nema user
+    # ulozenu aktivitu
+    def log_out(self):
+        multiple_screens.setMinimumSize(600, 600)
+        multiple_screens.setMaximumSize(600, 600)
+        multiple_screens.removeWidget(multiple_screens.widget(0))
+        loginpage = LoginPage()
+        multiple_screens.insertWidget(0, loginpage)
+        multiple_screens.setCurrentIndex(0)
+        #multiple_screens.show()
 
 
 class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
@@ -13,7 +36,6 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.show()
 
         self.loginError.setVisible(False)
         self.registrationError.setVisible(False)
@@ -24,6 +46,14 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         if self.check_login():
             print("Bol si uspesne prihlaseny")
             print(self.token)
+            multiple_screens.setMinimumSize(1180, 720)
+            multiple_screens.setMaximumSize(1920, 1080)
+            multiple_screens.removeWidget(multiple_screens.widget(1))
+            window = Window()
+            multiple_screens.insertWidget(1, window)
+            multiple_screens.setCurrentIndex(1)
+            multiple_screens.showMaximized()
+
 
     def check_login(self):
         passwd = self.loginPassword.text()
@@ -45,7 +75,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             self.loginError.setVisible(True)
             return False
         elif message == "notFound":
-            self.loginError.setText("Užívateľ so zadaným menom neexistuje")
+            self.loginError.setText("Užívateľ so zadaným \nmenom neexistuje")
             self.loginError.setVisible(True)
             return False
         else:
@@ -76,7 +106,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             self.registrationError.setText("Internal Error 500 :(")
             self.registrationError.setVisible(True)
         elif message == "UserExists":
-            self.registrationError.setText("Užívateľ so zadaným menom už existuje")
+            self.registrationError.setText("Užívateľ so zadaným \nmenom už existuje")
             self.registrationError.setVisible(True)
             return False
         else:
@@ -84,3 +114,22 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             return True
 
 
+# Spustenie aplikacie
+app = QApplication(sys.argv)
+
+login_page = LoginPage()
+window = Window()
+multiple_screens = QStackedWidget()
+multiple_screens.insertWidget(0, login_page)
+multiple_screens.insertWidget(1, window)
+multiple_screens.setCurrentIndex(0)
+
+## TODO: problem s poziciou a velkostou okien
+## TODO: resizable = True
+multiple_screens.setMinimumSize(600, 600)
+multiple_screens.setMaximumSize(600, 600)
+if multiple_screens.currentIndex() == 0:
+    multiple_screens.show()
+else:
+    multiple_screens.showMaximized()
+sys.exit(app.exec_())
