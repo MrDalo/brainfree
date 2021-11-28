@@ -1,5 +1,5 @@
 let userName = sessionStorage.getItem("token");
-
+let errorMssg;
 
 function createXmlHttpRequestObject()
 {
@@ -43,7 +43,7 @@ function checkTest(){
 function dataTaskSend(){
     try{
         var request = createXmlHttpRequestObject();
-        console.log(userName);
+        //console.log(userName);
         
         
         let taskName = document.getElementById("taskName").value;
@@ -52,8 +52,17 @@ function dataTaskSend(){
         let taskDeadline = document.getElementById("calendar").value;
         let taskComplete = document.getElementById("taskCompleteCheckbox").checked;
         let taskOwner = userName;
+
+        if(taskName == ""){
+            errorMssg = "Prazdne pole mena tasku";
+            //TODO vytvor element a cez innerhtml tam vpis errorMssg
+        }
+        else if(taskDeadline == ""){
+            errorMssg = "Prazdne pole deadlinu tasku";
+            //TODO vytvor element a cez innerhtml tam vpis errorMssg
+        }
         
-        
+            //TODO pories taskComplete
         if(taskComplete === true){
             taskComplete = 1;
         }
@@ -61,15 +70,21 @@ function dataTaskSend(){
             taskComplete = 0;
         
 
-        console.log(taskDescription);
-        console.log(taskComplete);
         request.open("POST","http://wedevs.sk:8080/tasks", true);
         request.onreadystatechange = function()
             {
                 
                 if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK
                 {
-                  //  console.log(request.responseText);
+                    if(request.responseText == "MissingDeadline"){
+                        errorMssg = "Prazdne pole deadlinu tasku";
+                        //TODO vytvor element a cez innerhtml tam vpis errorMssg
+                    }
+                    else{
+                        errorMssg = "Task created successfully";
+                        //TODO vytvor element a cez innerhtml tam vpis errorMssg
+
+                    }
                 }
             }
 
@@ -109,11 +124,17 @@ window.addEventListener('load', ()=>{
         data.open("GET", `http://wedevs.sk:8080/tasks/${userName}`, true);
         data.onreadystatechange = function(){
             if ((data.readyState == 4) && (data.status == 200)){
-                let pole = JSON.parse(data.responseText);
-                    for (let i in pole) {
-                      console.log(pole);
-                    }
-                showLoadedTasks(pole);
+                if(data.responseText == "NotFound"){
+
+                }
+                else{
+                    let pole = JSON.parse(data.responseText);
+                        for (let i in pole) {
+                          console.log(pole);
+                        }
+                    showLoadedTasks(pole);
+
+                }
             }
         }
 
@@ -126,7 +147,9 @@ window.addEventListener('load', ()=>{
 
 
 
-
+function selectedTask(element){
+    console.log(element.dataset.id);
+}
 
 
 function getData(){
@@ -211,6 +234,8 @@ function createNewTask(index){
     arrowCircleTrigger(index);
 
     let matrixes = document.querySelectorAll(".contentOfMatrix");
+    matrix = matrixes[index];
+    console.log(parseInt(matrix.dataset.numberoftasks)+5);
    
     
 }

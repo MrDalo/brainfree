@@ -42,10 +42,10 @@
             <li class="leftMenuLi"><a href="#centerContent"><img src="home.png">Home</a></li>
             <li class="leftMenuLi"><a href="#taskList"><img src="clipboard.png">My tasks</a></li>
             <!-- <li class="leftMenuLi"><a href="#"><img src="user.png">Account</a></li>-->
-           <li class="leftMenuLi" id="leftMenuAddTask" onclick="createNewTask(4)"><a href="#">+</a></li>
-            <li class="leftMenuLi"><a href="#"><img src="help.png">Guide</a></li>
+           <li class="leftMenuLi" id="leftMenuAddTask" onclick="createNewTask(4)"><a href="">+</a></li>
+            <li class="leftMenuLi"><a href="guide/"><img src="help.png">Guide</a></li>
             <!--<li class="leftMenuLi"><a href="#"><img src="gear.png">Settings</a></li>-->
-            <li class="leftMenuLi"><a href="#"><img src="logout.png">Log out</a></li>
+            <li class="leftMenuLi"><a href="../"><img src="logout.png">Log out</a></li>
         </ul> 
 
 
@@ -81,7 +81,7 @@
                 
                 
                 <!--Content of the matrix, task in matrix-->
-                <div class="contentOfMatrix" data-indexOfMatrix="0">
+                <div class="contentOfMatrix" data-indexOfMatrix="0" data-numberOfTasks=0>
                     
                 </div>
 
@@ -109,7 +109,7 @@
                 <p>Schedule</p>
                 
                 <!--Content of the matrix, task in matrix-->
-                <div class="contentOfMatrix" data-indexOfMatrix="1">
+                <div class="contentOfMatrix" data-indexOfMatrix="1" data-numberOfTasks=0>
                     
                 </div>
                 
@@ -138,7 +138,15 @@
                 <p>Delegate</p>
                 
                 <!--Content of the matrix, task in matrix-->
-                <div class="contentOfMatrix" data-indexOfMatrix="2">
+                <div class="contentOfMatrix" data-indexOfMatrix="2" data-numberOfTasks=0>
+                    <div class="task" data-id="40" onclick="selectedTask(this)"></div>
+                    <div class="task" data-id="41" onclick="selectedTask(this)"></div>
+                    <div class="task" data-id="42" onclick="selectedTask(this)"></div>
+                    <div class="task" data-id="43" onclick="selectedTask(this)"></div>
+                    <div class="task" data-id="44" onclick="selectedTask(this)"></div>
+                    <div class="task" data-id="45" onclick="selectedTask(this)"></div>
+                    <div class="task" data-id="46" onclick="selectedTask(this)"></div>
+                    <div class="task" data-id="47" onclick="selectedTask(this)"></div>
                     
                 </div>
                 
@@ -164,7 +172,7 @@
                 
                 
                 <!--Content of the matrix, task in matrix-->
-                <div class="contentOfMatrix" data-indexOfMatrix="3">
+                <div class="contentOfMatrix" data-indexOfMatrix="3" data-numberOfTasks=0>
                     
                 </div>
 

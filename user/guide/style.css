@@ -1,0 +1,415 @@
+/*Global setting*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    font-family: 'Roboto', 'Poppins', 'Source Sans Pro','Ubuntu', sans-serif;
+    
+}
+/*Global setting*/
+
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.sideBar{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    position: fixed;
+    background-color: #272627;
+    height: 100vh;
+}
+
+#rightMenu{
+    right: 0;
+    top: 0;
+    width: 20%;
+    border-radius: 50px 0 0 50px;
+}
+
+#leftMenu{
+    left: 0;
+    top: 0;
+    width: 15%;
+}
+
+
+/*LEFTMENU*/
+/*Style for burgerMenu in leftMenu bar */
+#burgerMenu{
+    position: relative;
+    top: 5vh;
+    width: 25px;
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+
+#burgerMenu{
+    cursor: pointer;
+    left: 70%;
+}
+
+
+.menuLines, .menuLinesOut{
+    width: 100%;
+    height: 10%;
+}
+
+.menuLines{
+    background-color: white;
+}
+
+.menuLinesOut{
+    background-color: #272627;
+}
+
+/*!Style for burgerMenu in leftMenu bar */
+
+/*Circle user photo in leftMenu bar*/
+#userPhoto{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    border-radius: 50%;
+    position: relative;
+    width: 7vw;
+    height: 7vw;
+    left:  25%;
+    right: 25%;
+    top: 15vh;
+    background: url(account.png);
+    background-size: cover;
+    background-position: center;
+}
+/*!Circle user photo in leftMenu bar*/
+
+/*leftMenu navigation list*/
+#leftMenu ul{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    width: 100%;
+    height: 55vh;
+    position: relative;
+    left: 0;
+    top: 20vh;
+}
+
+.leftMenuLi{
+    cursor: pointer;
+    width: 100%;
+    height: 15%;
+    color: white;
+    font-size: 1em;
+    padding-left: 20%;
+    padding-right: 20%;
+    line-height: 100%;
+}
+
+.leftMenuLi a{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 20%;
+}
+
+.leftMenuLi img{
+    width: 16px;
+    height: 16px;
+}
+
+.leftMenuLi:hover{
+    background-color: #3d3d3d;
+}
+
+.leftMenuLi#leftMenuAddTask{
+    display: none;
+}
+
+
+/*!leftMenu navigation list*/
+
+/*Not Visible leftMenu*/
+
+.notVisibleLeft{
+    background-color: white;
+    transform: translateX(-50%);
+}
+
+
+
+.notVisibleLine{
+    background-color: #272627 !important;
+
+}
+
+.notVisibleElements{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    display: none;
+}
+
+
+
+
+/*!LEFTMENU*/
+
+/*center Content*/
+
+#centerContent{
+    
+    position: relative;
+    width: 65%;
+    left: 15%;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30vh;
+}
+
+/*!center Content*/
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px){
+    *{
+        font-size: 13px;
+    }
+
+
+ 
+    
+
+}
+
+
+@media only screen and (min-width: 640px) and (max-width: 1024px){
+    *{
+        font-size: 12px;        
+    }
+
+    #centerContent{
+
+        width: 80%;
+        left: 10%;
+    }
+
+    
+    .importance{
+        left: -40%;
+    }
+
+    #leftMenu{
+        left: 0;
+        bottom: 0;
+        top: initial;
+        z-index: 10;
+        width: 100%;
+        height: 10vh;
+    }
+    #leftMenu #burgerMenu{
+        display: none;
+    }
+
+    #userPhoto{
+        display: none;
+    }
+
+    #leftMenu ul{
+        transition-duration: 0.5s;
+        transition-timing-function: ease-out;
+        width: 100%;
+        height: 10vh;
+        position: relative;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        
+    }
+    #leftMenu ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    .leftMenuLi{
+        width: 20%;
+        height: 100%;
+        color: white;
+        font-size: 1em;
+        padding-left: 0%;
+        padding-right: 0%;
+        line-height: 100%;
+        list-style-type: none;
+    }
+    
+    .leftMenuLi a{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 15%;
+        font-size: 1em;
+    }
+
+    @media only screen and (min-width: 640px) and (max-width: 769px){
+        .leftMenuLi a{
+            font-size: 1em;
+        }
+
+
+        .importance{
+            left: -50%;
+        }
+
+    }
+    
+    .leftMenuLi img{
+        width: 20px;
+        height: 20px;
+    }
+    
+    
+
+    .leftMenuLi#leftMenuAddTask{
+        display: initial;       
+        display: flex; 
+        padding-top: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #leftMenuAddTask a{
+        color: black;
+        font-size: 2em;
+        width: 5vw;
+        height: 5vw;
+       
+        background-color: white;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+
+    
+
+
+
+}
+
+
+
+@media only screen and (max-width: 639px){
+    *{
+        font-size: 12px;        
+    }
+
+    #centerContent{
+
+        width: 80%;
+        left: 10%;
+    }
+
+    #leftMenu{
+        left: 0;
+        bottom: 0;
+        top: initial;
+        z-index: 10;
+        width: 100%;
+        height: 10vh;
+    }
+    #leftMenu #burgerMenu{
+        display: none;
+    }
+
+    #userPhoto{
+        display: none;
+    }
+
+    #leftMenu ul{
+        transition-duration: 0.5s;
+        transition-timing-function: ease-out;
+        width: 100%;
+        height: 10vh;
+        position: relative;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        
+    }
+    #leftMenu ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    .leftMenuLi{
+        width: 20%;
+        height: 100%;
+        color: white;
+        font-size: 0.8em;
+        padding-left: 0%;
+        padding-right: 0%;
+        line-height: 100%;
+        list-style-type: none;
+    }
+    
+    .leftMenuLi a{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 15%;
+    }
+    
+    .leftMenuLi img{
+        width: 15px;
+        height: 15px;
+    }
+    
+    
+
+    .leftMenuLi#leftMenuAddTask{
+        display: initial;       
+        display: flex; 
+        padding-top: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #leftMenuAddTask a{
+        color: black;
+        font-size: 2em;
+        width: 8vw;
+        height: 8vw;
+       
+        background-color: white;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+
+    
+    
+}

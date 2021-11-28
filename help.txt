@@ -1,0 +1,9 @@
+Ak createTask tak tam musi byt zadany datum inak naskoci error.
+Treba nakodit osetrene uz existujuceho tasku - asi netreba, prideli sa potreben ID k danemu tasku
+
+Metoda Find:
+	-ak sa naloguje user, ktory nema ziadne tasky, tak metoda find vrati v responseText hlasku "NotFound"
+	-ak ma user nejake tasky, tak vrati JSON naplneny tymito taskami
+Metoda createTask>
+	-Tu musi byt od uzivatela zadany datum, inak nastava error v databaze, takze treba vyzadovat od usera datum a task Name
+	- ostatne veci vyzadovat nemusime, tasku sa vytvori specialne ID, s ktorym budeme neskor narabat

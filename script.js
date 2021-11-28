@@ -169,7 +169,7 @@ function loginFormAction(){
                 }
                 else{
                     sessionStorage.setItem("token", username);
-                    //window.location.replace(window.location.href+'user');
+                    window.location.replace(window.location.href+'user');
                     console.log("User created");
                 }
             }
