@@ -56,10 +56,21 @@ function dataTaskSend(){
         if(taskName == ""){
             errorMssg = "Prazdne pole mena tasku";
             //TODO vytvor element a cez innerhtml tam vpis errorMssg
+            console.log(errorMssg);
+            return;
         }
         else if(taskDeadline == ""){
             errorMssg = "Prazdne pole deadlinu tasku";
             //TODO vytvor element a cez innerhtml tam vpis errorMssg
+            console.log(errorMssg);
+            return;
+        }
+        else if(taskPriority == null || taskPriority == "None" || taskPriority =='' || taskPriority == "NULL"){
+            errorMssg = "Prazdne pole priority tasku";
+            //TODO vytvor element a cez innerhtml tam vpis errorMssg
+            console.log(errorMssg);
+
+            return;
         }
         
             //TODO pories taskComplete
@@ -79,10 +90,12 @@ function dataTaskSend(){
                     if(request.responseText == "MissingDeadline"){
                         errorMssg = "Prazdne pole deadlinu tasku";
                         //TODO vytvor element a cez innerhtml tam vpis errorMssg
+                        console.log(errorMssg);
                     }
                     else{
                         errorMssg = "Task created successfully";
                         //TODO vytvor element a cez innerhtml tam vpis errorMssg
+                        console.log(errorMssg);
 
                     }
                 }
@@ -101,12 +114,74 @@ function dataTaskSend(){
 
 
 function showLoadedTasks(arrayOfTasks){
-    let doMatrix = document.getElementById("leftTop");
-    let scheduleMatrix = document.getElementById("rightTop");
-    let delegateMatrix = document.getElementById("leftBottom");
-    let deleteMatrix = document.getElementById("rightBottom");
+    let matrixes = document.getElementsByClassName("contentOfMatrix");
+    let errorMssg;
+    let doMatrix = matrixes[0];
+    let delegateMatrix = matrixes[1]
+    let scheduleMatrix = matrixes[2]
+    let deleteMatrix = matrixes[3]
 
-
+    for(let i in arrayOfTasks){
+        //console.log(arrayOfTasks[i].priority);
+        if(arrayOfTasks[i].priority == "Urgent - Important"){
+            
+            if(parseInt(doMatrix.dataset.numberoftasks)  == 4){
+                errorMssg = "Too much tasks in do matrix";
+                //TODO vypisat errorMssg
+                console.log(errorMssg);
+            }
+            else{
+                console.log(doMatrix);
+                doMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
+                doMatrix.dataset.numberoftasks = (parseInt(doMatrix.dataset.numberoftasks)+1);
+                console.log("do"+ doMatrix.dataset.numberoftasks);
+            }
+            
+        }
+        else if(arrayOfTasks[i].priority == "Urgent - Not Important"){
+            
+            
+            if(parseInt(scheduleMatrix.dataset.numberoftasks)  == 4){
+                errorMssg = "Too much tasks in schedule matrix";
+                //TODO vypisat errorMssg
+                console.log(errorMssg);
+            }
+            else{
+                scheduleMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
+                scheduleMatrix.dataset.numberoftasks = (parseInt(scheduleMatrix.dataset.numberoftasks)+1);
+                console.log("schedule" +scheduleMatrix.dataset.numberoftasks);
+            }
+        }
+        else if(arrayOfTasks[i].priority == "Not Urgent - Important"){
+            
+            
+            if(parseInt(delegateMatrix.dataset.numberoftasks)  == 4){
+                errorMssg = "Too much tasks in delegate matrix";
+                //TODO vypisat errorMssg
+                console.log(errorMssg);
+            }
+            else{
+                delegateMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
+                delegateMatrix.dataset.numberoftasks = (parseInt(delegateMatrix.dataset.numberoftasks)+1);
+                console.log("delegate" + delegateMatrix.dataset.numberoftasks);
+            }
+        }
+        else if(arrayOfTasks[i].priority == "Not Urgent - Not Important"){
+            
+            if(parseInt(deleteMatrix.dataset.numberoftasks)  == 4){
+                errorMssg = "Too much tasks in delete matrix";
+                //TODO vypisat errorMssg
+                console.log(errorMssg);
+            }
+            else{
+                deleteMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
+                deleteMatrix.dataset.numberoftasks = (parseInt(deleteMatrix.dataset.numberoftasks)+1);
+                console.log("delete"+deleteMatrix.dataset.numberoftasks);
+            }
+            
+        }
+    }
+    
 
 }
 
@@ -120,7 +195,7 @@ window.addEventListener('load', ()=>{
     
     try{
         let data = createXmlHttpRequestObject();
-        //userName = "example";
+        
         data.open("GET", `http://wedevs.sk:8080/tasks/${userName}`, true);
         data.onreadystatechange = function(){
             if ((data.readyState == 4) && (data.status == 200)){
@@ -129,9 +204,8 @@ window.addEventListener('load', ()=>{
                 }
                 else{
                     let pole = JSON.parse(data.responseText);
-                        for (let i in pole) {
-                          console.log(pole);
-                        }
+                        
+                        console.log(pole);
                     showLoadedTasks(pole);
 
                 }
@@ -148,12 +222,46 @@ window.addEventListener('load', ()=>{
 
 
 function selectedTask(element){
-    console.log(element.dataset.id);
+    //console.log(element.dataset.id);
+    try{
+        let data = createXmlHttpRequestObject();
+        
+        data.open("GET", `http://wedevs.sk:8080/tasks/${userName}`, true);
+        data.onreadystatechange = function(){
+            if ((data.readyState == 4) && (data.status == 200)){
+                if(data.responseText == "NotFound"){
+
+                }
+                else{
+                    let pole = JSON.parse(data.responseText);
+                    for(let i in pole){
+                        if(pole[i].id == element.dataset.id){
+                            arrowCircleTrigger(0);
+                            document.getElementById("taskName").value = pole[i].name;
+                            document.getElementById("taskDescription").value = pole[i].description;
+                            document.getElementById("priorityList").value = pole[i].priority;
+                            document.getElementById("calendar").value = pole[i].deadline;
+                            document.getElementById("inputForm").dataset.taskid = pole[i].id;
+                            console.log(document.getElementById("inputForm").dataset.taskid);
+                        }
+            
+                    }    
+                    
+                }
+            }
+        }
+
+        data.send();
+
+    }
+    catch(e){
+    }
+
+
 }
 
 
 function getData(){
-
    return false;
 }
 
@@ -226,16 +334,71 @@ function arrowCircleTrigger(index){
 }
 
 
+function deleteTask(){
+    taskId = document.getElementById("inputForm").dataset.taskid;
+    if(taskId == "0"){
+        errorMssg = "Deleting not selected task";
+        //TODO vypisat do chyboveho okienka
+        console.log(errorMssg);
+        return;
+    } 
+
+    try{
+        let data = createXmlHttpRequestObject();
+        
+        data.open("DELETE", `http://wedevs.sk:8080/taskById/${taskId}`, true);
+        data.onreadystatechange = function(){
+            if ((data.readyState == 4) && (data.status == 200)){
+                if(data.responseText == "NotFound"){
+                    errorMssg="Task was not found";
+                    console.log(errorMssg);
+                    //TODO vypisat do chyboveh boxu
+                    
+                }
+                else{
+                    errorMssg="Task was successfully deleted";
+                    console.log(errorMssg);
+                    //TODO vypisat do chyboveh boxu
+                    //Box color green
+
+                    //TODO treba odstranit task z matice
+                    
+                        
+                    
+                }
+            }
+        }
+
+        data.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        data.send();
+
+    }
+    catch(e){
+    }
+
+
+
+
+
+
+}
+
+
 /**
      * Function which react on click on '+' in matrix
      */
 function createNewTask(index){
     
     arrowCircleTrigger(index);
+    document.getElementById("taskName").value = ""
+    document.getElementById("taskDescription").value = ""
+    document.getElementById("priorityList").value = ""
+    document.getElementById("calendar").value = ""
+    document.getElementById("inputForm").dataset.taskid = "0";
 
     let matrixes = document.querySelectorAll(".contentOfMatrix");
     matrix = matrixes[index];
-    console.log(parseInt(matrix.dataset.numberoftasks)+5);
+    //console.log(parseInt(matrix.dataset.numberoftasks));
    
     
 }

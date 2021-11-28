@@ -280,6 +280,8 @@ a{
 
 }
 
+
+
 #inputForm select{
     width: 100%;
     background-color: #555555;
@@ -334,10 +336,14 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     height: 5vh;
     display: flex;
     justify-content: center;
+    flex-direction: row;
     align-items: center;
+    row-gap: 2vh;
+    column-gap: 2vh;
 }
 
-#inputForm input[type=submit]{
+#inputForm input[type=submit], #inputForm input[type=button]{
+    background-color: #ffffff;
     cursor: pointer;
     height: 100%;
     width: 50%;
@@ -502,8 +508,8 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    column-gap: 4%;
-    row-gap: 40%;
+    column-gap:10%;
+    row-gap: 10%;
     flex-wrap: wrap;
     padding: 10% 5%;
 }
@@ -512,9 +518,13 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     border: 1px solid #000000;
     background-color: #ffffff;
     border-radius: 10px;
-    width: 29%;
+    width: 45%;
     height: 30%;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 2%;
     cursor: pointer;
 }
 
@@ -809,6 +819,8 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
         font-size: 16px;
 
     }
+
+    
 
     #rightMenu h2{
         font-size: 3em;

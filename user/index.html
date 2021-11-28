@@ -139,12 +139,12 @@
                 
                 <!--Content of the matrix, task in matrix-->
                 <div class="contentOfMatrix" data-indexOfMatrix="2" data-numberOfTasks=0>
-                    <div class="task" data-id="40" onclick="selectedTask(this)"></div>
+                    <!--<div class="task" data-id="40" onclick="selectedTask(this)"></div>
                     <div class="task" data-id="41" onclick="selectedTask(this)"></div>
                     <div class="task" data-id="42" onclick="selectedTask(this)"></div>
                     <div class="task" data-id="43" onclick="selectedTask(this)"></div>
                     <div class="task" data-id="44" onclick="selectedTask(this)"></div>
-                    <div class="task" data-id="45" onclick="selectedTask(this)"></div>
+                    <div class="task" data-id="45" onclick="selectedTask(this)"></div>-->
                     
                     
                 </div>
@@ -211,7 +211,7 @@
         </div>
         <!--!Creating leftMenu Arrow Circle-->
 
-        <form id="inputForm" class="notVisibleElements" method="post" onsubmit="return getData()">
+        <form id="inputForm" class="notVisibleElements" data-taskID="0" method="post" onsubmit="return getData()">
 
 
             <fieldset id="textInputForm">
@@ -224,7 +224,6 @@
             <fieldset id="listForm">
                 <label for="priorityList">Task Priority:</label>
                 <select id="priorityList" placeholder="Task priority">
-                    <option value="None">None</option>
                     <option value="Urgent - Important">Urgent - Important</option>
                     <option value="Urgent - Not Important">Urgent - Not Important</option>
                     <option value="Not Urgent - Important">Not Urgent - Important</option>
@@ -247,10 +246,14 @@
 
             <fieldset id="inputSubmit">
                 <input type="submit" value="Save" onclick="dataTaskSend()">
+                <input type="button" value="Delete" onclick="deleteTask()">
+                
+            </fieldset>
+            <fieldset>
             </fieldset>
 
-
         </form>
+        
     </div>
     <!--!Creating rightMenu-->
 
