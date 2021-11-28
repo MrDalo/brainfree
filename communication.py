@@ -20,7 +20,7 @@ def check_response_code(code: int) -> bool:
 #                                         password : "example",
 #                                         email : "example"
 #                                     }
-def create_new_user(username: str, password: str, email: str) -> None:
+def create_new_user(username: str, password: str, email: str):
     new_user = {\
         "username": username,\
         "password": password,\
@@ -31,12 +31,10 @@ def create_new_user(username: str, password: str, email: str) -> None:
 
     print(response)
     print(response.text)
-    # TODO: uzivatel sa vytvori a prihlasi, mozno nieco vratit z funkcie
     if response.status_code == 200:
-        pass
-    # TODO: vypisat chybovu hlasku, uzivatelovi sa nepodari zalozit ucet
+        return response.text
     else:
-        pass
+        return "Error"
 
 
 # Log in user
@@ -44,7 +42,7 @@ def create_new_user(username: str, password: str, email: str) -> None:
 #                                         username: "example"
 #                                         password: "example"
 #                                     }
-def log_in_user(username: str, password: str) -> None:
+def log_in_user(username: str, password: str):
     user_data = {\
         "username": username,\
         "password": password\
@@ -56,10 +54,10 @@ def log_in_user(username: str, password: str) -> None:
     print(response.text)
     # TODO: uzivatel sa prihlasi, mozno nieco vratit z funkcie
     if response.status_code == 200:
-        pass
+        return response.text
     # TODO: vypisat chybovu hlasku, uzivatel sa neprihlasi
     else:
-        pass
+        return "Error"
 
 
 # Find user by username /users/{username}
@@ -90,15 +88,15 @@ def delete_user(username: str) -> None:
 
 # Load user tasks /tasks
 # GET http://localhost:8080/tasks/example
-def load_user_tasks(username: str) -> None:
+def load_user_tasks(username: str) -> None:  # zmenit navratovy typ
     response = requests.get(f"{url}/tasks/{username}")
 
     print(response)
     print(response.text)
     if response.status_code == 200:
-        pass
+        return response.text  # response.content
     else:
-        pass
+        return -1  # chyba
 
 
 # Create new tasks
@@ -187,6 +185,7 @@ def delete_task_by_id(id: str) -> None:
 
 
 """---------- Testy ----------"""
+"""
 print("### LOG IN with unknown account: ")
 log_in_user("example0", "example0")
 print("### CREATE new user (example0): ")
@@ -215,3 +214,5 @@ print("### DELETE user: ")
 delete_user("example0")
 print("### FIND user: ")
 find_user("example0")
+
+"""
