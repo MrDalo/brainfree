@@ -503,7 +503,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     justify-content: flex-start;
     align-items: center;
     column-gap: 4%;
-    row-gap: 4%;
+    row-gap: 40%;
     flex-wrap: wrap;
     padding: 10% 5%;
 }
@@ -513,7 +513,8 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     background-color: #ffffff;
     border-radius: 10px;
     width: 29%;
-    height: 29%;
+    height: 30%;
+
     cursor: pointer;
 }
 
@@ -576,7 +577,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     background-color: #bbbbbb;
     border-radius: 25px;
     box-shadow: 0px 4px 4px #cccccc;
-    font-size: 0.6em;
+    font-size: 0.8em;
     font-weight: 600;
     height: 4vh;
     display: flex;
