@@ -628,7 +628,7 @@ background-color: rgb(252, 158, 158);
               </property>
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="styleSheet">
@@ -705,6 +705,44 @@ QPushButton:pressed{
               <property name="spacing">
                <number>8</number>
               </property>
+              <item row="0" column="1">
+               <widget class="QWidget" name="do_task2" native="true">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid black;
+border-radius: 10px;</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_22">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QPushButton" name="do_task2_button">
+                   <property name="styleSheet">
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
               <item row="0" column="2">
                <widget class="QWidget" name="do_task3" native="true">
                 <property name="styleSheet">
@@ -726,61 +764,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="do_task3_label">
+                  <widget class="QPushButton" name="do_task3_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QWidget" name="do_task1" native="true">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">border: 1px dashed;
-border-color: red;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_16">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="do_task1_label">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="autoFillBackground">
-                    <bool>false</bool>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color:black;
-</string>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -808,15 +802,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="do_task6_label">
+                  <widget class="QPushButton" name="do_task6_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -844,15 +840,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="do_task5_label">
+                  <widget class="QPushButton" name="do_task5_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -880,29 +878,35 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="do_task4_label">
+                  <widget class="QPushButton" name="do_task4_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
                 </layout>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QWidget" name="do_task2" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
+              <item row="0" column="0">
+               <widget class="QWidget" name="do_task1" native="true">
+                <property name="enabled">
+                 <bool>false</bool>
                 </property>
-                <layout class="QGridLayout" name="gridLayout_22">
+                <property name="styleSheet">
+                 <string notr="true">border: 1px dashed;
+border-color: black;
+border-radius: 10px;
+</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_16">
                  <property name="leftMargin">
                   <number>0</number>
                  </property>
@@ -916,15 +920,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="do_task2_label">
+                  <widget class="QPushButton" name="do_task1_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1041,7 +1047,7 @@ background-color: rgb(166, 166, 255);
               </property>
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="styleSheet">
@@ -1139,15 +1145,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="schedule_task6_label">
+                  <widget class="QPushButton" name="schedule_task6_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1175,15 +1183,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="schedule_task3_label">
+                  <widget class="QPushButton" name="schedule_task3_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1211,15 +1221,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="schedule_task5_label">
+                  <widget class="QPushButton" name="schedule_task5_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1247,19 +1259,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="schedule_task1_label">
-                   <property name="autoFillBackground">
-                    <bool>false</bool>
-                   </property>
+                  <widget class="QPushButton" name="schedule_task1_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;
-</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1287,15 +1297,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="schedule_task4_label">
+                  <widget class="QPushButton" name="schedule_task4_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1323,15 +1335,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="schedule_task2_label">
+                  <widget class="QPushButton" name="schedule_task2_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1412,7 +1426,7 @@ background-color: rgb(164, 255, 164);
               </property>
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="styleSheet">
@@ -1510,15 +1524,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delete_task3_label">
+                  <widget class="QPushButton" name="delete_task3_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1546,15 +1562,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delete_task6_label">
+                  <widget class="QPushButton" name="delete_task6_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1582,15 +1600,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delete_task5_label">
+                  <widget class="QPushButton" name="delete_task5_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1618,19 +1638,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delete_task1_label">
-                   <property name="autoFillBackground">
-                    <bool>false</bool>
-                   </property>
+                  <widget class="QPushButton" name="delete_task1_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;
-</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1658,15 +1676,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delete_task4_label">
+                  <widget class="QPushButton" name="delete_task4_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1694,15 +1714,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delete_task2_label">
+                  <widget class="QPushButton" name="delete_task2_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1783,7 +1805,7 @@ border-radius: 10px;</string>
               </property>
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="styleSheet">
@@ -1881,19 +1903,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delegate_task1_label">
-                   <property name="autoFillBackground">
-                    <bool>false</bool>
-                   </property>
+                  <widget class="QPushButton" name="delegate_task1_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;
-</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1921,15 +1941,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delegate_task5_label">
+                  <widget class="QPushButton" name="delegate_task5_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1957,15 +1979,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delegate_task3_label">
+                  <widget class="QPushButton" name="delegate_task3_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -1993,15 +2017,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delegate_task6_label">
+                  <widget class="QPushButton" name="delegate_task6_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -2029,15 +2055,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delegate_task4_label">
+                  <widget class="QPushButton" name="delegate_task4_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>
@@ -2065,15 +2093,17 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="delegate_task2_label">
+                  <widget class="QPushButton" name="delegate_task2_button">
                    <property name="styleSheet">
-                    <string notr="true">color:black;</string>
+                    <string notr="true">QAbstractButton{
+margin: 2px;
+border: 0px;}</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="ID" stdset="0">
+                    <number>-1</number>
                    </property>
                   </widget>
                  </item>

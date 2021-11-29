@@ -23,33 +23,60 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.addDelegateTask.clicked.connect(lambda: self.add_prior_task("delegate"))
         self.addDeleteTask.clicked.connect(lambda: self.add_prior_task("delete"))
 
+        # TASK BUTTONS
+        self.do_task1_button.clicked.connect(lambda: self.load_task_data(self.do_task1_button.property("ID")))
+        self.do_task2_button.clicked.connect(lambda: self.load_task_data(self.do_task2_button.property("ID")))
+        self.do_task3_button.clicked.connect(lambda: self.load_task_data(self.do_task3_button.property("ID")))
+        self.do_task4_button.clicked.connect(lambda: self.load_task_data(self.do_task4_button.property("ID")))
+        self.do_task5_button.clicked.connect(lambda: self.load_task_data(self.do_task5_button.property("ID")))
+        self.do_task6_button.clicked.connect(lambda: self.load_task_data(self.do_task6_button.property("ID")))
+
+        self.schedule_task1_button.clicked.connect(lambda: self.load_task_data(self.schedule_task1_button.property("ID")))
+        self.schedule_task2_button.clicked.connect(lambda: self.load_task_data(self.schedule_task2_button.property("ID")))
+        self.schedule_task3_button.clicked.connect(lambda: self.load_task_data(self.schedule_task3_button.property("ID")))
+        self.schedule_task4_button.clicked.connect(lambda: self.load_task_data(self.schedule_task4_button.property("ID")))
+        self.schedule_task5_button.clicked.connect(lambda: self.load_task_data(self.schedule_task5_button.property("ID")))
+        self.schedule_task6_button.clicked.connect(lambda: self.load_task_data(self.schedule_task6_button.property("ID")))
+
+        self.delegate_task1_button.clicked.connect(lambda: self.load_task_data(self.delegate_task1_button.property("ID")))
+        self.delegate_task2_button.clicked.connect(lambda: self.load_task_data(self.delegate_task2_button.property("ID")))
+        self.delegate_task3_button.clicked.connect(lambda: self.load_task_data(self.delegate_task3_button.property("ID")))
+        self.delegate_task4_button.clicked.connect(lambda: self.load_task_data(self.delegate_task4_button.property("ID")))
+        self.delegate_task5_button.clicked.connect(lambda: self.load_task_data(self.delegate_task5_button.property("ID")))
+        self.delegate_task6_button.clicked.connect(lambda: self.load_task_data(self.delegate_task6_button.property("ID")))
+        self.delete_task1_button.clicked.connect(lambda: self.load_task_data(self.delete_task1_button.property("ID")))
+        self.delete_task2_button.clicked.connect(lambda: self.load_task_data(self.delete_task2_button.property("ID")))
+        self.delete_task3_button.clicked.connect(lambda: self.load_task_data(self.delete_task3_button.property("ID")))
+        self.delete_task4_button.clicked.connect(lambda: self.load_task_data(self.delete_task4_button.property("ID")))
+        self.delete_task5_button.clicked.connect(lambda: self.load_task_data(self.delete_task5_button.property("ID")))
+        self.delete_task6_button.clicked.connect(lambda: self.load_task_data(self.delete_task6_button.property("ID")))
+
+
         # Inicializacia taskov v matici
         for i in range(1, 7):
             style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
 
-            result = eval("self.do_task" + str(i) + f".setStyleSheet({style})")
-            result2 = eval("self.do_task" + str(i) + f".setEnabled(False)")
-            result
-            result2
-            result = eval("self.schedule_task" + str(i) + f".setStyleSheet({style})")
-            result2 = eval("self.schedule_task" + str(i) + f".setEnabled(False)")
-            result
-            result2
-            result = eval("self.delegate_task" + str(i) + f".setStyleSheet({style})")
-            result2 = eval("self.delegate_task" + str(i) + f".setEnabled(False)")
-            result
-            result2
-            result = eval("self.delete_task" + str(i) + f".setStyleSheet({style})")
-            result2 = eval("self.delete_task" + str(i) + f".setEnabled(False)")
-            result
-            result2
+            # TODO: styleSheet QAbstractButton
+            eval(f"self.do_task{i}.setStyleSheet({style})")
+            eval(f"self.do_task{i}.setEnabled(False)")
+            eval(f"self.do_task{i}_button.setEnabled(False)")
 
+            eval(f"self.schedule_task{i}.setStyleSheet({style})")
+            eval(f"self.schedule_task{i}.setEnabled(False)")
+            eval(f"self.schedule_task{i}_button.setEnabled(False)")
+
+            eval(f"self.delegate_task{i}.setStyleSheet({style})")
+            eval(f"self.delegate_task{i}.setEnabled(False)")
+            eval(f"self.delegate_task{i}_button.setEnabled(False)")
+
+            eval(f"self.delete_task{i}.setStyleSheet({style})")
+            eval(f"self.delete_task{i}.setEnabled(False)")
+            eval(f"self.delete_task{i}_button.setEnabled(False)")
 
     @staticmethod
     def date_format(date):
         new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
         return new_format
-
 
     def check_availibility(self, task_prior):
         prior = ""
@@ -101,13 +128,51 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             # TODO: chyba
             pass
         else:
+            self.taskDescription.setText("")
+            self.taskNameInput.setText("")
+            self.choosePriority.setCurrentIndex(0)
+
             result = eval(f"self.{prior}_task{position}.setEnabled(True)")
+            result
+            result = eval(f"self.{prior}_task{position}_button.setEnabled(True)")
             result
             style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
             result = eval(f"self.{prior}_task{position}.setStyleSheet({style})")
             result
-            result = eval(f"self.{prior}_task{position}_label.setText(\"{task_name}\")")
+            result = eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
             result
+            result = eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
+            result
+            func = f"self.{prior}_task{position}_button.setProperty"
+            eval(func)("ID", message["id"])
+
+    def load_task_data(self, task_id):
+        message = load_user_tasks(controller.token)
+
+        if message == "Error":
+            # TODO: chyba
+            return
+        else:
+            for i in range(len(message)):
+                if message[i]["id"] == task_id:
+                    self.taskDescription.setText(message[i]["description"])
+                    self.taskNameInput.setText(message[i]["name"])
+                    prior = message[i]["priority"]
+                    if prior == "Urgent - Important":
+                        self.choosePriority.setCurrentIndex(1)
+                    elif prior == "Urgent - Not Important":
+                        self.choosePriority.setCurrentIndex(2)
+                    elif prior == "Not Urgent - Not Important":
+                        self.choosePriority.setCurrentIndex(3)
+                    else:
+                        self.choosePriority.setCurrentIndex(4)
+                    # TODO cas a complete
+                    break
+
+
+        # TODO load data from communication.py
+        # TODO osetrit navratovu hodnotu
+        # TODO zobrazit podrobnosti o tasku
 
     def add_prior_task(self, msg):
         self.taskDescription.setText("")
@@ -116,9 +181,9 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         if msg == "do":
             self.choosePriority.setCurrentIndex(1)
         elif msg == "schedule":
-            self.choosePriority.setCurrentIndex(2)
-        elif msg == "delegate":
             self.choosePriority.setCurrentIndex(3)
+        elif msg == "delegate":
+            self.choosePriority.setCurrentIndex(2)
         else:
             self.choosePriority.setCurrentIndex(4)
 
@@ -219,9 +284,13 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
 # Application Controller
 class Controller:
     token = ""
+    id = -1
 
     def change_token(self, token):
-        self.token = token;
+        self.token = token
+
+    def change_id(self, id):
+        self.id = id
 
 
 controller = Controller()
@@ -239,8 +308,8 @@ multiple_screens.setCurrentIndex(0)
 
 ## TODO: problem s poziciou a velkostou okien
 ## TODO: resizable = True
-multiple_screens.setMinimumSize(600, 600)
-multiple_screens.setMaximumSize(600, 600)
+#multiple_screens.setMinimumSize(600, 600)
+#multiple_screens.setMaximumSize(600, 600)
 if multiple_screens.currentIndex() == 0:
     multiple_screens.show()
 else:
