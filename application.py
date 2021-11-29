@@ -190,10 +190,36 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     controller.position = pos
                     break
 
+    def load_tasks_data(self):
+        message = load_user_tasks(controller.token)
 
-        # TODO load data from communication.py
-        # TODO osetrit navratovu hodnotu
-        # TODO zobrazit podrobnosti o tasku
+        print("loadujem tasky")
+
+        if message == "Error":
+            # TODO: chyba
+            return
+        elif message == "NotFound":
+            # TODO: asi nic netreba robit
+            return
+        else:
+            for i in range(len(message)):
+                prior = message[i]["priority"]
+                result, prior, position = self.check_availibility(prior)
+                print(result, prior, position)
+                if not result:
+                    # TODO: chyba
+                    return
+
+                eval(f"self.{prior}_task{position}.setEnabled(True)")
+                eval(f"self.{prior}_task{position}_button.setEnabled(True)")
+
+                style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
+                eval(f"self.{prior}_task{position}.setStyleSheet({style})")
+                eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
+                eval(f"self.{prior}_task{position}_button.setText(\"{message[i]['name']}\")")
+
+                func = f"self.{prior}_task{position}_button.setProperty"
+                eval(func)("ID", message[i]["id"])
 
     def add_prior_task(self, msg):
         self.taskDescription.setText("")
@@ -208,9 +234,8 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         else:
             self.choosePriority.setCurrentIndex(4)
 
-
     # TODO: mozno pred log out ulozit vypisat nejaku hlasku, ak nema user
-    # ulozenu aktivitu
+    # TODO: ulozenu aktivitu
     def log_out(self):
         multiple_screens.setMinimumSize(600, 600)
         multiple_screens.setMaximumSize(600, 600)
@@ -238,9 +263,11 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             multiple_screens.setMaximumSize(1920, 1080)
             multiple_screens.removeWidget(multiple_screens.widget(1))
             window = Window()
+            #print(controller.token)
             multiple_screens.insertWidget(1, window)
             multiple_screens.setCurrentIndex(1)
             multiple_screens.showMaximized()
+            window.load_tasks_data()
 
     def check_login(self):
         passwd = self.loginPassword.text()

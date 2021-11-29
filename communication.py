@@ -89,11 +89,14 @@ def delete_user(username: str) -> None:
 
 # Load user tasks /tasks
 # GET http://localhost:8080/tasks/example
-def load_user_tasks(username: str) -> None:  # zmenit navratovy typ
+def load_user_tasks(username: str):  # zmenit navratovy typ
     response = requests.get(f"{url}/tasks/{username}")
 
     print(response)
-    json_data = json.loads(response.text)
+    print(response.text)
+    json_data = "NotFound"
+    if response.text != "NotFound":
+        json_data = json.loads(response.text)
     print(json_data)
     if response.status_code == 200:
         return json_data  # response.content
