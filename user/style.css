@@ -510,7 +510,7 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     justify-content: flex-start;
     align-items: center;
     column-gap:10%;
-    row-gap: 10%;
+    row-gap: 6%;
     flex-wrap: wrap;
     padding: 10% 5%;
 }
@@ -520,13 +520,14 @@ input[type=date], input[type=checkbox],#inputForm select, #dateInputForm label, 
     background-color: #ffffff;
     border-radius: 10px;
     width: 45%;
-    height: 30%;
+    height: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     padding: 0 2%;
     cursor: pointer;
+    font-size: 0.8em;
 }
 
 

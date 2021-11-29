@@ -146,7 +146,7 @@ function dataTaskSend(){
 
 
     if(taskPriority == "Urgent - Important"){
-        if(parseInt(doMatrix.dataset.numberoftasks)  == 4){
+        if(parseInt(doMatrix.dataset.numberoftasks)  == 6){
             errorMssg = "Too much tasks in do matrix";
             //TODO vypisat errorMssg
             console.log(errorMssg);
@@ -154,7 +154,7 @@ function dataTaskSend(){
         }
     }
     else if(taskPriority == "Urgent - Not Important"){
-        if(parseInt(scheduleMatrix.dataset.numberoftasks)  == 4){
+        if(parseInt(scheduleMatrix.dataset.numberoftasks)  == 6){
             errorMssg = "Too much tasks in delegate matrix";
             //TODO vypisat errorMssg
             console.log(errorMssg);
@@ -162,7 +162,7 @@ function dataTaskSend(){
         }
     }
     else if(taskPriority == "Not Urgent - Important"){
-        if(parseInt(delegateMatrix.dataset.numberoftasks)  == 4){
+        if(parseInt(delegateMatrix.dataset.numberoftasks)  == 6){
             errorMssg = "Too much tasks in schedule matrix";
             //TODO vypisat errorMssg
             console.log(errorMssg);
@@ -170,7 +170,7 @@ function dataTaskSend(){
         }
     }
     else if(taskPriority == "Not Urgent - Not Important"){                    
-        if(parseInt(deleteMatrix.dataset.numberoftasks)  == 4){
+        if(parseInt(deleteMatrix.dataset.numberoftasks)  == 6){
             errorMssg = "Too much tasks in delete matrix";
             //TODO vypisat errorMssg
             console.log(errorMssg);
@@ -253,7 +253,7 @@ function showLoadedTasks(arrayOfTasks){
         //console.log(arrayOfTasks[i].priority);
         if(arrayOfTasks[i].priority == "Urgent - Important"){
             
-            if(parseInt(doMatrix.dataset.numberoftasks)  == 4){
+            if(parseInt(doMatrix.dataset.numberoftasks)  == 6){
                 errorMssg = "Too much tasks in do matrix";
                 //TODO vypisat errorMssg
                 console.log(errorMssg);
@@ -274,7 +274,7 @@ function showLoadedTasks(arrayOfTasks){
         else if(arrayOfTasks[i].priority == "Urgent - Not Important"){
             
             
-            if(parseInt(scheduleMatrix.dataset.numberoftasks)  == 4){
+            if(parseInt(scheduleMatrix.dataset.numberoftasks)  == 6){
                 errorMssg = "Too much tasks in delegate matrix";
                 //TODO vypisat errorMssg
                 console.log(errorMssg);
@@ -293,7 +293,7 @@ function showLoadedTasks(arrayOfTasks){
         else if(arrayOfTasks[i].priority == "Not Urgent - Important"){
             
             
-            if(parseInt(delegateMatrix.dataset.numberoftasks)  == 4){
+            if(parseInt(delegateMatrix.dataset.numberoftasks)  == 6){
                 errorMssg = "Too much tasks in schedule matrix";
                 //TODO vypisat errorMssg
                 console.log(errorMssg);
@@ -311,7 +311,7 @@ function showLoadedTasks(arrayOfTasks){
         }
         else if(arrayOfTasks[i].priority == "Not Urgent - Not Important"){
             
-            if(parseInt(deleteMatrix.dataset.numberoftasks)  == 4){
+            if(parseInt(deleteMatrix.dataset.numberoftasks)  == 6){
                 errorMssg = "Too much tasks in delete matrix";
                 //TODO vypisat errorMssg
                 console.log(errorMssg);
