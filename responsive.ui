@@ -626,6 +626,11 @@ background-color: rgb(252, 158, 158);
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
@@ -736,6 +741,52 @@ border-radius: 10px;</string>
                 </layout>
                </widget>
               </item>
+              <item row="0" column="0">
+               <widget class="QWidget" name="do_task1" native="true">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border: 1px dashed;
+border-color: red;
+border-radius: 10px;</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_16">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_9">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color:black;
+</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
               <item row="1" column="2">
                <widget class="QWidget" name="do_task6" native="true">
                 <property name="styleSheet">
@@ -808,83 +859,6 @@ border-radius: 10px;</string>
                 </layout>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QWidget" name="do_task1" native="true">
-                <property name="styleSheet">
-                 <string notr="true">border: 1px solid;
-border-color: red;
-background-color: #rgb(252, 158, 158);; 
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_16">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_9">
-                   <property name="autoFillBackground">
-                    <bool>false</bool>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color:black;
-</string>
-                   </property>
-                   <property name="text">
-                    <string>task1</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QWidget" name="do_task9" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_17">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_10">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task9</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item row="1" column="0">
                <widget class="QWidget" name="do_task4" native="true">
                 <property name="styleSheet">
@@ -948,78 +922,6 @@ border-radius: 10px;</string>
                    </property>
                    <property name="text">
                     <string>task2</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QWidget" name="do_task7" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_23">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_16">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task7</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QWidget" name="do_task8" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_24">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_17">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task8</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1137,6 +1039,11 @@ background-color: rgb(166, 166, 255);
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
@@ -1211,42 +1118,6 @@ QPushButton:pressed{
               <property name="spacing">
                <number>8</number>
               </property>
-              <item row="0" column="2">
-               <widget class="QWidget" name="schedule_task3" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_18">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_12">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task3</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item row="1" column="2">
                <widget class="QWidget" name="schedule_task6" native="true">
                 <property name="styleSheet">
@@ -1274,6 +1145,42 @@ border-radius: 10px;</string>
                    </property>
                    <property name="text">
                     <string>task6</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QWidget" name="schedule_task3" native="true">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid black;
+border-radius: 10px;</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_18">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_12">
+                   <property name="styleSheet">
+                    <string notr="true">color:black;</string>
+                   </property>
+                   <property name="text">
+                    <string>task3</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1360,42 +1267,6 @@ border-radius: 10px;</string>
                 </layout>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QWidget" name="schedule_task9" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_26">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_20">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task9</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item row="1" column="0">
                <widget class="QWidget" name="schedule_task4" native="true">
                 <property name="styleSheet">
@@ -1459,78 +1330,6 @@ border-radius: 10px;</string>
                    </property>
                    <property name="text">
                     <string>task2</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QWidget" name="schedule_task7" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_29">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_23">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task7</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QWidget" name="schedule_task8" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_30">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_24">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task8</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1611,6 +1410,11 @@ background-color: rgb(164, 255, 164);
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 0);</string>
@@ -1835,42 +1639,6 @@ border-radius: 10px;</string>
                 </layout>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QWidget" name="delete_task9" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_36">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_30">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task9</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item row="1" column="0">
                <widget class="QWidget" name="delete_task4" native="true">
                 <property name="styleSheet">
@@ -1934,78 +1702,6 @@ border-radius: 10px;</string>
                    </property>
                    <property name="text">
                     <string>task2</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QWidget" name="delete_task7" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_39">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_33">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task7</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QWidget" name="delete_task8" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_40">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_34">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task8</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -2087,6 +1783,11 @@ border-radius: 10px;</string>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
@@ -2161,6 +1862,83 @@ QPushButton:pressed{
               <property name="spacing">
                <number>8</number>
               </property>
+              <item row="0" column="0">
+               <widget class="QWidget" name="delegate_task1" native="true">
+                <property name="styleSheet">
+                 <string notr="true">border: 1px solid;
+border-color: red;
+background-color: #rgb(252, 158, 158);; 
+border-radius: 10px;</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_45">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_39">
+                   <property name="autoFillBackground">
+                    <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color:black;
+</string>
+                   </property>
+                   <property name="text">
+                    <string>task1</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QWidget" name="delegate_task5" native="true">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid black;
+border-radius: 10px;</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_44">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_38">
+                   <property name="styleSheet">
+                    <string notr="true">color:black;</string>
+                   </property>
+                   <property name="text">
+                    <string>task5</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
               <item row="0" column="2">
                <widget class="QWidget" name="delegate_task3" native="true">
                 <property name="styleSheet">
@@ -2233,119 +2011,6 @@ border-radius: 10px;</string>
                 </layout>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QWidget" name="delegate_task5" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_44">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_38">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task5</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QWidget" name="delegate_task1" native="true">
-                <property name="styleSheet">
-                 <string notr="true">border: 1px solid;
-border-color: red;
-background-color: #rgb(252, 158, 158);; 
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_45">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_39">
-                   <property name="autoFillBackground">
-                    <bool>false</bool>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color:black;
-</string>
-                   </property>
-                   <property name="text">
-                    <string>task1</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QWidget" name="delegate_task9" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_46">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_40">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task9</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item row="1" column="0">
                <widget class="QWidget" name="delegate_task4" native="true">
                 <property name="styleSheet">
@@ -2409,78 +2074,6 @@ border-radius: 10px;</string>
                    </property>
                    <property name="text">
                     <string>task2</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QWidget" name="delegate_task7" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_49">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_43">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task7</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QWidget" name="delegate_task8" native="true">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid black;
-border-radius: 10px;</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_50">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_44">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                   <property name="text">
-                    <string>task8</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
