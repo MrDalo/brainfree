@@ -1,4 +1,5 @@
 import requests
+import json
 
 url = "http://wedevs.sk:8080"
 headers = {'Content-Type': 'application/json; charset=utf-8'}
@@ -92,12 +93,12 @@ def load_user_tasks(username: str) -> None:  # zmenit navratovy typ
     response = requests.get(f"{url}/tasks/{username}")
 
     print(response)
-    print(response.text)
+    json_data = json.loads(response.text)
+    print(json_data)
     if response.status_code == 200:
-        return response.text  # response.content
+        return json_data  # response.content
     else:
-        return -1  # chyba
-
+        return "Error"  # chyba
 
 # Create new tasks
 # POST http://localhost:8080/tasks    body: {
@@ -121,9 +122,10 @@ def create_new_task(name: str, info: str, prior: str, date: str, complete: int, 
     response = requests.post(f"{url}/tasks", json=task_data, headers=headers, verify=False)
 
     print(response)
-    print(response.text)
+    json_data = json.loads(response.text)
+    print(json_data)
     if response.status_code == 200:
-        return response.text
+        return json_data
     else:
         return "Error"
 
@@ -137,7 +139,7 @@ def create_new_task(name: str, info: str, prior: str, date: str, complete: int, 
 #                                        "complete" : 0
 #                                        "user" : "example"
 #                                    }
-def update_task(user_id: int, name: str, info: str, prior: str, date: str, complete: int, username: str) -> None:
+def update_task(task_id: int, name: str, info: str, prior: str, date: str, complete: int, username: str):
     task_data = {\
         "name": name,\
         "description": info,\
@@ -147,14 +149,15 @@ def update_task(user_id: int, name: str, info: str, prior: str, date: str, compl
         "user": username\
     }
 
-    response = requests.put(f"{url}/tasks/{user_id}", json=task_data, headers=headers, verify=False)
+    response = requests.put(f"{url}/tasks/{task_id}", json=task_data, headers=headers, verify=False)
 
     print(response)
-    print(response.text)
+    json_data = json.loads(response.text)
+    print(json_data)
     if response.status_code == 200:
-        pass
+        return json_data
     else:
-        pass
+        return "Error"
 
 
 # Delete all tasks by user

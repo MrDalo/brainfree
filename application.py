@@ -24,33 +24,33 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.addDeleteTask.clicked.connect(lambda: self.add_prior_task("delete"))
 
         # TASK BUTTONS
-        self.do_task1_button.clicked.connect(lambda: self.load_task_data(self.do_task1_button.property("ID")))
-        self.do_task2_button.clicked.connect(lambda: self.load_task_data(self.do_task2_button.property("ID")))
-        self.do_task3_button.clicked.connect(lambda: self.load_task_data(self.do_task3_button.property("ID")))
-        self.do_task4_button.clicked.connect(lambda: self.load_task_data(self.do_task4_button.property("ID")))
-        self.do_task5_button.clicked.connect(lambda: self.load_task_data(self.do_task5_button.property("ID")))
-        self.do_task6_button.clicked.connect(lambda: self.load_task_data(self.do_task6_button.property("ID")))
+        self.do_task1_button.clicked.connect(lambda: self.load_task_data(1, self.do_task1_button.property("ID")))
+        self.do_task2_button.clicked.connect(lambda: self.load_task_data(2, self.do_task2_button.property("ID")))
+        self.do_task3_button.clicked.connect(lambda: self.load_task_data(3, self.do_task3_button.property("ID")))
+        self.do_task4_button.clicked.connect(lambda: self.load_task_data(4, self.do_task4_button.property("ID")))
+        self.do_task5_button.clicked.connect(lambda: self.load_task_data(5, self.do_task5_button.property("ID")))
+        self.do_task6_button.clicked.connect(lambda: self.load_task_data(6, self.do_task6_button.property("ID")))
 
-        self.schedule_task1_button.clicked.connect(lambda: self.load_task_data(self.schedule_task1_button.property("ID")))
-        self.schedule_task2_button.clicked.connect(lambda: self.load_task_data(self.schedule_task2_button.property("ID")))
-        self.schedule_task3_button.clicked.connect(lambda: self.load_task_data(self.schedule_task3_button.property("ID")))
-        self.schedule_task4_button.clicked.connect(lambda: self.load_task_data(self.schedule_task4_button.property("ID")))
-        self.schedule_task5_button.clicked.connect(lambda: self.load_task_data(self.schedule_task5_button.property("ID")))
-        self.schedule_task6_button.clicked.connect(lambda: self.load_task_data(self.schedule_task6_button.property("ID")))
+        self.schedule_task1_button.clicked.connect(lambda: self.load_task_data(1, self.schedule_task1_button.property("ID")))
+        self.schedule_task2_button.clicked.connect(lambda: self.load_task_data(2, self.schedule_task2_button.property("ID")))
+        self.schedule_task3_button.clicked.connect(lambda: self.load_task_data(3, self.schedule_task3_button.property("ID")))
+        self.schedule_task4_button.clicked.connect(lambda: self.load_task_data(4, self.schedule_task4_button.property("ID")))
+        self.schedule_task5_button.clicked.connect(lambda: self.load_task_data(5, self.schedule_task5_button.property("ID")))
+        self.schedule_task6_button.clicked.connect(lambda: self.load_task_data(6, self.schedule_task6_button.property("ID")))
 
-        self.delegate_task1_button.clicked.connect(lambda: self.load_task_data(self.delegate_task1_button.property("ID")))
-        self.delegate_task2_button.clicked.connect(lambda: self.load_task_data(self.delegate_task2_button.property("ID")))
-        self.delegate_task3_button.clicked.connect(lambda: self.load_task_data(self.delegate_task3_button.property("ID")))
-        self.delegate_task4_button.clicked.connect(lambda: self.load_task_data(self.delegate_task4_button.property("ID")))
-        self.delegate_task5_button.clicked.connect(lambda: self.load_task_data(self.delegate_task5_button.property("ID")))
-        self.delegate_task6_button.clicked.connect(lambda: self.load_task_data(self.delegate_task6_button.property("ID")))
-        self.delete_task1_button.clicked.connect(lambda: self.load_task_data(self.delete_task1_button.property("ID")))
-        self.delete_task2_button.clicked.connect(lambda: self.load_task_data(self.delete_task2_button.property("ID")))
-        self.delete_task3_button.clicked.connect(lambda: self.load_task_data(self.delete_task3_button.property("ID")))
-        self.delete_task4_button.clicked.connect(lambda: self.load_task_data(self.delete_task4_button.property("ID")))
-        self.delete_task5_button.clicked.connect(lambda: self.load_task_data(self.delete_task5_button.property("ID")))
-        self.delete_task6_button.clicked.connect(lambda: self.load_task_data(self.delete_task6_button.property("ID")))
+        self.delegate_task1_button.clicked.connect(lambda: self.load_task_data(1, self.delegate_task1_button.property("ID")))
+        self.delegate_task2_button.clicked.connect(lambda: self.load_task_data(2, self.delegate_task2_button.property("ID")))
+        self.delegate_task3_button.clicked.connect(lambda: self.load_task_data(3, self.delegate_task3_button.property("ID")))
+        self.delegate_task4_button.clicked.connect(lambda: self.load_task_data(4, self.delegate_task4_button.property("ID")))
+        self.delegate_task5_button.clicked.connect(lambda: self.load_task_data(5, self.delegate_task5_button.property("ID")))
+        self.delegate_task6_button.clicked.connect(lambda: self.load_task_data(6, self.delegate_task6_button.property("ID")))
 
+        self.delete_task1_button.clicked.connect(lambda: self.load_task_data(1, self.delete_task1_button.property("ID")))
+        self.delete_task2_button.clicked.connect(lambda: self.load_task_data(2, self.delete_task2_button.property("ID")))
+        self.delete_task3_button.clicked.connect(lambda: self.load_task_data(3, self.delete_task3_button.property("ID")))
+        self.delete_task4_button.clicked.connect(lambda: self.load_task_data(4, self.delete_task4_button.property("ID")))
+        self.delete_task5_button.clicked.connect(lambda: self.load_task_data(5, self.delete_task5_button.property("ID")))
+        self.delete_task6_button.clicked.connect(lambda: self.load_task_data(6, self.delete_task6_button.property("ID")))
 
         # Inicializacia taskov v matici
         for i in range(1, 7):
@@ -116,57 +116,78 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             print("Opis tasku je moc dlhy")
             return
 
-        result, prior, position = self.check_availibility(priority)
-        print(result, prior, position)
-        if not result:
-            # TODO: chyba
-            return
+        message = ""
+        result, prior = "", ""
+        position = -1
 
-        message = create_new_task(task_name, description, priority, date, int(completed), controller.token)
+        if controller.id != -1:
+            print(controller.id)
+            message = update_task(controller.id, task_name, description, priority, date, int(completed), controller.token)
+            prior = controller.prior
+            position = controller.position
 
-        if message == "Error":
-            # TODO: chyba
-            pass
-        else:
             self.taskDescription.setText("")
             self.taskNameInput.setText("")
             self.choosePriority.setCurrentIndex(0)
+            eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
 
-            result = eval(f"self.{prior}_task{position}.setEnabled(True)")
-            result
-            result = eval(f"self.{prior}_task{position}_button.setEnabled(True)")
-            result
-            style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
-            result = eval(f"self.{prior}_task{position}.setStyleSheet({style})")
-            result
-            result = eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
-            result
-            result = eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
-            result
-            func = f"self.{prior}_task{position}_button.setProperty"
-            eval(func)("ID", message["id"])
+            controller.change_id(-1)
+        else:
+            message = create_new_task(task_name, description, priority, date, int(completed), controller.token)
 
-    def load_task_data(self, task_id):
+            result, prior, position = self.check_availibility(priority)
+            print(result, prior, position)
+            if not result:
+                # TODO: chyba
+                return
+
+            if message == "Error":
+                # TODO: chyba
+                pass
+            else:
+                self.taskDescription.setText("")
+                self.taskNameInput.setText("")
+                self.choosePriority.setCurrentIndex(0)
+
+                eval(f"self.{prior}_task{position}.setEnabled(True)")
+                eval(f"self.{prior}_task{position}_button.setEnabled(True)")
+
+                style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
+                eval(f"self.{prior}_task{position}.setStyleSheet({style})")
+                eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
+                eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
+
+                func = f"self.{prior}_task{position}_button.setProperty"
+                eval(func)("ID", message["id"])
+
+    def load_task_data(self, pos, task_id):
         message = load_user_tasks(controller.token)
 
         if message == "Error":
             # TODO: chyba
             return
         else:
+            controller.change_id(task_id)
+
             for i in range(len(message)):
                 if message[i]["id"] == task_id:
                     self.taskDescription.setText(message[i]["description"])
                     self.taskNameInput.setText(message[i]["name"])
                     prior = message[i]["priority"]
                     if prior == "Urgent - Important":
+                        controller.prior = "do"
                         self.choosePriority.setCurrentIndex(1)
                     elif prior == "Urgent - Not Important":
+                        controller.prior = "delegate"
                         self.choosePriority.setCurrentIndex(2)
-                    elif prior == "Not Urgent - Not Important":
+                    elif prior == "Not Urgent - Important":
+                        controller.prior = "schedule"
                         self.choosePriority.setCurrentIndex(3)
                     else:
+                        controller.prior = "delete"
                         self.choosePriority.setCurrentIndex(4)
                     # TODO cas a complete
+                    controller.position = pos
                     break
 
 
@@ -220,7 +241,6 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             multiple_screens.insertWidget(1, window)
             multiple_screens.setCurrentIndex(1)
             multiple_screens.showMaximized()
-
 
     def check_login(self):
         passwd = self.loginPassword.text()
@@ -285,6 +305,8 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
 class Controller:
     token = ""
     id = -1
+    prior = ""
+    position = -1
 
     def change_token(self, token):
         self.token = token
@@ -294,7 +316,6 @@ class Controller:
 
 
 controller = Controller()
-
 
 # Spustenie aplikacie
 app = QApplication(sys.argv)
