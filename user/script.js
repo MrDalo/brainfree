@@ -35,17 +35,74 @@ function createXmlHttpRequestObject()
 function checkTest(){
     let taskComplete = document.getElementById("taskCompleteCheckbox").checked;
     
-    console.log(taskComplete);
+    //console.log(taskComplete);
     
 }
 
+
+function updateTask(taskID){
+    try{
+        let request = createXmlHttpRequestObject();
+
+        let taskName = document.getElementById("taskName").value;
+        let taskDescription = document.getElementById("taskDescription").value;
+        let taskPriority = document.getElementById("priorityList").value;
+        let taskDeadline = document.getElementById("calendar").value;
+        
+        request.open("PUT", `http://wedevs.sk:8080/tasks/${taskID}`, true);
+        request.onreadystatechange = function(){
+            if ((request.readyState == 4) && (request.status == 200)){
+                //console.log(request.responseText);
+                if(request.responseText == "NotFound"){
+
+                }
+                else{
+                    let matrixes = document.getElementsByClassName("contentOfMatrix");
+                    let tasks = document.getElementsByClassName("task");
+
+                    Array.from(tasks).forEach(element=>{
+                        if(parseInt(element.dataset.id) == taskID){
+                            element.remove();
+
+                        }
+                    });
+                    
+                    
+                    
+                    if(taskPriority == "Urgent - Important"){
+                        matrixes[0].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
+                    
+                    }
+                    else if(taskPriority == "Urgent - Not Important"){
+                        matrixes[2].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
+                    }
+                    else if(taskPriority == "Not Urgent - Important"){
+                        matrixes[1].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
+                    }
+                    else if(taskPriority == "Not Urgent - Not Important"){                    
+                        matrixes[3].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
+                    }  
+                }
+            }
+        }
+
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
+        request.send(`name=${taskName}&description=${taskDescription}&deadline=${taskDeadline}&priority=${taskPriority}`);
+     
+    }
+    catch(e){
+    }
+
+
+}
 
 function dataTaskSend(){
     try{
         var request = createXmlHttpRequestObject();
         //console.log(userName);
         
-        
+        let inputFormID = document.getElementById("inputForm").dataset.taskid;
         let taskName = document.getElementById("taskName").value;
         let taskDescription = document.getElementById("taskDescription").value;
         let taskPriority = document.getElementById("priorityList").value;
@@ -80,12 +137,13 @@ function dataTaskSend(){
             return;
         }
         
-            //TODO pories taskComplete
-        if(taskComplete === true){
-            taskComplete = 1;
+            
+        if(inputFormID != 0){
+            updateTask(inputFormID);
+            console.log("taks updates");
+            return;
         }
-        else
-            taskComplete = 0;
+
 
     if(taskPriority == "Urgent - Important"){
         if(parseInt(doMatrix.dataset.numberoftasks)  == 4){
@@ -183,10 +241,13 @@ function dataTaskSend(){
 function showLoadedTasks(arrayOfTasks){
     let matrixes = document.getElementsByClassName("contentOfMatrix");
     let errorMssg;
+    let arrayOfKvadrants = document.getElementsByClassName("matrixKvadrant"); 
     let doMatrix = matrixes[0];
-    let delegateMatrix = matrixes[1]
-    let scheduleMatrix = matrixes[2]
-    let deleteMatrix = matrixes[3]
+    let delegateMatrix = matrixes[1];
+    let scheduleMatrix = matrixes[2];
+    let deleteMatrix = matrixes[3];
+
+    let table = document.getElementById("taskListTable");
 
     for(let i in arrayOfTasks){
         //console.log(arrayOfTasks[i].priority);
@@ -201,7 +262,12 @@ function showLoadedTasks(arrayOfTasks){
                 console.log(doMatrix);
                 doMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
                 doMatrix.dataset.numberoftasks = (parseInt(doMatrix.dataset.numberoftasks)+1);
-                console.log("do"+ doMatrix.dataset.numberoftasks);
+                //console.log("do"+ doMatrix.dataset.numberoftasks);
+                table.innerHTML += `<tr data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">
+                    <td><div style="background-color:${window.getComputedStyle(arrayOfKvadrants[0]).backgroundColor};"></div></td>
+                    <td>${arrayOfTasks[i].name}</td>
+                    <td>${arrayOfTasks[i].deadline.substr(0,10)}</td>
+                </tr>`;
             }
             
         }
@@ -216,7 +282,12 @@ function showLoadedTasks(arrayOfTasks){
             else{
                 scheduleMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
                 scheduleMatrix.dataset.numberoftasks = (parseInt(scheduleMatrix.dataset.numberoftasks)+1);
-                console.log("schedule" +scheduleMatrix.dataset.numberoftasks);
+                //console.log("schedule" +scheduleMatrix.dataset.numberoftasks);
+                table.innerHTML += `<tr data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">
+                    <td><div style="background-color:${window.getComputedStyle(arrayOfKvadrants[2]).backgroundColor};"></div></td>
+                    <td>${arrayOfTasks[i].name}</td>
+                    <td>${arrayOfTasks[i].deadline.substr(0,10)}</td>
+                </tr>`;
             }
         }
         else if(arrayOfTasks[i].priority == "Not Urgent - Important"){
@@ -230,7 +301,12 @@ function showLoadedTasks(arrayOfTasks){
             else{
                 delegateMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
                 delegateMatrix.dataset.numberoftasks = (parseInt(delegateMatrix.dataset.numberoftasks)+1);
-                console.log("delegate" + delegateMatrix.dataset.numberoftasks);
+                //console.log("delegate" + delegateMatrix.dataset.numberoftasks);
+                table.innerHTML += `<tr data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">
+                    <td><div style="background-color:${window.getComputedStyle(arrayOfKvadrants[1]).backgroundColor};"></div></td>
+                    <td>${arrayOfTasks[i].name}</td>
+                    <td>${arrayOfTasks[i].deadline.substr(0,10)}</td>
+                </tr>`;
             }
         }
         else if(arrayOfTasks[i].priority == "Not Urgent - Not Important"){
@@ -243,7 +319,12 @@ function showLoadedTasks(arrayOfTasks){
             else{
                 deleteMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
                 deleteMatrix.dataset.numberoftasks = (parseInt(deleteMatrix.dataset.numberoftasks)+1);
-                console.log("delete"+deleteMatrix.dataset.numberoftasks);
+                //console.log("delete"+deleteMatrix.dataset.numberoftasks);
+                table.innerHTML += `<tr data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">
+                    <td><div style="background-color:${window.getComputedStyle(arrayOfKvadrants[3]).backgroundColor};"></div></td>
+                    <td>${arrayOfTasks[i].name}</td>
+                    <td>${arrayOfTasks[i].deadline.substr(0,10)}</td>
+                </tr>`;
             }
             
         }
