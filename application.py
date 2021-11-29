@@ -18,6 +18,28 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.logOutButton.clicked.connect(self.log_out)
         self.saveTaskButton.clicked.connect(self.save_task)
 
+        # Inicializacia taskov v matici
+        for i in range(1, 7):
+            style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
+
+            result = eval("self.do_task" + str(i) + f".setStyleSheet({style})")
+            result2 = eval("self.do_task" + str(i) + f".setEnabled(False)")
+            result
+            result2
+            result = eval("self.schedule_task" + str(i) + f".setStyleSheet({style})")
+            result2 = eval("self.schedule_task" + str(i) + f".setEnabled(False)")
+            result
+            result2
+            result = eval("self.delegate_task" + str(i) + f".setStyleSheet({style})")
+            result2 = eval("self.delegate_task" + str(i) + f".setEnabled(False)")
+            result
+            result2
+            result = eval("self.delete_task" + str(i) + f".setStyleSheet({style})")
+            result2 = eval("self.delete_task" + str(i) + f".setEnabled(False)")
+            result
+            result2
+
+
     @staticmethod
     def date_format(date):
         new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
