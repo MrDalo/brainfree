@@ -619,7 +619,7 @@ background-color: rgb(252, 158, 158);
              <number>0</number>
             </property>
             <item row="0" column="0">
-             <widget class="QLabel" name="label_2">
+             <widget class="QLabel" name="do_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                 <horstretch>0</horstretch>
@@ -635,7 +635,7 @@ background-color: rgb(252, 158, 158);
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
               <property name="text">
-               <string>Import - Urgent</string>
+               <string>Urgent - Important</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -726,12 +726,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_4">
+                  <widget class="QLabel" name="do_task3_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task3</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -765,7 +765,7 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_9">
+                  <widget class="QLabel" name="do_task1_label">
                    <property name="enabled">
                     <bool>false</bool>
                    </property>
@@ -808,12 +808,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_7">
+                  <widget class="QLabel" name="do_task6_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task6</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -844,12 +844,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_8">
+                  <widget class="QLabel" name="do_task5_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task5</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -880,12 +880,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_14">
+                  <widget class="QLabel" name="do_task4_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task4</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -916,12 +916,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_15">
+                  <widget class="QLabel" name="do_task2_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task2</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1032,7 +1032,7 @@ background-color: rgb(166, 166, 255);
              </widget>
             </item>
             <item row="0" column="0">
-             <widget class="QLabel" name="label_11">
+             <widget class="QLabel" name="schedule_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                 <horstretch>0</horstretch>
@@ -1048,7 +1048,7 @@ background-color: rgb(166, 166, 255);
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
               <property name="text">
-               <string>Import - Not Urgent</string>
+               <string>Not Urgent - Important</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1139,12 +1139,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_13">
+                  <widget class="QLabel" name="schedule_task6_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task6</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1175,12 +1175,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_12">
+                  <widget class="QLabel" name="schedule_task3_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task3</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1211,12 +1211,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_18">
+                  <widget class="QLabel" name="schedule_task5_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task5</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1229,9 +1229,8 @@ border-radius: 10px;</string>
               <item row="0" column="0">
                <widget class="QWidget" name="schedule_task1" native="true">
                 <property name="styleSheet">
-                 <string notr="true">border: 1px solid;
+                 <string notr="true">border: 1px dashed;
 border-color: red;
-background-color: #rgb(252, 158, 158);; 
 border-radius: 10px;</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_25">
@@ -1248,7 +1247,7 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_19">
+                  <widget class="QLabel" name="schedule_task1_label">
                    <property name="autoFillBackground">
                     <bool>false</bool>
                    </property>
@@ -1257,7 +1256,7 @@ border-radius: 10px;</string>
 </string>
                    </property>
                    <property name="text">
-                    <string>task1</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1288,12 +1287,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_21">
+                  <widget class="QLabel" name="schedule_task4_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task4</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1324,12 +1323,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_22">
+                  <widget class="QLabel" name="schedule_task2_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task2</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1404,7 +1403,7 @@ background-color: rgb(164, 255, 164);
              </widget>
             </item>
             <item row="0" column="0">
-             <widget class="QLabel" name="label_25">
+             <widget class="QLabel" name="delete_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                 <horstretch>0</horstretch>
@@ -1420,7 +1419,7 @@ background-color: rgb(164, 255, 164);
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
               <property name="text">
-               <string>Not Import - Not Urgent</string>
+               <string>Not Urgent - Not Important</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1511,12 +1510,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_26">
+                  <widget class="QLabel" name="delete_task3_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task3</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1547,12 +1546,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_27">
+                  <widget class="QLabel" name="delete_task6_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task6</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1583,12 +1582,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_28">
+                  <widget class="QLabel" name="delete_task5_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task5</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1601,9 +1600,8 @@ border-radius: 10px;</string>
               <item row="0" column="0">
                <widget class="QWidget" name="delete_task1" native="true">
                 <property name="styleSheet">
-                 <string notr="true">border: 1px solid;
+                 <string notr="true">border: 1px dashed;
 border-color: red;
-background-color: #rgb(252, 158, 158);; 
 border-radius: 10px;</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_35">
@@ -1620,7 +1618,7 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_29">
+                  <widget class="QLabel" name="delete_task1_label">
                    <property name="autoFillBackground">
                     <bool>false</bool>
                    </property>
@@ -1629,7 +1627,7 @@ border-radius: 10px;</string>
 </string>
                    </property>
                    <property name="text">
-                    <string>task1</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1660,12 +1658,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_31">
+                  <widget class="QLabel" name="delete_task4_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task4</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1696,12 +1694,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_32">
+                  <widget class="QLabel" name="delete_task2_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task2</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1776,7 +1774,7 @@ border-radius: 10px;</string>
              </widget>
             </item>
             <item row="0" column="0">
-             <widget class="QLabel" name="label_35">
+             <widget class="QLabel" name="delegate_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                 <horstretch>0</horstretch>
@@ -1792,7 +1790,7 @@ border-radius: 10px;</string>
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
               <property name="text">
-               <string>Not Important - Urgent</string>
+               <string>Urgent - Not Important</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1865,9 +1863,8 @@ QPushButton:pressed{
               <item row="0" column="0">
                <widget class="QWidget" name="delegate_task1" native="true">
                 <property name="styleSheet">
-                 <string notr="true">border: 1px solid;
+                 <string notr="true">border: 1px dashed;
 border-color: red;
-background-color: #rgb(252, 158, 158);; 
 border-radius: 10px;</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_45">
@@ -1884,7 +1881,7 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_39">
+                  <widget class="QLabel" name="delegate_task1_label">
                    <property name="autoFillBackground">
                     <bool>false</bool>
                    </property>
@@ -1893,7 +1890,7 @@ border-radius: 10px;</string>
 </string>
                    </property>
                    <property name="text">
-                    <string>task1</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1924,12 +1921,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_38">
+                  <widget class="QLabel" name="delegate_task5_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task5</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1960,12 +1957,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_36">
+                  <widget class="QLabel" name="delegate_task3_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task3</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -1996,12 +1993,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_37">
+                  <widget class="QLabel" name="delegate_task6_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task6</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -2032,12 +2029,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_41">
+                  <widget class="QLabel" name="delegate_task4_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task4</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -2068,12 +2065,12 @@ border-radius: 10px;</string>
                   <number>0</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_42">
+                  <widget class="QLabel" name="delegate_task2_label">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
                    <property name="text">
-                    <string>task2</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>

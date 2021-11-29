@@ -18,6 +18,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.logOutButton.clicked.connect(self.log_out)
         self.saveTaskButton.clicked.connect(self.save_task)
 
+        self.addDoTask.clicked.connect(lambda: self.add_prior_task("do"))
+        self.addScheduleTask.clicked.connect(lambda: self.add_prior_task("schedule"))
+        self.addDelegateTask.clicked.connect(lambda: self.add_prior_task("delegate"))
+        self.addDeleteTask.clicked.connect(lambda: self.add_prior_task("delete"))
+
         # Inicializacia taskov v matici
         for i in range(1, 7):
             style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
@@ -45,6 +50,26 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
         return new_format
 
+
+    def check_availibility(self, task_prior):
+        prior = ""
+        if task_prior == "Urgent - Important":
+            prior = "do"
+        elif task_prior == "Not Urgent - Important":
+            prior = "schedule"
+        elif task_prior == "Urgent - Not Important":
+            prior = "delegate"
+        else:
+            prior = "delete"
+
+        for i in range(1, 7):
+            result = eval(f"self.{prior}_task{i}.isEnabled()")
+            available = result
+            if not result:
+                return True, prior, i
+
+        return False, "", -1
+
     def save_task(self):
         # TODO: asi vymazat
         completed = self.completeCheckBox.isChecked()
@@ -53,7 +78,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         priority = str(self.choosePriority.currentText())
         date = self.dateEdit.text()
         date = self.date_format(date)
-
 
         if priority == "None" or task_name == "":
             # TODO: chyba
@@ -65,11 +89,38 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             print("Opis tasku je moc dlhy")
             return
 
+        result, prior, position = self.check_availibility(priority)
+        print(result, prior, position)
+        if not result:
+            # TODO: chyba
+            return
+
         message = create_new_task(task_name, description, priority, date, int(completed), controller.token)
 
         if message == "Error":
             # TODO: chyba
             pass
+        else:
+            result = eval(f"self.{prior}_task{position}.setEnabled(True)")
+            result
+            style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
+            result = eval(f"self.{prior}_task{position}.setStyleSheet({style})")
+            result
+            result = eval(f"self.{prior}_task{position}_label.setText(\"{task_name}\")")
+            result
+
+    def add_prior_task(self, msg):
+        self.taskDescription.setText("")
+        self.taskNameInput.setText("")
+
+        if msg == "do":
+            self.choosePriority.setCurrentIndex(1)
+        elif msg == "schedule":
+            self.choosePriority.setCurrentIndex(2)
+        elif msg == "delegate":
+            self.choosePriority.setCurrentIndex(3)
+        else:
+            self.choosePriority.setCurrentIndex(4)
 
 
     # TODO: mozno pred log out ulozit vypisat nejaku hlasku, ak nema user
