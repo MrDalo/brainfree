@@ -19,9 +19,9 @@ exports.create = (req, res) => {
     console.log("task controller here, new task details:", task);
     Task.create(task, (err, data) => {
         if (err) {
-            res.status(500).send({
-                message : err.message || "Error occured while creating task"
-            });
+            res.status(200).send(
+              "MissingDeadline"
+            );
         } else {
             res.send(data);
         }
@@ -36,7 +36,7 @@ exports.find = (req, res) => {
                 "NotFound"
                 );
             } else {
-                res.status(500).send({
+                res.status(200).send({
                     message : "Error finding task " + req.params.user
                 });
             }
@@ -54,9 +54,9 @@ exports.removeById = (req, res) => {
                   "NotFound"
                 );
             } else {
-                res.status(500).send({
-                    message : "Error deleting task " + req.params.taskId
-                });
+                res.status(200).send(
+                "ErrorOccured"
+                );
             }
         } else {
             res.send({message : "Task deleted successfully"});
@@ -72,9 +72,9 @@ exports.removeByUser = (req, res) => {
                 "NotFound"
                 );
             } else {
-                res.status(500).send({
-                    message : "Error deleting tasks from: " + req.params.user
-                });
+                res.status(200).send(
+                 "ErrorOccured" 
+                );
             }
         } else {
             res.send({message : "Tasks deleted successfully"});
@@ -96,9 +96,9 @@ exports.update = (req, res) => {
               "NotFound"
               );
             } else {
-              res.status(500).send({
-                message: "Error updating task with id " + req.params.taskId
-              });
+              res.status(200).send(
+              "ErrorOccured"
+              );
             }
           } else res.send(data);
     });
