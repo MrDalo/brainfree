@@ -336,10 +336,10 @@ function showLoadedTasks(arrayOfTasks){
 window.addEventListener('load', ()=>{
     
     //osetrenie ak sa uzivatel prepne na tuto stranku bez loginu
-    if(userName == null){
+    /*if(userName == null){
         window.location.replace(window.location.href.replace('/user/', ''));
         return;
-    }
+    }*/
     
     try{
         let data = createXmlHttpRequestObject();
