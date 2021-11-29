@@ -21,7 +21,20 @@ Metoda Find:
 	-ak sa naloguje user, ktory nema ziadne tasky, tak metoda find vrati v responseText hlasku "NotFound"
 	-ak ma user nejake tasky, tak vrati JSON naplneny tymito taskami
 Metoda createTask:
-	-Tu musi byt od uzivatela zadany datum, inak nastava error v databaze, takze treba vyzadovat od usera datum a task Name
+	-Tu musi byt od uzivatela zadany datum, inak nastava error v databaze, takze treba vyzadovat od usera datum a task Name a pre korektnost aj Prioritu tasku
 	- ostatne veci vyzadovat nemusime, tasku sa vytvori specialne ID, s ktorym budeme neskor narabat
+
+Metoda Update:
+	- este som neskusal ale pre korektnost plati to iste co pre createTask, takze musi byt vyplneny deadline, priorita a meno tasku
+	-Neviem ako budete task vyhladavat, ale server je nastaveny tak, ze ak sa task nenachadza v DB, tak vrati status 200 a spravu s request.responseText = "NotFound"
+	- ak nastane iny error na strane servera, tak posle status 200 a responseText = "ErrorOccured"
+	-v pripade uspechu vrati datovu strunkturu, ktora obsahuje vsetky data o tasku, teda to, co sa ulozilo do DB
+
+Metoda removeByID alebo teda delete, ktory maze na zaklade ID tasku:
+	- ak sa dany task v DB nenajde, tak vrati status 200 a responseText = "NotFound"
+	- ak nastane iny error na strane servera, tak vrati status 200 a responseText = "ErrorOccured"
+	- v pripade uslechu vrati JSON spravu  {message : "Tasks deleted successfully"}
+Metoda RemoveByUser:
+	- tato metoda zmaze vsetky tasky daneho usera a kdeze k nej user nebude mat pristup a nebudeme ju progamovat, tak som ju neupravoval
 
 čo sa tyka ostatnych metod pri taskoch, tak tie som este nedoplnil. Pokusim sa ich doplnit dnes do vecera(nedela 28.11.2021)
