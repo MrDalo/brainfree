@@ -421,10 +421,10 @@ function showLoadedTasks(arrayOfTasks){
 window.addEventListener('load', ()=>{
     
     //osetrenie ak sa uzivatel prepne na tuto stranku bez loginu
-    /*if(userName == null){
-        window.location.replace(window.location.href.replace('/user/', ''));
+    if(userName == null){
+        window.location.replace(window.location.href.replace('user/index.html', 'index.html'));
         return;
-    }*/
+    }
     
     try{
         let data = createXmlHttpRequestObject();
