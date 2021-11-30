@@ -1,5 +1,6 @@
 let userName = sessionStorage.getItem("token");
 let errorMssg;
+let errorDiv = document.getElementById("errorDiv");
 
 function createXmlHttpRequestObject()
 {
@@ -43,7 +44,7 @@ function checkTest(){
 function updateTask(taskID){
     try{
         let request = createXmlHttpRequestObject();
-
+        let arrayOfKvadrants = document.getElementsByClassName("matrixKvadrant");
         let taskName = document.getElementById("taskName").value;
         let taskDescription = document.getElementById("taskDescription").value;
         let taskPriority = document.getElementById("priorityList").value;
@@ -66,22 +67,41 @@ function updateTask(taskID){
 
                         }
                     });
+
+                    let tableElements = document.getElementsByTagName("tr");
+                    Array.from(tableElements).forEach(element=>{
+                        if(element.dataset.id == taskID){
+                            element.remove();
+                        }
+                    });
                     
                     
-                    
+                    let index = 0;
                     if(taskPriority == "Urgent - Important"){
                         matrixes[0].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
-                    
+                        index = 0;
                     }
                     else if(taskPriority == "Urgent - Not Important"){
                         matrixes[2].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
+                        index = 1;
                     }
                     else if(taskPriority == "Not Urgent - Important"){
                         matrixes[1].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
+                        index = 2;
                     }
                     else if(taskPriority == "Not Urgent - Not Important"){                    
                         matrixes[3].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
+                        index = 3;
                     }  
+
+                    let table = document.getElementById("taskListTable");
+                    table.innerHTML += `<tr data-id=${taskID} onclick="selectedTask(this)">
+                        <td><div style="background-color:${window.getComputedStyle(arrayOfKvadrants[index]).backgroundColor};"></div></td>
+                        <td>${taskName}</td>
+                        <td>${taskDeadline}</td>
+                        </tr>`;
+
+
                 }
             }
         }
@@ -109,6 +129,7 @@ function dataTaskSend(){
         let taskDeadline = document.getElementById("calendar").value;
         let taskComplete = document.getElementById("taskCompleteCheckbox").checked;
         let taskOwner = userName;
+        let arrayOfKvadrants = document.getElementsByClassName("matrixKvadrant");
 
         let matrixes = document.getElementsByClassName("contentOfMatrix");
         let errorMssg;
@@ -118,29 +139,49 @@ function dataTaskSend(){
         let deleteMatrix = matrixes[3]
 
         if(taskName == ""){
-            errorMssg = "Prazdne pole mena tasku";
+            errorMssg = "Empty task name field";
             //TODO vytvor element a cez innerhtml tam vpis errorMssg
-            console.log(errorMssg);
+            errorDiv.innerHTML = errorMssg;
+            errorDiv.style.backgroundColor = "red";
+            errorDiv.classList.add("visible");
+            setTimeout(()=>{
+                errorDiv.classList.remove("visible");
+            }, 3000);
             return;
         }
         else if(taskDeadline == ""){
-            errorMssg = "Prazdne pole deadlinu tasku";
+            errorMssg = "Empty task deadline field";
             //TODO vytvor element a cez innerhtml tam vpis errorMssg
-            console.log(errorMssg);
+            errorDiv.innerHTML = errorMssg;
+            errorDiv.style.backgroundColor = "red";
+            errorDiv.classList.add("visible");
+            setTimeout(()=>{
+                errorDiv.classList.remove("visible");
+            }, 3000);
             return;
         }
         else if(taskPriority == null || taskPriority == "None" || taskPriority =='' || taskPriority == "NULL"){
-            errorMssg = "Prazdne pole priority tasku";
+            errorMssg = "Empty priority task field";
             //TODO vytvor element a cez innerhtml tam vpis errorMssg
-            console.log(errorMssg);
-
+            errorDiv.innerHTML = errorMssg;
+            errorDiv.style.backgroundColor = "red";
+            errorDiv.classList.add("visible");
+            setTimeout(()=>{
+                errorDiv.classList.remove("visible");
+            }, 3000);
             return;
         }
         
             
         if(inputFormID != 0){
             updateTask(inputFormID);
-            console.log("taks updates");
+            errorMssg = "Task updated";
+            errorDiv.innerHTML = errorMssg;
+            errorDiv.style.backgroundColor = "green";
+            errorDiv.classList.add("visible");
+            setTimeout(()=>{
+                errorDiv.classList.remove("visible");
+            }, 3000);
             return;
         }
 
@@ -149,7 +190,12 @@ function dataTaskSend(){
         if(parseInt(doMatrix.dataset.numberoftasks)  == 6){
             errorMssg = "Too much tasks in do matrix";
             //TODO vypisat errorMssg
-            console.log(errorMssg);
+            errorDiv.innerHTML = errorMssg;
+            errorDiv.style.backgroundColor = "red";
+            errorDiv.classList.add("visible");
+            setTimeout(()=>{
+                errorDiv.classList.remove("visible");
+            }, 3000);
             return;
         }
     }
@@ -157,7 +203,12 @@ function dataTaskSend(){
         if(parseInt(scheduleMatrix.dataset.numberoftasks)  == 6){
             errorMssg = "Too much tasks in delegate matrix";
             //TODO vypisat errorMssg
-            console.log(errorMssg);
+            errorDiv.innerHTML = errorMssg;
+            errorDiv.style.backgroundColor = "red";
+            errorDiv.classList.add("visible");
+            setTimeout(()=>{
+                errorDiv.classList.remove("visible");
+            }, 3000);
             return;
         }
     }
@@ -165,7 +216,12 @@ function dataTaskSend(){
         if(parseInt(delegateMatrix.dataset.numberoftasks)  == 6){
             errorMssg = "Too much tasks in schedule matrix";
             //TODO vypisat errorMssg
-            console.log(errorMssg);
+            errorDiv.innerHTML = errorMssg;
+            errorDiv.style.backgroundColor = "red";
+            errorDiv.classList.add("visible");
+            setTimeout(()=>{
+                errorDiv.classList.remove("visible");
+            }, 3000);
             return;
         }
     }
@@ -173,7 +229,12 @@ function dataTaskSend(){
         if(parseInt(deleteMatrix.dataset.numberoftasks)  == 6){
             errorMssg = "Too much tasks in delete matrix";
             //TODO vypisat errorMssg
-            console.log(errorMssg);
+            errorDiv.innerHTML = errorMssg;
+            errorDiv.style.backgroundColor = "red";
+            errorDiv.classList.add("visible");
+            setTimeout(()=>{
+                errorDiv.classList.remove("visible");
+            }, 3000);
             return;
         }
     }
@@ -189,38 +250,62 @@ function dataTaskSend(){
                 if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK
                 {
                     if(request.responseText == "MissingDeadline"){
-                        errorMssg = "Prazdne pole deadlinu tasku";
+                        errorMssg = "Empty task deadline field";
                         //TODO vytvor element a cez innerhtml tam vpis errorMssg
-                        console.log(errorMssg);
+                        errorDiv.innerHTML = errorMssg;
+                        errorDiv.style.backgroundColor = "red";
+                        errorDiv.classList.add("visible");
+                        setTimeout(()=>{
+                            errorDiv.classList.remove("visible");
+                        }, 3000);
+                        return;
                     }
                     else{
                         errorMssg = "Task created successfully";
                         //TODO vytvor element a cez innerhtml tam vpis errorMssg
-                        console.log(errorMssg);
+                        errorDiv.innerHTML = errorMssg;
+                        errorDiv.style.backgroundColor = "green";
+                        errorDiv.classList.add("visible");
+                        setTimeout(()=>{
+                            errorDiv.classList.remove("visible");
+                        }, 3000);
+
 
                         matrixSectors = document.getElementsByClassName("contentOfMatrix");
+                        let index = 0;
 
                         if(taskPriority == "Urgent - Important"){
                             matrixSectors[0].innerHTML += `<div class="task" data-id=${JSON.parse(request.responseText).id} onclick="selectedTask(this)">${taskName}</div>`;
                             matrixSectors[0].dataset.numberoftasks = (parseInt(matrixSectors[0].dataset.numberoftasks)+1);
+                            index = 0;
                         }
                         else if(taskPriority == "Not Urgent - Important"){
                             matrixSectors[1].innerHTML += `<div class="task" data-id=${JSON.parse(request.responseText).id} onclick="selectedTask(this)">${taskName}</div>`;
                             matrixSectors[1].dataset.numberoftasks = (parseInt(matrixSectors[1].dataset.numberoftasks)+1);
+                            index = 1;
                             
                             
                         }
                         else if(taskPriority == "Urgent - Not Important"){
                             matrixSectors[2].innerHTML += `<div class="task" data-id=${JSON.parse(request.responseText).id} onclick="selectedTask(this)">${taskName}</div>`;
                             matrixSectors[2].dataset.numberoftasks = (parseInt(matrixSectors[2].dataset.numberoftasks)+1);
+                            index = 2;
                             
                             
                         }
                         else if(taskPriority == "Not Urgent - Not Important"){
                             matrixSectors[3].innerHTML += `<div class="task" data-id=${JSON.parse(request.responseText).id} onclick="selectedTask(this)">${taskName}</div>`;
                             matrixSectors[3].dataset.numberoftasks = (parseInt(matrixSectors[3].dataset.numberoftasks)+1);
+                            index = 3;
                         
                         }
+
+                        let table = document.getElementById("taskListTable");
+                        table.innerHTML += `<tr data-id=${JSON.parse(request.responseText).id} onclick="selectedTask(this)">
+                            <td><div style="background-color:${window.getComputedStyle(arrayOfKvadrants[index]).backgroundColor};"></div></td>
+                            <td>${taskName}</td>
+                            <td>${taskDeadline}</td>
+                            </tr>`;
 
                     }
                 }
@@ -488,7 +573,12 @@ function deleteTask(){
     if(taskId == "0"){
         errorMssg = "Deleting not selected task";
         //TODO vypisat do chyboveho okienka
-        console.log(errorMssg);
+        errorDiv.innerHTML = errorMssg;
+        errorDiv.style.backgroundColor = "red";
+        errorDiv.classList.add("visible");
+        setTimeout(()=>{
+            errorDiv.classList.remove("visible");
+        }, 3000);
         return;
     } 
 
@@ -500,7 +590,13 @@ function deleteTask(){
             if ((data.readyState == 4) && (data.status == 200)){
                 if(data.responseText == "NotFound"){
                     errorMssg="Task was not found";
-                    console.log(errorMssg);
+                    errorDiv.style.backgroundColor = "red";
+                    errorDiv.innerHTML = errorMssg;
+                    errorDiv.classList.add("visible");
+                    setTimeout(()=>{
+                        errorDiv.classList.remove("visible");
+                    }, 3000);
+                    return;
                     //TODO vypisat do chyboveh boxu
                     
                 }
@@ -513,12 +609,31 @@ function deleteTask(){
                             let matrix = element.parentNode;
                             matrix.dataset.numberoftasks = parseInt(matrix.dataset.numberoftasks)-1; 
                             element.remove();
-                            console.log("prvok je vymazany");
+                            errorMssg = "Task deleted successfully";
+                            errorDiv.style.backgroundColor = "green";
+                            errorDiv.innerHTML = errorMssg;
+                            errorDiv.classList.add("visible");
+                            setTimeout(()=>{
+                                errorDiv.classList.remove("visible");
+                            }, 3000);
+
                         }
+
                     });
 
+                    document.getElementById("taskName").value = "";
+                    document.getElementById("taskDescription").value = "";
+                    //document.getElementById("priorityList").value = ""
+                    document.getElementById("calendar").value = "";
+                    document.getElementById("inputForm").dataset.taskid = "0";
+                    
                     //TODO vymazanie z tasklistu
-
+                    let tableElements = document.getElementsByTagName("tr");
+                    Array.from(tableElements).forEach(element=>{
+                        if(element.dataset.id == taskId){
+                            element.remove();
+                        }
+                    });
                 }
             }
         }
@@ -529,11 +644,6 @@ function deleteTask(){
     }
     catch(e){
     }
-
-
-
-
-
 
 }
 
