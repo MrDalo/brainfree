@@ -86,12 +86,59 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             eval(f"self.delete_task{i}.setEnabled(False)")
             eval(f"self.delete_task{i}_button.setEnabled(False)")
 
+        # TASK LIST EMPTY
+        for i in range(1, 25):
+            eval(f"self.task_color_{i }.setVisible(False)")
+            eval(f"self.task_btn_{i}.setVisible(False)")
+            eval(f"self.taskdate_{i}.setVisible(False)")
+
+
     @staticmethod
     def date_format(date):
         new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
         return new_format
 
+    def load_task_list(self):
+        message = load_user_tasks(controller.token)
+
+        if message == "Error":
+            # TODO: chyba
+            return
+        elif message == "NotFound":
+            # TODO: asi nic netreba robit
+            return
+        else:
+            for i in range(len(message)):
+                prior = message[i]["priority"]
+                eval(f"self.task_color_{i+1}.setVisible(True)")
+                eval(f"self.task_btn_{i+1}.setVisible(True)")
+                eval(f"self.taskdate_{i+1}.setVisible(True)")
+                print("uz som tu")
+
+                if prior == "Urgent - Important":
+                    color = "rgb(252, 158, 158)"
+                elif prior == "Urgent - Not Important":
+                    color = "rgb(166, 166, 255)"
+                elif prior == "Not Urgent - Important":
+                    color = "rgb(255, 255, 168)"
+                else:
+                    color = "rgb(164, 255, 164)"
+
+                eval(f"self.task_color_{i+1}.setStyleSheet(\"background-color: {color};\")")
+                eval(f"self.task_btn_{i+1}.setVisible(True)")
+                eval(f"self.taskdate_{i+1}.setVisible(True)")
+
+                name = message[i]["name"]
+                eval(f"self.task_btn_{i+1}.setText(\"{name}\")")
+
+                date = message[i]["deadline"][:10]
+                eval(f"self.taskdate_{i+1}.setText(\"{date}\")")
+                #func = f"self.{prior}_task{position}_button.setProperty"
+                #eval(func)("ID", message[i]["id"])
+
     def change_stack_widget(self, index):
+        if index == 1:
+            self.load_task_list()
         self.stackedWidget.setCurrentIndex(index)
 
     def check_availibility(self, task_prior):
