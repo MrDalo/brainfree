@@ -88,7 +88,7 @@ function loginFormAction(){
                 else{
                     console.log("log in");
                     sessionStorage.setItem("token", name.value);
-                    window.location.replace(window.location.href.replace('index.html', 'user/index.html'));     
+                    window.location.replace(window.location.href.replace('index.html', '')+ "user/index.html");     
                 }
             }
         }
@@ -169,7 +169,7 @@ function loginFormAction(){
                 }
                 else{
                     sessionStorage.setItem("token", username);
-                    window.location.replace(window.location.href.replace('index.html', 'user/index.html'));
+                    window.location.replace(window.location.href.replace('index.html', '')+ "user/index.html");
                     console.log("User created");
                 }
             }
