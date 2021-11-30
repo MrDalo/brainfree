@@ -183,11 +183,12 @@ def delete_task_by_id(id: str) -> None:
     response = requests.delete(f"{url}/taskById/{id}")
 
     print(response)
-    print(response.text)
+    json_data = json.loads(response.text)
+    print(json_data)
     if response.status_code == 200:
-        pass
+        return json_data
     else:
-        pass
+        return "Error"
 
 
 """---------- Testy ----------"""

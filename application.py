@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, QtCore
 from login import Ui_LoginPage
 from responsive import Ui_Window
 from communication import *
-
+import datetime
 import sys
 from PyQt5.QtWidgets import QApplication, QStackedWidget
 
@@ -15,15 +15,18 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         super().__init__()
         self.setupUi(self)
 
+        # BUTTONS - LOG OUT, SAVE, DELETE
         self.logOutButton.clicked.connect(self.log_out)
         self.saveTaskButton.clicked.connect(self.save_task)
+        self.deleteTaskButton.clicked.connect(self.delete_task)
 
+        # ADD TASKS (+) BUTTONS
         self.addDoTask.clicked.connect(lambda: self.add_prior_task("do"))
         self.addScheduleTask.clicked.connect(lambda: self.add_prior_task("schedule"))
         self.addDelegateTask.clicked.connect(lambda: self.add_prior_task("delegate"))
         self.addDeleteTask.clicked.connect(lambda: self.add_prior_task("delete"))
 
-        # TASK BUTTONS
+        # TASKs BUTTONS
         self.do_task1_button.clicked.connect(lambda: self.load_task_data(1, self.do_task1_button.property("ID")))
         self.do_task2_button.clicked.connect(lambda: self.load_task_data(2, self.do_task2_button.property("ID")))
         self.do_task3_button.clicked.connect(lambda: self.load_task_data(3, self.do_task3_button.property("ID")))
@@ -52,7 +55,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.delete_task5_button.clicked.connect(lambda: self.load_task_data(5, self.delete_task5_button.property("ID")))
         self.delete_task6_button.clicked.connect(lambda: self.load_task_data(6, self.delete_task6_button.property("ID")))
 
-        # Inicializacia taskov v matici
+        # DATE
+        # TODO: set minimum date
+        self.dateEdit.setDate(datetime.datetime.now().date())
+
+        # LOAD MATRIX
         for i in range(1, 7):
             style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
 
@@ -97,9 +104,32 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
         return False, "", -1
 
+    def delete_task(self):
+        self.taskDescription.setText("")
+        self.taskNameInput.setText("")
+        self.choosePriority.setCurrentIndex(0)
+        self.dateEdit.setDate(datetime.datetime.now().date())
+
+        if controller.id != -1:
+            message = delete_task_by_id(controller.id)
+            if message == "Error":
+                # TODO: chyba
+                return
+            else:
+                eval(f"self.{controller.prior}_task{controller.position}.setEnabled(False)")
+                eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(False)")
+
+                style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
+                eval(f"self.{controller.prior}_task{controller.position}.setStyleSheet({style})")
+                eval(f"self.{controller.prior}_task{controller.position}_button.setStyleSheet(\"color: black;\")")
+                eval(f"self.{controller.prior}_task{controller.position}_button.setText(\"\")")
+
+                func = f"self.{controller.prior}_task{controller.position}_button.setProperty"
+                eval(func)("ID", -1)
+
+                controller.change_id(-1)
+
     def save_task(self):
-        # TODO: asi vymazat
-        completed = self.completeCheckBox.isChecked()
         task_name = self.taskNameInput.text()
         description = self.taskDescription.toPlainText()
         priority = str(self.choosePriority.currentText())
@@ -122,18 +152,19 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
         if controller.id != -1:
             print(controller.id)
-            message = update_task(controller.id, task_name, description, priority, date, int(completed), controller.token)
+            message = update_task(controller.id, task_name, description, priority, date, 0, controller.token)
             prior = controller.prior
             position = controller.position
 
             self.taskDescription.setText("")
             self.taskNameInput.setText("")
             self.choosePriority.setCurrentIndex(0)
+            self.dateEdit.setDate(datetime.datetime.now().date())
             eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
 
             controller.change_id(-1)
         else:
-            message = create_new_task(task_name, description, priority, date, int(completed), controller.token)
+            message = create_new_task(task_name, description, priority, date, 0, controller.token)
 
             result, prior, position = self.check_availibility(priority)
             print(result, prior, position)
@@ -148,6 +179,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 self.taskDescription.setText("")
                 self.taskNameInput.setText("")
                 self.choosePriority.setCurrentIndex(0)
+                self.dateEdit.setDate(datetime.datetime.now().date())
 
                 eval(f"self.{prior}_task{position}.setEnabled(True)")
                 eval(f"self.{prior}_task{position}_button.setEnabled(True)")
@@ -186,14 +218,15 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     else:
                         controller.prior = "delete"
                         self.choosePriority.setCurrentIndex(4)
-                    # TODO cas a complete
+                    # TODO complete
+                    date = message[i]["deadline"]
+                    date_format = datetime.date.fromisoformat(date[:10])
+                    self.dateEdit.setDate(date_format)
                     controller.position = pos
                     break
 
     def load_tasks_data(self):
         message = load_user_tasks(controller.token)
-
-        print("loadujem tasky")
 
         if message == "Error":
             # TODO: chyba
@@ -251,14 +284,16 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         super().__init__()
         self.setupUi(self)
 
+        # ERROR LABELS
         self.loginError.setVisible(False)
         self.registrationError.setVisible(False)
+
+        # BUTTONS - LOGIN, REGISTER
         self.loginBtn.clicked.connect(self.log_in)
         self.registerBtn.clicked.connect(self.register_user)
 
     def log_in(self):
         if self.check_login():
-            print("Bol si uspesne prihlaseny")
             multiple_screens.setMinimumSize(1150, 720)
             multiple_screens.setMaximumSize(1920, 1080)
             multiple_screens.removeWidget(multiple_screens.widget(1))
