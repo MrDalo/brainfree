@@ -65,27 +65,8 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         # TODO: set minimum date
         self.dateEdit.setDate(datetime.datetime.now().date())
 
-        # LOAD MATRIX
-        for i in range(1, 7):
-            style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
-
-            # TODO: styleSheet QAbstractButton
-            eval(f"self.do_task{i}.setStyleSheet({style})")
-            eval(f"self.do_task{i}.setEnabled(False)")
-            eval(f"self.do_task{i}_button.setEnabled(False)")
-
-            eval(f"self.schedule_task{i}.setStyleSheet({style})")
-            eval(f"self.schedule_task{i}.setEnabled(False)")
-            eval(f"self.schedule_task{i}_button.setEnabled(False)")
-
-            eval(f"self.delegate_task{i}.setStyleSheet({style})")
-            eval(f"self.delegate_task{i}.setEnabled(False)")
-            eval(f"self.delegate_task{i}_button.setEnabled(False)")
-
-            eval(f"self.delete_task{i}.setStyleSheet({style})")
-            eval(f"self.delete_task{i}.setEnabled(False)")
-            eval(f"self.delete_task{i}_button.setEnabled(False)")
-
+        # INIT MATRIX
+        self.init_matrix()
 
         # BUTTONS IN TASK LIST
         self.task_btn_1.clicked.connect(lambda: self.load_list_task_data(self.task_btn_1.property("ID")))
@@ -121,6 +102,30 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             eval(f"self.task_color_{i}.setVisible(False)")
             eval(f"self.task_btn_{i}.setVisible(False)")
             eval(f"self.taskdate_{i}.setVisible(False)")
+
+    def init_matrix(self):
+        for i in range(1, 7):
+            style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
+
+            eval(f"self.do_task{i}.setStyleSheet({style})")
+            eval(f"self.do_task{i}.setEnabled(False)")
+            eval(f"self.do_task{i}_button.setEnabled(False)")
+            eval(f"self.do_task{i}_button.setText(\"\")")
+
+            eval(f"self.schedule_task{i}.setStyleSheet({style})")
+            eval(f"self.schedule_task{i}.setEnabled(False)")
+            eval(f"self.schedule_task{i}_button.setEnabled(False)")
+            eval(f"self.schedule_task{i}_button.setText(\"\")")
+
+            eval(f"self.delegate_task{i}.setStyleSheet({style})")
+            eval(f"self.delegate_task{i}.setEnabled(False)")
+            eval(f"self.delegate_task{i}_button.setEnabled(False)")
+            eval(f"self.delegate_task{i}_button.setText(\"\")")
+
+            eval(f"self.delete_task{i}.setStyleSheet({style})")
+            eval(f"self.delete_task{i}.setEnabled(False)")
+            eval(f"self.delete_task{i}_button.setEnabled(False)")
+            eval(f"self.delete_task{i}_button.setText(\"\")")
 
     @staticmethod
     def date_format(date):
@@ -168,7 +173,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
     def change_stack_widget(self, index):
         if index == 1:
+            self.empty_task_list()
             self.load_task_list()
+        elif index == 0:
+            self.init_matrix()
+            self.load_tasks_data()
         self.stackedWidget.setCurrentIndex(index)
 
     def check_availibility(self, task_prior):
@@ -202,16 +211,20 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 # TODO: chyba
                 return
             else:
-                eval(f"self.{controller.prior}_task{controller.position}.setEnabled(False)")
-                eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(False)")
+                if self.stackedWidget.currentIndex() == 0:
+                    eval(f"self.{controller.prior}_task{controller.position}.setEnabled(False)")
+                    eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(False)")
 
-                style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
-                eval(f"self.{controller.prior}_task{controller.position}.setStyleSheet({style})")
-                eval(f"self.{controller.prior}_task{controller.position}_button.setStyleSheet(\"color: black;\")")
-                eval(f"self.{controller.prior}_task{controller.position}_button.setText(\"\")")
+                    style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
+                    eval(f"self.{controller.prior}_task{controller.position}.setStyleSheet({style})")
+                    eval(f"self.{controller.prior}_task{controller.position}_button.setStyleSheet(\"color: black;\")")
+                    eval(f"self.{controller.prior}_task{controller.position}_button.setText(\"\")")
 
-                func = f"self.{controller.prior}_task{controller.position}_button.setProperty"
-                eval(func)("ID", -1)
+                    func = f"self.{controller.prior}_task{controller.position}_button.setProperty"
+                    eval(func)("ID", -1)
+                else:
+                    self.empty_task_list()
+                    self.load_task_list()
 
                 controller.change_id(-1)
 
@@ -246,7 +259,14 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             self.taskNameInput.setText("")
             self.choosePriority.setCurrentIndex(0)
             self.dateEdit.setDate(datetime.datetime.now().date())
-            eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
+
+            if self.stackedWidget.currentIndex() == 0:
+                self.init_matrix()
+                self.load_tasks_data()
+                #eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
+            else:
+                self.empty_task_list()
+                self.load_task_list()
 
             controller.change_id(-1)
         else:
@@ -285,6 +305,8 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             # TODO: chyba
             return
         else:
+            controller.change_id(task_id)
+
             for i in range(len(message)):
                 if message[i]["id"] == task_id:
                     self.taskDescription.setText(message[i]["description"])
