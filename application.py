@@ -87,11 +87,13 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             eval(f"self.delete_task{i}_button.setEnabled(False)")
 
         # TASK LIST EMPTY
+        self.empty_task_list()
+
+    def empty_task_list(self):
         for i in range(1, 25):
-            eval(f"self.task_color_{i }.setVisible(False)")
+            eval(f"self.task_color_{i}.setVisible(False)")
             eval(f"self.task_btn_{i}.setVisible(False)")
             eval(f"self.taskdate_{i}.setVisible(False)")
-
 
     @staticmethod
     def date_format(date):
@@ -99,6 +101,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         return new_format
 
     def load_task_list(self):
+        self.empty_task_list()
         message = load_user_tasks(controller.token)
 
         if message == "Error":
@@ -113,14 +116,13 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 eval(f"self.task_color_{i+1}.setVisible(True)")
                 eval(f"self.task_btn_{i+1}.setVisible(True)")
                 eval(f"self.taskdate_{i+1}.setVisible(True)")
-                print("uz som tu")
 
                 if prior == "Urgent - Important":
                     color = "rgb(252, 158, 158)"
                 elif prior == "Urgent - Not Important":
-                    color = "rgb(166, 166, 255)"
-                elif prior == "Not Urgent - Important":
                     color = "rgb(255, 255, 168)"
+                elif prior == "Not Urgent - Important":
+                    color = "rgb(166, 166, 255)"
                 else:
                     color = "rgb(164, 255, 164)"
 
@@ -133,8 +135,9 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
                 date = message[i]["deadline"][:10]
                 eval(f"self.taskdate_{i+1}.setText(\"{date}\")")
-                #func = f"self.{prior}_task{position}_button.setProperty"
-                #eval(func)("ID", message[i]["id"])
+
+                func = f"self.task_btn_{i+1}.setProperty"
+                eval(func)("ID", message[i]["id"])
 
     def change_stack_widget(self, index):
         if index == 1:
