@@ -83,11 +83,11 @@ function updateTask(taskID){
                     }
                     else if(taskPriority == "Urgent - Not Important"){
                         matrixes[2].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
-                        index = 1;
+                        index = 2;
                     }
                     else if(taskPriority == "Not Urgent - Important"){
                         matrixes[1].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
-                        index = 2;
+                        index = 1;
                     }
                     else if(taskPriority == "Not Urgent - Not Important"){                    
                         matrixes[3].innerHTML += `<div class="task" data-id=${taskID} onclick="selectedTask(this)">${taskName}</div>`
