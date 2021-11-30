@@ -1,10 +1,12 @@
 from PyQt5 import QtWidgets, QtCore
 from login import Ui_LoginPage
-from responsive import Ui_Window
-from communication import *
 import datetime
 import sys
 from PyQt5.QtWidgets import QApplication, QStackedWidget
+
+from responsive import Ui_Window
+from communication import *
+from task_list import Ui_TaskList
 
 from PyQt5 import QtGui
 from PyQt5.QtGui import *
@@ -15,10 +17,14 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         super().__init__()
         self.setupUi(self)
 
-        # BUTTONS - LOG OUT, SAVE, DELETE
+        # BUTTONS - HOME, TASK LIST, GUIDE, LOG OUT, SAVE, DELETE
         self.logOutButton.clicked.connect(self.log_out)
         self.saveTaskButton.clicked.connect(self.save_task)
         self.deleteTaskButton.clicked.connect(self.delete_task)
+
+        self.homeButton.clicked.connect(lambda: self.change_stack_widget(0))
+        self.myTaskButton.clicked.connect(lambda: self.change_stack_widget(1))
+        self.guideButton.clicked.connect(lambda: self.change_stack_widget(2))
 
         # ADD TASKS (+) BUTTONS
         self.addDoTask.clicked.connect(lambda: self.add_prior_task("do"))
@@ -84,6 +90,9 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
     def date_format(date):
         new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
         return new_format
+
+    def change_stack_widget(self, index):
+        self.stackedWidget.setCurrentIndex(index)
 
     def check_availibility(self, task_prior):
         prior = ""

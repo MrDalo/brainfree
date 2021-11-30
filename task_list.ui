@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>TaskList</class>
+ <widget class="QWidget" name="TaskList">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -27,7 +27,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <spacer name="horizontalSpacer">
+    <spacer name="horizontalSpacerLeft">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -43,9 +43,9 @@
     </spacer>
    </item>
    <item row="0" column="1">
-    <layout class="QGridLayout" name="gridLayout_2">
+    <layout class="QGridLayout" name="TaskListGridLayout">
      <item row="1" column="2">
-      <layout class="QGridLayout" name="gridLayout_3">
+      <layout class="QGridLayout" name="Tasks">
        <item row="0" column="0">
         <widget class="QScrollArea" name="scrollArea">
          <property name="font">
@@ -910,7 +910,7 @@ border-radius: 25%;</string>
     </layout>
    </item>
    <item row="0" column="2">
-    <spacer name="horizontalSpacer_2">
+    <spacer name="horizontalSpacerright">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
