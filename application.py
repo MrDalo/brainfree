@@ -86,6 +86,33 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             eval(f"self.delete_task{i}.setEnabled(False)")
             eval(f"self.delete_task{i}_button.setEnabled(False)")
 
+
+        # BUTTONS IN TASK LIST
+        self.task_btn_1.clicked.connect(lambda: self.load_list_task_data(self.task_btn_1.property("ID")))
+        self.task_btn_2.clicked.connect(lambda: self.load_list_task_data(self.task_btn_2.property("ID")))
+        self.task_btn_3.clicked.connect(lambda: self.load_list_task_data(self.task_btn_3.property("ID")))
+        self.task_btn_4.clicked.connect(lambda: self.load_list_task_data(self.task_btn_4.property("ID")))
+        self.task_btn_5.clicked.connect(lambda: self.load_list_task_data(self.task_btn_5.property("ID")))
+        self.task_btn_6.clicked.connect(lambda: self.load_list_task_data(self.task_btn_6.property("ID")))
+        self.task_btn_7.clicked.connect(lambda: self.load_list_task_data(self.task_btn_7.property("ID")))
+        self.task_btn_8.clicked.connect(lambda: self.load_list_task_data(self.task_btn_8.property("ID")))
+        self.task_btn_9.clicked.connect(lambda: self.load_list_task_data(self.task_btn_9.property("ID")))
+        self.task_btn_10.clicked.connect(lambda: self.load_list_task_data(self.task_btn_10.property("ID")))
+        self.task_btn_11.clicked.connect(lambda: self.load_list_task_data(self.task_btn_11.property("ID")))
+        self.task_btn_12.clicked.connect(lambda: self.load_list_task_data(self.task_btn_12.property("ID")))
+        self.task_btn_13.clicked.connect(lambda: self.load_list_task_data(self.task_btn_13.property("ID")))
+        self.task_btn_14.clicked.connect(lambda: self.load_list_task_data(self.task_btn_14.property("ID")))
+        self.task_btn_15.clicked.connect(lambda: self.load_list_task_data(self.task_btn_15.property("ID")))
+        self.task_btn_16.clicked.connect(lambda: self.load_list_task_data(self.task_btn_16.property("ID")))
+        self.task_btn_17.clicked.connect(lambda: self.load_list_task_data(self.task_btn_17.property("ID")))
+        self.task_btn_18.clicked.connect(lambda: self.load_list_task_data(self.task_btn_18.property("ID")))
+        self.task_btn_19.clicked.connect(lambda: self.load_list_task_data(self.task_btn_19.property("ID")))
+        self.task_btn_20.clicked.connect(lambda: self.load_list_task_data(self.task_btn_20.property("ID")))
+        self.task_btn_21.clicked.connect(lambda: self.load_list_task_data(self.task_btn_21.property("ID")))
+        self.task_btn_22.clicked.connect(lambda: self.load_list_task_data(self.task_btn_22.property("ID")))
+        self.task_btn_23.clicked.connect(lambda: self.load_list_task_data(self.task_btn_23.property("ID")))
+        self.task_btn_24.clicked.connect(lambda: self.load_list_task_data(self.task_btn_24.property("ID")))
+
         # TASK LIST EMPTY
         self.empty_task_list()
 
@@ -250,6 +277,36 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
                 func = f"self.{prior}_task{position}_button.setProperty"
                 eval(func)("ID", message["id"])
+
+    def load_list_task_data(self, task_id):
+        message = load_user_tasks(controller.token)
+
+        if message == "Error":
+            # TODO: chyba
+            return
+        else:
+            for i in range(len(message)):
+                if message[i]["id"] == task_id:
+                    self.taskDescription.setText(message[i]["description"])
+                    self.taskNameInput.setText(message[i]["name"])
+                    prior = message[i]["priority"]
+                    if prior == "Urgent - Important":
+                        controller.prior = "do"
+                        self.choosePriority.setCurrentIndex(1)
+                    elif prior == "Urgent - Not Important":
+                        controller.prior = "delegate"
+                        self.choosePriority.setCurrentIndex(2)
+                    elif prior == "Not Urgent - Important":
+                        controller.prior = "schedule"
+                        self.choosePriority.setCurrentIndex(3)
+                    else:
+                        controller.prior = "delete"
+                        self.choosePriority.setCurrentIndex(4)
+                    # TODO complete
+                    date = message[i]["deadline"]
+                    date_format = datetime.date.fromisoformat(date[:10])
+                    self.dateEdit.setDate(date_format)
+                    break
 
     def load_task_data(self, pos, task_id):
         message = load_user_tasks(controller.token)
