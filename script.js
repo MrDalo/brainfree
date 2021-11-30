@@ -1,3 +1,188 @@
+function createXmlHttpRequestObject()
+{
+    var request;
+
+    try
+    {
+        request = new XMLHttpRequest(); // should work on all browsers except IE6 or older
+    }
+    catch (e)
+    {
+        try
+        {
+            request = new ActiveXObject("Microsoft.XMLHttp"); // browser is IE6 or older
+        }
+        catch (e)
+        {
+            // ignore error
+        }
+    }
+
+    if (!request)
+    {
+        alert("Error creating the XMLHttpRequest object.");
+    }
+    else
+    {
+        return request;
+    }
+}
+
+
+let errorMssg;
+
+function loginFormAction(){
+    let name = document.getElementById("userNameLog");
+    let password = document.getElementById("passwdLogin");
+    let errorDiv = document.getElementById("errorDiv");
+    if(name.value == "" || password.value == ""){
+        errorMssg = "Empty login field";
+        
+        errorDiv.innerHTML = errorMssg;
+        errorDiv.classList.add("visible");
+        setTimeout(()=>{
+            errorDiv.classList.remove("visible");
+        }, 3000);
+        return;
+    }
+    
+    var request = createXmlHttpRequestObject();
+    
+    
+    request.open("POST","http://wedevs.sk:8080/login", true);
+    request.onreadystatechange = function()
+    {
+        if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK
+        {
+            
+            if(request.responseText == "notFound"){
+                console.log("Account doesnt exist");
+                errorMssg = "Account doesnt exist";
+                
+                errorDiv.innerHTML = errorMssg;
+                errorDiv.classList.add("visible");
+                setTimeout(()=>{
+                    errorDiv.classList.remove("visible");
+                }, 3000);
+            }
+            else if(request.responseText == "incorrectPassword"){
+                console.log("Incorrect password");
+                errorMssg = "Incorrect password";                
+                errorDiv.innerHTML = errorMssg;
+                errorDiv.classList.add("visible");
+                setTimeout(()=>{
+                    errorDiv.classList.remove("visible");
+                }, 3000);
+                
+            }
+            else if(request.responseText == "RequestEmpty"){
+                console.log("Requests fields are empty");
+                errorMssg = "Empty login field";                
+                errorDiv.innerHTML = errorMssg;
+                errorDiv.classList.add("visible");
+                setTimeout(()=>{
+                    errorDiv.classList.remove("visible");
+                }, 3000);
+                
+            }
+                else{
+                    console.log("log in");
+                    sessionStorage.setItem("token", name.value);
+                    window.location.replace(window.location.href.replace('index.html', 'user/index.html'));     
+                }
+            }
+        }
+        
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send(`username=${name.value}&password=${password.value}`);
+        
+        
+        
+        
+        
+        
+        // sessionStorage.setItem("token", name.value);
+        
+        
+        // window.location.replace(window.location.href+'user');
+        // console.log("dfasdf");
+        return false;
+    }
+    
+    
+    function createUser(){
+        var request = createXmlHttpRequestObject();
+
+    let username = document.getElementById("userNameReg").value;
+    let userpasswd = document.getElementById("passwdRegister").value;
+    let useremail = document.getElementById("userEmail").value;
+    let userpasswd2 = document.getElementById("passwdControl").value;
+    let errorDiv = document.getElementById("errorDiv");
+    
+    if(userpasswd != userpasswd2){
+        console.log("Passwords are not same");
+        errorMssg = "Passwords are not same";
+        errorDiv.innerHTML = errorMssg;
+        errorDiv.classList.add("visible");
+        setTimeout(()=>{
+            errorDiv.classList.remove("visible");
+        }, 3000);
+        return;
+    }
+    
+    if(username == "" || userpasswd == "" || useremail == ""){
+        console.log("Empty input fields");
+        errorMssg = "Empty input fields";
+        errorDiv.innerHTML = errorMssg;
+        errorDiv.classList.add("visible");
+        setTimeout(()=>{
+            errorDiv.classList.remove("visible");
+        }, 3000);
+        return;
+    }
+
+
+    request.open("POST","http://wedevs.sk:8080/users", true);
+    request.onreadystatechange = function()
+        {
+            if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK
+            {
+                console.log(request.responseText);
+                if(request.responseText == "RequestEmpty"){
+                    errorMssg = "Empty input fields";
+                    errorDiv.innerHTML = errorMssg;
+                    errorDiv.classList.add("visible");
+                    setTimeout(()=>{
+                        errorDiv.classList.remove("visible");
+                    }, 3000);                   
+                    
+                }
+                else if(request.responseText == "UserExists"){
+                    console.log("User already exists");
+                    errorMssg = "User already exists";
+                    errorDiv.innerHTML = errorMssg;
+                    errorDiv.classList.add("visible");
+                    setTimeout(()=>{
+                        errorDiv.classList.remove("visible");
+                    }, 3000);
+                    
+                }
+                else{
+                    sessionStorage.setItem("token", username);
+                    window.location.replace(window.location.href.replace('index.html', 'user/index.html'));
+                    console.log("User created");
+                }
+            }
+        }
+
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(`username=${username}&password=${userpasswd}&email=${useremail}`);
+
+}
+
+
+
+
 function closeForm(){
     document.getElementById("logForm").classList.add("hide");
     document.getElementById("loginForm").classList.add("hide");
@@ -27,7 +212,7 @@ window.addEventListener("scroll", ()=>{
         
         let valueOfScroll = window.scrollY;
         const rect = document.getElementById("lastBottomPart").getBoundingClientRect();
-        console.log("yes: "+ valueOfScroll+ "Rect top: "+document.getElementById("lastBottomPart").offsetTop);
+        //console.log("yes: "+ valueOfScroll+ "Rect top: "+document.getElementById("lastBottomPart").offsetTop);
         
         
 
@@ -46,7 +231,6 @@ window.addEventListener("scroll", ()=>{
 
 let lines = document.querySelectorAll('.svgLines');
 
-console.log(lines);
 
 
 /* 192, 150 for svh width and height*/
