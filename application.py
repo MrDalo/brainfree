@@ -311,7 +311,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
             controller.id = -1
             self.error_message(False, "Úloha bola úspešne aktualizovaná")
-        elif self.stackedWidget.currentIndex() == 1:
+        else:
             result, prior, position = self.check_availibility(priority)
 
             if not result:
@@ -347,21 +347,19 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     self.empty_task_list()
                     self.load_task_list()
 
+                elif self.stackedWidget.currentIndex() == 2:
+                    message = create_new_task(task_name, description, priority, date, 0, controller.token)
+
+                if message == "Error":
+                    self.error_message(True, "Internal Error")
+                    return
+                else:
+                    self.taskDescription.setText("")
+                    self.taskNameInput.setText("")
+                    self.choosePriority.setCurrentIndex(0)
+                    self.dateEdit.setDate(datetime.datetime.now().date())
+
                 self.error_message(False, "Úloha bola úspešne uložená")
-
-        elif self.stackedWidget.currentIndex() == 2:
-            message = create_new_task(task_name, description, priority, date, 0, controller.token)
-
-            if message == "Error":
-                self.error_message(True, "Internal Error")
-                return
-            else:
-                self.taskDescription.setText("")
-                self.taskNameInput.setText("")
-                self.choosePriority.setCurrentIndex(0)
-                self.dateEdit.setDate(datetime.datetime.now().date())
-
-            self.error_message(False, "Úloha bola úspešne uložená")
 
 
     def get_pos(self, prior, id):
