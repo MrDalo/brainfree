@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QApplication, QStackedWidget
 from responsive import Ui_Window
 from communication import *
 
+
 class Window(QtWidgets.QMainWindow, Ui_Window):
     def __init__(self):
         super().__init__()
@@ -178,6 +179,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 func = f"self.task_btn_{i+1}.setProperty"
                 eval(func)("ID", message[i]["id"])
 
+                print("som tu")
+                func = f"self.task_color_{i+1}.setProperty"
+                eval(func)("prior", prior)
+                print("ulozene")
+
     def change_stack_widget(self, index):
         if index == 1:
             self.empty_task_list()
@@ -200,11 +206,22 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
         for i in range(1, 7):
             result = eval(f"self.{prior}_task{i}.isEnabled()")
-            available = result
             if not result:
                 return True, prior, i
 
         return False, "", -1
+
+    def delete_task_from_matrix(self):
+        eval(f"self.{controller.prior}_task{controller.position}.setEnabled(False)")
+        eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(False)")
+
+        style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
+        eval(f"self.{controller.prior}_task{controller.position}.setStyleSheet({style})")
+        eval(f"self.{controller.prior}_task{controller.position}_button.setStyleSheet(\"color: black;\")")
+        eval(f"self.{controller.prior}_task{controller.position}_button.setText(\"\")")
+
+        func = f"self.{controller.prior}_task{controller.position}_button.setProperty"
+        eval(func)("ID", -1)
 
     def delete_task(self):
         self.taskDescription.setText("")
@@ -219,6 +236,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 return
             else:
                 if self.stackedWidget.currentIndex() == 0:
+                    self.get_pos(controller.prior, controller.id)
                     eval(f"self.{controller.prior}_task{controller.position}.setEnabled(False)")
                     eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(False)")
 
@@ -229,11 +247,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
                     func = f"self.{controller.prior}_task{controller.position}_button.setProperty"
                     eval(func)("ID", -1)
-                else:
+                elif self.stackedWidget.currentIndex() == 1:
                     self.empty_task_list()
                     self.load_task_list()
 
-                controller.change_id(-1)
+                controller.id = -1
                 self.error_message(False, "Úloha bola úspešne vymazaná")
 
     def save_task(self):
@@ -244,9 +262,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         date = self.date_format(date)
 
         if task_name == "":
-            print("som do pice tu")
             self.error_message(True, "Zadajte názov úlohy")
-            print("som kurva uz tu")
             return
         if priority == "None":
             self.error_message(True, "Zadajte prioritu")
@@ -255,14 +271,19 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             self.error_message(True, "Maximálna dĺžka opisu je 256 znakov")
             return
 
-        message = ""
-        result, prior = "", ""
-        position = -1
-
         if controller.id != -1:
+            if self.stackedWidget.currentIndex() == 0:
+                self.get_pos(controller.prior, controller.id)
+                eval(f"self.{controller.prior}_task{controller.position}.setEnabled(False)")
+                eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(False)")
+                result, prior, position = self.check_availibility(priority)
+                if not result:
+                    self.error_message(True, "Nedostatok miesta v matici")
+                    eval(f"self.{controller.prior}_task{controller.position}.setEnabled(True)")
+                    eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(True)")
+                    return
+
             message = update_task(controller.id, task_name, description, priority, date, 0, controller.token)
-            prior = controller.prior
-            position = controller.position
 
             self.taskDescription.setText("")
             self.taskNameInput.setText("")
@@ -270,26 +291,37 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             self.dateEdit.setDate(datetime.datetime.now().date())
 
             if self.stackedWidget.currentIndex() == 0:
-                self.init_matrix()
-                self.load_tasks_data()
-                #eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
-            else:
+                self.delete_task_from_matrix()
+                eval(f"self.{prior}_task{position}.setEnabled(True)")
+                eval(f"self.{prior}_task{position}_button.setEnabled(True)")
+
+                style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
+                eval(f"self.{prior}_task{position}.setStyleSheet({style})")
+                eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
+
+                if len(task_name) > controller.max_length:
+                    task_name = f"{task_name[:17]}..."
+                eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
+
+                func = f"self.{prior}_task{position}_button.setProperty"
+                eval(func)("ID", controller.id)
+            elif self.stackedWidget.currentIndex() == 1:
                 self.empty_task_list()
                 self.load_task_list()
 
-            controller.change_id(-1)
+            controller.id = -1
             self.error_message(False, "Úloha bola úspešne aktualizovaná")
-        else:
-            message = create_new_task(task_name, description, priority, date, 0, controller.token)
-
+        elif self.stackedWidget.currentIndex() == 1:
             result, prior, position = self.check_availibility(priority)
+
             if not result:
                 self.error_message(True, "Žiadne voľné miesto v matici pre danú prioritu")
                 return
+            message = create_new_task(task_name, description, priority, date, 0, controller.token)
 
             if message == "Error":
                 self.error_message(True, "Internal Error")
-                pass
+                return
             else:
                 self.taskDescription.setText("")
                 self.taskNameInput.setText("")
@@ -317,6 +349,27 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
                 self.error_message(False, "Úloha bola úspešne uložená")
 
+        elif self.stackedWidget.currentIndex() == 2:
+            message = create_new_task(task_name, description, priority, date, 0, controller.token)
+
+            if message == "Error":
+                self.error_message(True, "Internal Error")
+                return
+            else:
+                self.taskDescription.setText("")
+                self.taskNameInput.setText("")
+                self.choosePriority.setCurrentIndex(0)
+                self.dateEdit.setDate(datetime.datetime.now().date())
+
+            self.error_message(False, "Úloha bola úspešne uložená")
+
+
+    def get_pos(self, prior, id):
+
+        for i in range(1, 7):
+            if eval(f"{id} == self.{prior}_task{i}_button.property(\"ID\")"):
+                controller.position = i
+
     def load_list_task_data(self, task_id):
         message = load_user_tasks(controller.token)
 
@@ -324,7 +377,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             self.error_message(True, "Internal Error")
             return
         else:
-            controller.change_id(task_id)
+            controller.id = task_id
 
             for i in range(len(message)):
                 if message[i]["id"] == task_id:
@@ -344,9 +397,13 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                         controller.prior = "delete"
                         self.choosePriority.setCurrentIndex(4)
 
+                    #self.get_pos(controller.prior, controller.id)
+                    controller.task_list = True
+
                     date = message[i]["deadline"]
                     date_format = datetime.date.fromisoformat(date[:10])
                     self.dateEdit.setDate(date_format)
+
                     break
 
     def load_task_data(self, pos, task_id):
@@ -356,7 +413,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             self.error_message(True, "Internal Error")
             return
         else:
-            controller.change_id(task_id)
+            controller.id = task_id
 
             for i in range(len(message)):
                 if message[i]["id"] == task_id:
@@ -485,7 +542,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             self.loginError.setVisible(True)
             return False
         else:
-            controller.change_token(message[10:len(message)-2])
+            controller.token = message[10:len(message)-2]
             return True
 
     def register_user(self):
@@ -516,7 +573,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             self.registrationError.setVisible(True)
             return False
         else:
-            controller.change_token(message[10:len(message)-2])
+            controller.token = message[10:len(message)-2]
             return True
 
 
@@ -527,31 +584,21 @@ class Controller:
     id = -1
     prior = ""
     position = -1
-
-    def change_token(self, token):
-        self.token = token
-
-    def change_id(self, id):
-        self.id = id
+    task_list = False
 
 
+# Kontroler
 controller = Controller()
 
 # Spustenie aplikacie
 app = QApplication(sys.argv)
-
 login_page = LoginPage()
 window = Window()
 multiple_screens = QStackedWidget()
 multiple_screens.setWindowFlags(QtCore.Qt.WindowType.CustomizeWindowHint | QtCore.Qt.WindowType.WindowCloseButtonHint | QtCore.Qt.WindowType.WindowMinimizeButtonHint)
-
 multiple_screens.insertWidget(0, login_page)
 multiple_screens.insertWidget(1, window)
 multiple_screens.setCurrentIndex(0)
-#if multiple_screens.currentIndex() == 0:
-#    multiple_screens.show()
-#else:
-    #multiple_screens.showMaximized()
 multiple_screens.showMaximized()
 
 sys.exit(app.exec_())
