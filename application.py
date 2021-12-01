@@ -301,16 +301,21 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 self.choosePriority.setCurrentIndex(0)
                 self.dateEdit.setDate(datetime.datetime.now().date())
 
-                eval(f"self.{prior}_task{position}.setEnabled(True)")
-                eval(f"self.{prior}_task{position}_button.setEnabled(True)")
+                if self.stackedWidget.currentIndex() == 0:
+                    eval(f"self.{prior}_task{position}.setEnabled(True)")
+                    eval(f"self.{prior}_task{position}_button.setEnabled(True)")
 
-                style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
-                eval(f"self.{prior}_task{position}.setStyleSheet({style})")
-                eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
-                eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
+                    style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
+                    eval(f"self.{prior}_task{position}.setStyleSheet({style})")
+                    eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
+                    eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
 
-                func = f"self.{prior}_task{position}_button.setProperty"
-                eval(func)("ID", message["id"])
+                    func = f"self.{prior}_task{position}_button.setProperty"
+                    eval(func)("ID", message["id"])
+
+                elif self.stackedWidget.currentIndex() == 1:
+                    self.empty_task_list()
+                    self.load_task_list()
 
                 self.error_message(False, "Úloha bola úspešne uložená")
 
@@ -424,8 +429,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
     # TODO: mozno pred log out ulozit vypisat nejaku hlasku, ak nema user
     # TODO: ulozenu aktivitu
     def log_out(self):
-        multiple_screens.setMinimumSize(600, 600)
-        multiple_screens.setMaximumSize(600, 600)
         multiple_screens.removeWidget(multiple_screens.widget(0))
         loginpage = LoginPage()
         multiple_screens.insertWidget(0, loginpage)
