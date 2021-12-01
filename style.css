@@ -520,6 +520,7 @@ footer #leftNav a{
   }
 
   #wave{
+    display: none;
     top: -25vh;
   }
 
