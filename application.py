@@ -97,6 +97,10 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         # TASK LIST EMPTY
         self.empty_task_list()
 
+        # ERROR LABEL
+        self.errorMessageLabel.setStyleSheet("background-color: rgba(0,0,0,0); border: 0px;")
+        self.errorMessageLabel.setText("")
+
     def empty_task_list(self):
         for i in range(1, 25):
             eval(f"self.task_color_{i}.setVisible(False)")
@@ -132,15 +136,23 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
         return new_format
 
+    def error_message(self, error, text):
+        if error:
+            style = "background-color: rgba(255,0,0,1);"
+        else:
+            style = "background-color: rgba(0,255,0,1);"
+
+        self.errorMessageLabel.setStyleSheet(style)
+        self.errorMessageLabel.setText(text)
+
     def load_task_list(self):
         self.empty_task_list()
         message = load_user_tasks(controller.token)
 
         if message == "Error":
-            # TODO: chyba
+            self.error_message(True, "Internal Error")
             return
         elif message == "NotFound":
-            # TODO: asi nic netreba robit
             return
         else:
             for i in range(len(message)):
@@ -208,7 +220,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         if controller.id != -1:
             message = delete_task_by_id(controller.id)
             if message == "Error":
-                # TODO: chyba
+                self.error_message(True, "Internal Error")
                 return
             else:
                 if self.stackedWidget.currentIndex() == 0:
@@ -227,6 +239,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     self.load_task_list()
 
                 controller.change_id(-1)
+                self.error_message(False, "Úloha bola úspešne vymazaná")
 
     def save_task(self):
         task_name = self.taskNameInput.text()
@@ -235,14 +248,14 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         date = self.dateEdit.text()
         date = self.date_format(date)
 
-        if priority == "None" or task_name == "":
-            # TODO: chyba
-            print("Vyplnte vsetky potrebne informacie")
+        if task_name == "":
+            self.errorMessageLabel(True, "Zadajte názov úlohy")
             return
-
+        if priority == "None":
+            self.errorMessageLabel(True, "Zadajte prioritu")
+            return
         if len(description) > 256:
-            # TODO: chyba
-            print("Opis tasku je moc dlhy")
+            self.errorMessageLabel(True, "Maximálna dĺžka opisu je 256 znakov")
             return
 
         message = ""
@@ -269,17 +282,18 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 self.load_task_list()
 
             controller.change_id(-1)
+            self.error_message(False, "Úloha bola úspešne aktualizovaná")
         else:
             message = create_new_task(task_name, description, priority, date, 0, controller.token)
 
             result, prior, position = self.check_availibility(priority)
             print(result, prior, position)
             if not result:
-                # TODO: chyba
+                self.error_message(True, "Žiadne voľné miesto v matici pre danú prioritu")
                 return
 
             if message == "Error":
-                # TODO: chyba
+                self.error_message(True, "Internal Error")
                 pass
             else:
                 self.taskDescription.setText("")
@@ -298,11 +312,13 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 func = f"self.{prior}_task{position}_button.setProperty"
                 eval(func)("ID", message["id"])
 
+                self.error_message(False, "Úloha bola úspešne uložená")
+
     def load_list_task_data(self, task_id):
         message = load_user_tasks(controller.token)
 
         if message == "Error":
-            # TODO: chyba
+            self.error_message(True, "Internal Error")
             return
         else:
             controller.change_id(task_id)
@@ -324,7 +340,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     else:
                         controller.prior = "delete"
                         self.choosePriority.setCurrentIndex(4)
-                    # TODO complete
+
                     date = message[i]["deadline"]
                     date_format = datetime.date.fromisoformat(date[:10])
                     self.dateEdit.setDate(date_format)
@@ -334,7 +350,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         message = load_user_tasks(controller.token)
 
         if message == "Error":
-            # TODO: chyba
+            self.error_message(True, "Internal Error")
             return
         else:
             controller.change_id(task_id)
@@ -356,7 +372,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     else:
                         controller.prior = "delete"
                         self.choosePriority.setCurrentIndex(4)
-                    # TODO complete
+
                     date = message[i]["deadline"]
                     date_format = datetime.date.fromisoformat(date[:10])
                     self.dateEdit.setDate(date_format)
@@ -367,7 +383,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         message = load_user_tasks(controller.token)
 
         if message == "Error":
-            # TODO: chyba
+            self.error_message(True, "Internal Error")
             return
         elif message == "NotFound":
             # TODO: asi nic netreba robit
@@ -436,7 +452,6 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             multiple_screens.setMaximumSize(1920, 1080)
             multiple_screens.removeWidget(multiple_screens.widget(1))
             window = Window()
-            #print(controller.token)
             multiple_screens.insertWidget(1, window)
             multiple_screens.setCurrentIndex(1)
             multiple_screens.showMaximized()
@@ -497,7 +512,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             self.registrationError.setVisible(True)
             return False
         else:
-            # TODO: token
+            controller.change_token(message[10:len(message)-2])
             return True
 
 
