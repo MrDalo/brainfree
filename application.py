@@ -6,11 +6,6 @@ from PyQt5.QtWidgets import QApplication, QStackedWidget
 
 from responsive import Ui_Window
 from communication import *
-from task_list import Ui_TaskList
-
-from PyQt5 import QtGui
-from PyQt5.QtGui import *
-
 
 class Window(QtWidgets.QMainWindow, Ui_Window):
     def __init__(self):
@@ -249,13 +244,15 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         date = self.date_format(date)
 
         if task_name == "":
-            self.errorMessageLabel(True, "Zadajte názov úlohy")
+            print("som do pice tu")
+            self.error_message(True, "Zadajte názov úlohy")
+            print("som kurva uz tu")
             return
         if priority == "None":
-            self.errorMessageLabel(True, "Zadajte prioritu")
+            self.error_message(True, "Zadajte prioritu")
             return
         if len(description) > 256:
-            self.errorMessageLabel(True, "Maximálna dĺžka opisu je 256 znakov")
+            self.error_message(True, "Maximálna dĺžka opisu je 256 znakov")
             return
 
         message = ""
@@ -263,7 +260,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         position = -1
 
         if controller.id != -1:
-            print(controller.id)
             message = update_task(controller.id, task_name, description, priority, date, 0, controller.token)
             prior = controller.prior
             position = controller.position
@@ -287,7 +283,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             message = create_new_task(task_name, description, priority, date, 0, controller.token)
 
             result, prior, position = self.check_availibility(priority)
-            print(result, prior, position)
             if not result:
                 self.error_message(True, "Žiadne voľné miesto v matici pre danú prioritu")
                 return
@@ -308,6 +303,9 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
                     eval(f"self.{prior}_task{position}.setStyleSheet({style})")
                     eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
+
+                    if len(task_name) > controller.max_length:
+                        task_name = f"{task_name[:17]}..."
                     eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
 
                     func = f"self.{prior}_task{position}_button.setProperty"
@@ -391,7 +389,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             self.error_message(True, "Internal Error")
             return
         elif message == "NotFound":
-            # TODO: asi nic netreba robit
             return
         else:
             for i in range(len(message)):
@@ -408,12 +405,18 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 style = "\"background-color: rgb(255, 255, 255);\" \"border: 1px solid;\" \"border-color: red;\" \"border-radius: 10px;\""
                 eval(f"self.{prior}_task{position}.setStyleSheet({style})")
                 eval(f"self.{prior}_task{position}_button.setStyleSheet(\"color: black;\")")
-                eval(f"self.{prior}_task{position}_button.setText(\"{message[i]['name']}\")")
+
+                task_name = message[i]['name']
+                if len(task_name) > controller.max_length:
+                    task_name = task_name[:17] + "..."
+
+                eval(f"self.{prior}_task{position}_button.setText(\"{task_name}\")")
 
                 func = f"self.{prior}_task{position}_button.setProperty"
                 eval(func)("ID", message[i]["id"])
 
     def add_prior_task(self, msg):
+        controller.id = -1
         self.taskDescription.setText("")
         self.taskNameInput.setText("")
 
@@ -426,8 +429,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         else:
             self.choosePriority.setCurrentIndex(4)
 
-    # TODO: mozno pred log out ulozit vypisat nejaku hlasku, ak nema user
-    # TODO: ulozenu aktivitu
     def log_out(self):
         multiple_screens.removeWidget(multiple_screens.widget(0))
         loginpage = LoginPage()
@@ -521,6 +522,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
 
 # Application Controller
 class Controller:
+    max_length = 20
     token = ""
     id = -1
     prior = ""
@@ -541,16 +543,15 @@ app = QApplication(sys.argv)
 login_page = LoginPage()
 window = Window()
 multiple_screens = QStackedWidget()
+multiple_screens.setWindowFlags(QtCore.Qt.WindowType.CustomizeWindowHint | QtCore.Qt.WindowType.WindowCloseButtonHint | QtCore.Qt.WindowType.WindowMinimizeButtonHint)
+
 multiple_screens.insertWidget(0, login_page)
 multiple_screens.insertWidget(1, window)
 multiple_screens.setCurrentIndex(0)
+#if multiple_screens.currentIndex() == 0:
+#    multiple_screens.show()
+#else:
+    #multiple_screens.showMaximized()
+multiple_screens.showMaximized()
 
-## TODO: problem s poziciou a velkostou okien
-## TODO: resizable = True
-#multiple_screens.setMinimumSize(600, 600)
-#multiple_screens.setMaximumSize(600, 600)
-if multiple_screens.currentIndex() == 0:
-    multiple_screens.show()
-else:
-    multiple_screens.showMaximized()
 sys.exit(app.exec_())
