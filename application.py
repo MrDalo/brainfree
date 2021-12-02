@@ -11,10 +11,16 @@ from communication import *
 class Window(QtWidgets.QMainWindow, Ui_Window):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Brainfree")
         self.setupUi(self)
 
-        self.setWindowTitle("Brainfree")
+        # RIGHT BAR - TAB ORDER
+        self.RightBar.setTabOrder(self.taskNameInput, self.taskDescription)
+        self.RightBar.setTabOrder(self.taskDescription, self.choosePriority)
+        self.RightBar.setTabOrder(self.choosePriority, self.dateEdit)
+        self.RightBar.setTabOrder(self.dateEdit, self.saveTaskButton)
+        self.RightBar.setTabOrder(self.saveTaskButton, self.deleteTaskButton)
+
+        self.taskDescription.setTabChangesFocus(True)
 
         # BUTTONS - HOME, TASK LIST, GUIDE, LOG OUT, SAVE, DELETE
         self.logOutButton.clicked.connect(self.log_out)
@@ -352,18 +358,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 elif self.stackedWidget.currentIndex() == 1:
                     self.empty_task_list()
                     self.load_task_list()
-
-                elif self.stackedWidget.currentIndex() == 2:
-                    message = create_new_task(task_name, description, priority, date, 0, controller.token)
-
-                if message == "Error":
-                    self.error_message(True, "Internal Error")
-                    return
-                else:
-                    self.taskDescription.setText("")
-                    self.taskNameInput.setText("")
-                    self.choosePriority.setCurrentIndex(0)
-                    self.dateEdit.setDate(datetime.datetime.now().date())
 
                 self.error_message(False, "Task was successfully\nsaved")
 
