@@ -182,44 +182,11 @@ def delete_user_tasks(username : str) -> None:
 def delete_task_by_id(id: str) -> None:
     response = requests.delete(f"{url}/taskById/{id}")
 
-    print(response)
-    json_data = json.loads(response.text)
-    print(json_data)
-    if response.status_code == 200:
+    if response.text == "NotFound":
+        return response.text
+    elif response.status_code == 200:
+        json_data = json.loads(response.text)
         return json_data
     else:
         return "Error"
 
-
-"""---------- Testy ----------"""
-"""
-print("### LOG IN with unknown account: ")
-log_in_user("example0", "example0")
-print("### CREATE new user (example0): ")
-create_new_user("example0", "example0", "example0")
-print("### FIND user account: ")
-find_user("example0")
-print("### LOG IN to new account (example0): ")
-log_in_user("example0", "example0")
-print("### LOAD user tasks: ")
-load_user_tasks("example0")
-print("### CREATE new task: ")
-create_new_task("nova", "toto je novy task od pata", "do", "1111-11-11", 1, "example0")
-print("### CREATE new task: ")
-create_new_task("nove2", "task na vymazanie", "do", "9999-11-11", 1, "example0")
-print("### DELETE task by id: ")
-delete_task_by_id(24)
-print("### UPDATE new task: ")
-update_task(23, "update sprava", "toto je novy task od pata", "do", "1111-11-11", 1, "example0")
-print("### LOAD user tasks: ")
-load_user_tasks("example0")
-print("### DELETE all user tasks: ")
-delete_user_tasks("example0")
-print("### LOAD user tasks: ")
-load_user_tasks("example0")
-print("### DELETE user: ")
-delete_user("example0")
-print("### FIND user: ")
-find_user("example0")
-
-"""
