@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1186</width>
+    <width>1264</width>
     <height>721</height>
    </rect>
   </property>
@@ -14,12 +14,13 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: white;</string>
+   <string notr="true">color: white;
+font-family: Century Gothic;</string>
   </property>
   <widget class="QWidget" name="MainLayout">
    <property name="minimumSize">
     <size>
-     <width>1080</width>
+     <width>1250</width>
      <height>720</height>
     </size>
    </property>
@@ -146,7 +147,7 @@ QPushButton:pressed{
            </property>
            <property name="font">
             <font>
-             <family>MS Shell Dlg 2</family>
+             <family>Century Gothic</family>
              <pointsize>15</pointsize>
              <weight>75</weight>
              <bold>true</bold>
@@ -172,8 +173,14 @@ QPushButton:pressed{
              <normalon>user/home.png</normalon>
             </iconset>
            </property>
-           <property name="flat">
+           <property name="autoDefault">
             <bool>true</bool>
+           </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -193,6 +200,7 @@ QPushButton:pressed{
            </property>
            <property name="font">
             <font>
+             <family>Century Gothic</family>
              <pointsize>15</pointsize>
              <weight>75</weight>
              <bold>true</bold>
@@ -212,8 +220,14 @@ QPushButton:pressed{
              <normalon>user/clipboard.png</normalon>
             </iconset>
            </property>
-           <property name="flat">
+           <property name="autoDefault">
             <bool>true</bool>
+           </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -233,6 +247,7 @@ QPushButton:pressed{
            </property>
            <property name="font">
             <font>
+             <family>Century Gothic</family>
              <pointsize>15</pointsize>
              <weight>75</weight>
              <bold>true</bold>
@@ -255,11 +270,14 @@ QPushButton:pressed{
              <normalon>user/help.png</normalon>
             </iconset>
            </property>
+           <property name="autoDefault">
+            <bool>true</bool>
+           </property>
            <property name="default">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="flat">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -279,6 +297,7 @@ QPushButton:pressed{
            </property>
            <property name="font">
             <font>
+             <family>Century Gothic</family>
              <pointsize>15</pointsize>
              <weight>75</weight>
              <bold>true</bold>
@@ -298,8 +317,72 @@ QPushButton:pressed{
              <normalon>user/logout.png</normalon>
             </iconset>
            </property>
-           <property name="flat">
+           <property name="autoDefault">
             <bool>true</bool>
+           </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="2">
+        <spacer name="verticalSpacerAbovePhoto">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Maximum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="6" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Maximum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0" colspan="3">
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <widget class="QWidget" name="photo" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>150</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(85, 255, 255);
+background-image: url(user/account.png);
+background-position: center;
+border-radius: 75%;</string>
            </property>
           </widget>
          </item>
@@ -336,63 +419,6 @@ QPushButton:pressed{
           </widget>
          </item>
         </layout>
-       </item>
-       <item row="2" column="0" colspan="3">
-        <layout class="QGridLayout" name="gridLayout_5">
-         <item row="0" column="0">
-          <widget class="QWidget" name="widget_7" native="true">
-           <property name="minimumSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>150</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(85, 255, 255);
-background-image: url(user/account.png);
-border-radius: 75%;</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="6" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Maximum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="2">
-        <spacer name="verticalSpacerAbovePhoto">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Maximum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </widget>
@@ -508,7 +534,7 @@ background-color: rgb(252, 158, 158);
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>8</pointsize>
+                    <family>Century Gothic</family>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -549,7 +575,7 @@ background-color: rgb(252, 158, 158);
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <family>Century Gothic</family>
                    </font>
                   </property>
                   <property name="cursor">
@@ -655,7 +681,7 @@ border-radius: 10px;</string>
                       <number>0</number>
                      </property>
                      <item row="0" column="0">
-                      <widget class="QPushButton" name="do_task3_button">
+                      <widget class="QToolButton" name="do_task3_button">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                          <horstretch>0</horstretch>
@@ -672,9 +698,6 @@ border: 0px;}</string>
                        </property>
                        <property name="text">
                         <string/>
-                       </property>
-                       <property name="ID" stdset="0">
-                        <number>-1</number>
                        </property>
                       </widget>
                      </item>
@@ -900,7 +923,7 @@ border: 0px;}</string>
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <family>Century Gothic</family>
                    </font>
                   </property>
                   <property name="cursor">
@@ -962,7 +985,7 @@ background-color: rgb(166, 166, 255);
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <family>Century Gothic</family>
                    </font>
                   </property>
                   <property name="cursor">
@@ -986,7 +1009,7 @@ background-color: rgb(166, 166, 255);
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>8</pointsize>
+                    <family>Century Gothic</family>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -1027,7 +1050,7 @@ background-color: rgb(166, 166, 255);
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <family>Century Gothic</family>
                    </font>
                   </property>
                   <property name="cursor">
@@ -1397,7 +1420,7 @@ background-color: rgb(164, 255, 164);
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <family>Century Gothic</family>
                    </font>
                   </property>
                   <property name="cursor">
@@ -1421,7 +1444,7 @@ background-color: rgb(164, 255, 164);
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>8</pointsize>
+                    <family>Century Gothic</family>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -1462,7 +1485,7 @@ background-color: rgb(164, 255, 164);
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <family>Century Gothic</family>
                    </font>
                   </property>
                   <property name="cursor">
@@ -1832,7 +1855,7 @@ border: 0px;}</string>
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <family>Century Gothic</family>
                    </font>
                   </property>
                   <property name="cursor">
@@ -1856,7 +1879,7 @@ border: 0px;}</string>
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>8</pointsize>
+                    <family>Century Gothic</family>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -1897,7 +1920,7 @@ border: 0px;}</string>
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <family>Century Gothic</family>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2236,38 +2259,6 @@ border: 0px;}</string>
              </item>
             </layout>
            </item>
-           <item row="2" column="3">
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Minimum</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>100</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="1" column="0">
-            <spacer name="horizontalSpacer_4">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Minimum</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>100</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
            <item row="0" column="2">
             <spacer name="verticalSpacer_4">
              <property name="orientation">
@@ -2296,6 +2287,38 @@ border: 0px;}</string>
               <size>
                <width>20</width>
                <height>150</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="3">
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Minimum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>100</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="0">
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Minimum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>100</width>
+               <height>20</height>
               </size>
              </property>
             </spacer>
@@ -2330,9 +2353,7 @@ border: 0px;}</string>
              <widget class="QScrollArea" name="scrollTaskArea">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
-                <weight>50</weight>
-                <bold>false</bold>
+                <family>Century Gothic</family>
                </font>
               </property>
               <property name="styleSheet">
@@ -2371,6 +2392,9 @@ QLabel{
                  <width>449</width>
                  <height>903</height>
                 </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">font-size: 10pt;</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_11">
                 <item row="7" column="0">
@@ -2493,9 +2517,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2513,6 +2536,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_2">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -2534,9 +2558,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2560,9 +2583,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2586,9 +2608,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2612,9 +2633,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2638,9 +2658,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2664,9 +2683,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2690,9 +2708,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2716,9 +2733,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2742,9 +2758,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2768,9 +2783,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2794,9 +2808,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2820,9 +2833,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2846,9 +2858,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -2872,11 +2883,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                    <underline>false</underline>
-                    <strikeout>false</strikeout>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3318,11 +3326,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                    <underline>false</underline>
-                    <strikeout>false</strikeout>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3346,11 +3351,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                    <underline>false</underline>
-                    <strikeout>false</strikeout>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3374,11 +3376,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                    <underline>false</underline>
-                    <strikeout>false</strikeout>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3402,9 +3401,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3428,9 +3426,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3454,9 +3451,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3480,9 +3476,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3506,9 +3501,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3532,11 +3526,8 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                    <underline>false</underline>
-                    <strikeout>false</strikeout>
                    </font>
                   </property>
                   <property name="cursor">
@@ -3554,6 +3545,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_3">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3569,6 +3561,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_4">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3602,6 +3595,7 @@ QLabel{
                   </property>
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3617,6 +3611,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_5">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3632,6 +3627,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_6">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3647,6 +3643,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_7">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3662,6 +3659,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_9">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3677,6 +3675,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_8">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3692,6 +3691,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_10">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3707,6 +3707,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_12">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3722,6 +3723,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_13">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3737,6 +3739,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_11">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3752,6 +3755,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_15">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3767,6 +3771,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_16">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3782,6 +3787,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_14">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3797,6 +3803,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_17">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3812,6 +3819,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_19">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3827,6 +3835,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_20">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3842,6 +3851,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_18">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3857,6 +3867,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_23">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3872,6 +3883,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_21">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3887,6 +3899,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_22">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3902,6 +3915,7 @@ QLabel{
                  <widget class="QLabel" name="taskdate_24">
                   <property name="font">
                    <font>
+                    <family>Century Gothic</family>
                     <pointsize>10</pointsize>
                    </font>
                   </property>
@@ -3964,7 +3978,10 @@ border-radius: 25%;</string>
               <widget class="QLabel" name="task_list_label">
                <property name="font">
                 <font>
+                 <family>Century Gothic</family>
                  <pointsize>20</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="styleSheet">
@@ -4081,18 +4098,20 @@ border-radius: 25%;</string>
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:20px; margin-right:20px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;        &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#000000;&quot;&gt;Eisenhowerova matica&lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:16pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:20px; margin-right:20px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; color:#000000;&quot;&gt;        &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; font-weight:600; color:#000000;&quot;&gt;Eisenhowerova matica&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; color:#000000;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:16pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;sa skladá zo štyroch kvadrantov, kde každý jeden z nich značí prioritu, ktorú máme venovať danej aktivite. Pomyselné osi nám pomáhajú k určeniu správnej priority. Osi značia: Urgentnosť/Neurgentnosť, Dôležitosť/Nedôležitosť. Na základe danej aktivity môžeme teda určiť, či je aktivita urgentná/neurgentná a dôležitá/nedôležitá. Po zodpovedaní týchto otázok sme schopní učiť správnu prioritu danej aktivity a umiestniť ju do jedného z kvadrantov.                &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;matica.jpg&quot; /&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;        &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;user/matica.jpg&quot; /&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;        &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;   &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;         &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Čo je dôležité a čo urgentné?&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Urgentnosť:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; hovorí o tom, čo horí, a čo nie. Ak je úloha časovo senzitívna (mám externý deadline na dane, deadline na IFJ projekt je za týždeň a môj tím ešte nezačal pracovať), zdroje na jej vykonanie sú obmedzené časom (kolega mi odchádza zajtra na dovolenku), je kritická pre začatie inej úlohy, patrí medzi urgentné.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Dôležitosť:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; miera toho, ako výrazne ma dokáže daný krok, aktivita, projekt, ovplyvniť alebo posunúť k naplneniu mojich cieľov, nakoľko prispieva k môjmu želanému stavu. Príkladom pre študenta môže byť projekt, bez ktorého nezíska zápočet a predmet bude musieť opakovať.                &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Čo je dôležité a čo urgentné?&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Urgentnosť:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; hovorí o tom, čo horí, a čo nie. Ak je úloha časovo senzitívna (mám externý deadline na dane, deadline na IFJ projekt je za týždeň a môj tím ešte nezačal pracovať), zdroje na jej vykonanie sú obmedzené časom (kolega mi odchádza zajtra na dovolenku), je kritická pre začatie inej úlohy, patrí medzi urgentné.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Dôležitosť:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; miera toho, ako výrazne ma dokáže daný krok, aktivita, projekt, ovplyvniť alebo posunúť k naplneniu mojich cieľov, nakoľko prispieva k môjmu želanému stavu. Príkladom pre študenta môže byť projekt, bez ktorého nezíska zápočet a predmet bude musieť opakovať.                &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;      &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;     &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Čo v prípade, že sme pre našu aktivitu našli správny kvadrant v matici?&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;br /&gt;            Mali by ste postupovať nasledovne:&lt;br /&gt;            &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;1.	Urgentné – dôležité:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; Urob hneď!&lt;br /&gt;            &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;2.	Neurgetné – dôležité:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; Naplánuj si!&lt;br /&gt;            &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;3.	Urgentné – nedôležité:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; Deleguj!&lt;br /&gt;            &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;4.	Neurgetné – nedôležité:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; Nerob, odstráň!&lt;br /&gt;            &lt;br /&gt;&lt;br /&gt;Veríme že Vám Eisenhowerova matica pomôže s Vašim Time managementom a že našu aplikáciu využijete naplno.&lt;br /&gt;            &lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Tím BrainFree.&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;            &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Čo v prípade, že sme pre našu aktivitu našli správny kvadrant v matici?&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;br /&gt;            Mali by ste postupovať nasledovne:&lt;br /&gt;            &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;1.	Urgentné – dôležité:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; Urob hne!&lt;br /&gt;            &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;2.	Neurgetné – dôležité:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; Naplánuj si!&lt;br /&gt;            &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;3.	Urgentné – nedôležité:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; Deleguj!&lt;br /&gt;            &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;4.	Neurgetné – nedôležité:&lt;/span&gt;&lt;span style=&quot; font-size:14pt; color:#000000;&quot;&gt; Nerob, odstráň!&lt;br /&gt;            &lt;br /&gt;&lt;br /&gt;Veríme že Vám Eisenhowerova matica pomôže s Vašim Time managementom a že našu aplikáciu využijete naplno.&lt;br /&gt;            &lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Tím BrainFree.&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; color:#000000;&quot;&gt;            &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:14pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:30px; margin-right:30px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:14pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -4197,24 +4216,8 @@ QPushButton:pressed{
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Maximum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>50</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="13" column="1">
-        <widget class="QPushButton" name="deleteTaskButton">
+       <item row="12" column="1">
+        <widget class="QPushButton" name="saveTaskButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -4235,6 +4238,7 @@ QPushButton:pressed{
          </property>
          <property name="font">
           <font>
+           <family>Century Gothic</family>
            <pointsize>12</pointsize>
            <weight>75</weight>
            <bold>true</bold>
@@ -4249,80 +4253,7 @@ background-color: white;
 </string>
          </property>
          <property name="text">
-          <string>Delete</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="1">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="0" colspan="3">
-        <widget class="QLabel" name="taskManagerTitle">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>20</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>20</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Task Manager</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <layout class="QVBoxLayout" name="verticalLayout"/>
-       </item>
-       <item row="7" column="0">
-        <widget class="QPushButton" name="closeRightMenuButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>50</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: white;</string>
-         </property>
-         <property name="text">
-          <string>| | |</string>
+          <string>Save</string>
          </property>
         </widget>
        </item>
@@ -4340,6 +4271,98 @@ background-color: white;
          <property name="verticalSpacing">
           <number>50</number>
          </property>
+         <item row="3" column="0" colspan="2">
+          <layout class="QVBoxLayout" name="taskPriorityLayout">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="taskPriorityLabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Century Gothic</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Task Priority:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="choosePriority">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Century Gothic</family>
+               <pointsize>9</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <item>
+              <property name="text">
+               <string>None</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Urgent - Important</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Urgent - Not Important</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Not Urgent - Important</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Not Urgent - Not Important</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
          <item row="5" column="0">
           <widget class="QLabel" name="calendarIcon">
            <property name="sizePolicy">
@@ -4387,7 +4410,10 @@ background-color: white;
            </property>
            <property name="font">
             <font>
+             <family>Century Gothic</family>
              <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
           </widget>
@@ -4408,15 +4434,18 @@ background-color: white;
            </property>
            <property name="font">
             <font>
+             <family>Century Gothic</family>
              <pointsize>11</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="html">
             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Gothic'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="placeholderText">
             <string>Description</string>
@@ -4445,7 +4474,10 @@ p, li { white-space: pre-wrap; }
            </property>
            <property name="font">
             <font>
+             <family>Century Gothic</family>
              <pointsize>11</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="inputMask">
@@ -4462,96 +4494,57 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="3" column="0" colspan="2">
-          <layout class="QVBoxLayout" name="taskPriorityLayout">
-           <property name="spacing">
-            <number>10</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="taskPriorityLabel">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Task Priority:</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="choosePriority">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>9</pointsize>
-              </font>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <item>
-              <property name="text">
-               <string>None</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Urgent - Important</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Urgent - Not Important</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Not Urgent - Important</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Not Urgent - Not Important</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
-         </item>
         </layout>
        </item>
-       <item row="11" column="1">
-        <widget class="QPushButton" name="saveTaskButton">
+       <item row="4" column="1">
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="7" column="0">
+        <widget class="QPushButton" name="closeRightMenuButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: white;</string>
+         </property>
+         <property name="text">
+          <string>| | |</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="1">
+        <widget class="QPushButton" name="deleteTaskButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -4572,6 +4565,7 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="font">
           <font>
+           <family>Century Gothic</family>
            <pointsize>12</pointsize>
            <weight>75</weight>
            <bold>true</bold>
@@ -4586,62 +4580,12 @@ background-color: white;
 </string>
          </property>
          <property name="text">
-          <string>Save</string>
+          <string>Delete</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="errorMessageLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-color: white;
-background-color: rgb(0, 255, 0);</string>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="text">
-          <string>Error</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="dragEnabled">
-          <bool>false</bool>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-         <property name="placeholderText">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <spacer name="verticalSpacer_6">
+       <item row="9" column="1">
+        <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -4651,10 +4595,120 @@ background-color: rgb(0, 255, 0);</string>
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
+           <height>50</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="13" column="1">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>30</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="8" column="1">
+        <layout class="QVBoxLayout" name="verticalLayout"/>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QLabel" name="taskManagerTitle">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>20</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>20</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Task Manager</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <spacer name="verticalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <spacer name="verticalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
            <height>20</height>
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="errorMessageLabel">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-radius: 10px;
+background-color: rgb(0, 255, 0);
+color: white;</string>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

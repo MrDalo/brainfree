@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, QtGui
 from login import Ui_LoginPage
 import datetime
 import sys
@@ -11,7 +11,10 @@ from communication import *
 class Window(QtWidgets.QMainWindow, Ui_Window):
     def __init__(self):
         super().__init__()
+        self.setWindowTitle("Brainfree")
         self.setupUi(self)
+
+        self.setWindowTitle("Brainfree")
 
         # BUTTONS - HOME, TASK LIST, GUIDE, LOG OUT, SAVE, DELETE
         self.logOutButton.clicked.connect(self.log_out)
@@ -179,10 +182,8 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 func = f"self.task_btn_{i+1}.setProperty"
                 eval(func)("ID", message[i]["id"])
 
-                print("som tu")
                 func = f"self.task_color_{i+1}.setProperty"
                 eval(func)("prior", prior)
-                print("ulozene")
 
     def change_stack_widget(self, index):
         if index == 1:
@@ -224,15 +225,15 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         eval(func)("ID", -1)
 
     def delete_task(self):
-        self.taskDescription.setText("")
-        self.taskNameInput.setText("")
-        self.choosePriority.setCurrentIndex(0)
-        self.dateEdit.setDate(datetime.datetime.now().date())
+        self.error_message(True, "Firstly select a task\nyou wish to delete")
 
         if controller.id != -1:
             message = delete_task_by_id(controller.id)
             if message == "Error":
                 self.error_message(True, "Internal Error")
+                return
+            elif message == "NotFound":
+                self.error_message(True, "Unable to delete task")
                 return
             else:
                 if self.stackedWidget.currentIndex() == 0:
@@ -251,8 +252,13 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     self.empty_task_list()
                     self.load_task_list()
 
+                self.taskDescription.setText("")
+                self.taskNameInput.setText("")
+                self.choosePriority.setCurrentIndex(0)
+                self.dateEdit.setDate(datetime.datetime.now().date())
+
                 controller.id = -1
-                self.error_message(False, "Úloha bola úspešne vymazaná")
+                self.error_message(False, "Task was successfully\ndeleted")
 
     def save_task(self):
         task_name = self.taskNameInput.text()
@@ -262,13 +268,13 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         date = self.date_format(date)
 
         if task_name == "":
-            self.error_message(True, "Zadajte názov úlohy")
+            self.error_message(True, "Enter task name")
             return
         if priority == "None":
-            self.error_message(True, "Zadajte prioritu")
+            self.error_message(True, "Enter priority")
             return
         if len(description) > 256:
-            self.error_message(True, "Maximálna dĺžka opisu je 256 znakov")
+            self.error_message(True, "Maximum length of description\nis 256 characters")
             return
 
         if controller.id != -1:
@@ -278,7 +284,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(False)")
                 result, prior, position = self.check_availibility(priority)
                 if not result:
-                    self.error_message(True, "Nedostatok miesta v matici")
+                    self.error_message(True, "No available space in\nmatrix with given priority")
                     eval(f"self.{controller.prior}_task{controller.position}.setEnabled(True)")
                     eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(True)")
                     return
@@ -310,12 +316,12 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 self.load_task_list()
 
             controller.id = -1
-            self.error_message(False, "Úloha bola úspešne aktualizovaná")
+            self.error_message(False, "Task was successfully\nupdated")
         else:
             result, prior, position = self.check_availibility(priority)
 
             if not result:
-                self.error_message(True, "Žiadne voľné miesto v matici pre danú prioritu")
+                self.error_message(True, "No available space in\nmatrix with given priority")
                 return
             message = create_new_task(task_name, description, priority, date, 0, controller.token)
 
@@ -359,7 +365,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     self.choosePriority.setCurrentIndex(0)
                     self.dateEdit.setDate(datetime.datetime.now().date())
 
-                self.error_message(False, "Úloha bola úspešne uložená")
+                self.error_message(False, "Task was successfully\nsaved")
 
 
     def get_pos(self, prior, id):
@@ -449,9 +455,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             for i in range(len(message)):
                 prior = message[i]["priority"]
                 result, prior, position = self.check_availibility(prior)
-                print(result, prior, position)
                 if not result:
-                    # TODO: chyba
                     return
 
                 eval(f"self.{prior}_task{position}.setEnabled(True)")
@@ -521,7 +525,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         user_name = self.loginUserName.text()
 
         if passwd == "" or user_name == "":
-            self.loginError.setText("Vyplňte všetky potrebné informácie")
+            self.loginError.setText("Fill all boxes")
             self.loginError.setVisible(True)
             return False
 
@@ -532,11 +536,11 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             self.loginError.setVisible(True)
             return False
         elif message == "incorrectPassword":
-            self.loginError.setText("Nesprávne heslo")
+            self.loginError.setText("Incorrect password")
             self.loginError.setVisible(True)
             return False
         elif message == "notFound":
-            self.loginError.setText("Užívateľ so zadaným \nmenom neexistuje")
+            self.loginError.setText("User with given\nusername does not exist")
             self.loginError.setVisible(True)
             return False
         else:
@@ -545,7 +549,14 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
 
     def register_user(self):
         if self.check_registration():
-            print("Bol si uspesne registrovany")
+            multiple_screens.setMinimumSize(1150, 720)
+            multiple_screens.setMaximumSize(1920, 1080)
+            multiple_screens.removeWidget(multiple_screens.widget(1))
+            window = Window()
+            multiple_screens.insertWidget(1, window)
+            multiple_screens.setCurrentIndex(1)
+            multiple_screens.showMaximized()
+            window.load_tasks_data()
 
     def check_registration(self):
         user_name = self.userNameLineEdit.text()
@@ -554,11 +565,11 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         passwd_again = self.registerPasswordAgain.text()
 
         if user_name == "" or email == "" or passwd == "" or passwd_again == "":
-            self.registrationError.setText("Vyplňte všetky potrebné informácie")
+            self.registrationError.setText("Fill all boxes")
             self.registrationError.setVisible(True)
             return False
         elif passwd != passwd_again:
-            self.registrationError.setText("Heslá sa nezhodujú")
+            self.registrationError.setText("Passwords do not match")
             self.registrationError.setVisible(True)
             return False
 
@@ -567,7 +578,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             self.registrationError.setText("Internal Error 500 :(")
             self.registrationError.setVisible(True)
         elif message == "UserExists":
-            self.registrationError.setText("Užívateľ so zadaným \nmenom už existuje")
+            self.registrationError.setText("User with given\nusername already exists")
             self.registrationError.setVisible(True)
             return False
         else:
@@ -575,7 +586,7 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             return True
 
 
-# Application Controller
+# Kontroler
 class Controller:
     max_length = 20
     token = ""
@@ -585,7 +596,6 @@ class Controller:
     task_list = False
 
 
-# Kontroler
 controller = Controller()
 
 # Spustenie aplikacie
@@ -597,6 +607,8 @@ multiple_screens.setWindowFlags(QtCore.Qt.WindowType.CustomizeWindowHint | QtCor
 multiple_screens.insertWidget(0, login_page)
 multiple_screens.insertWidget(1, window)
 multiple_screens.setCurrentIndex(0)
+multiple_screens.setWindowTitle("Brainfree")
+multiple_screens.setWindowIcon(QtGui.QIcon('user/check.png'))
 multiple_screens.showMaximized()
 
 sys.exit(app.exec_())
