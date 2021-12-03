@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QStackedWidget
 import datetime
 import sys
+from PySide2.QtWidgets import QColorDialog
 
 from responsive import Ui_Window
 from login import Ui_LoginPage
@@ -32,6 +33,12 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.homeButton.clicked.connect(lambda: self.change_stack_widget(0))
         self.myTaskButton.clicked.connect(lambda: self.change_stack_widget(1))
         self.guideButton.clicked.connect(lambda: self.change_stack_widget(2))
+
+        # COLOR PICKERS
+        self.colorsDoTasks.clicked.connect(lambda: self.color_picker("do"))
+        self.colorsScheduleTasks.clicked.connect(lambda: self.color_picker("schedule"))
+        self.colorsDelegateTasks.clicked.connect(lambda: self.color_picker("delegate"))
+        self.colorsDeleteTasks.clicked.connect(lambda: self.color_picker("delete"))
 
         # ADD TASKS (+) BUTTONS
         self.addDoTask.clicked.connect(lambda: self.add_prior_task("do"))
@@ -107,6 +114,9 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.errorMessageLabel.setStyleSheet("background-color: rgba(0,0,0,0); border: 0px;")
         self.errorMessageLabel.setText("")
 
+        # MATRIX COLORS
+        self.change_matrix_colors()
+
     def empty_task_list(self):
         for i in range(1, 25):
             eval(f"self.task_color_{i}.setVisible(False)")
@@ -168,13 +178,13 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 eval(f"self.taskdate_{i+1}.setVisible(True)")
 
                 if prior == "Urgent - Important":
-                    color = "rgb(252, 158, 158)"
+                    color = controller.do_color
                 elif prior == "Urgent - Not Important":
-                    color = "rgb(255, 255, 168)"
+                    color = controller.delegate_color
                 elif prior == "Not Urgent - Important":
-                    color = "rgb(166, 166, 255)"
+                    color = controller.schedule_color
                 else:
-                    color = "rgb(164, 255, 164)"
+                    color = controller.delete_color
 
                 eval(f"self.task_color_{i+1}.setStyleSheet(\"background-color: {color};\")")
                 eval(f"self.task_btn_{i+1}.setVisible(True)")
@@ -197,6 +207,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             self.empty_task_list()
             self.load_task_list()
         elif index == 0:
+            self.change_matrix_colors()
             self.init_matrix()
             self.load_tasks_data()
         self.stackedWidget.setCurrentIndex(index)
@@ -480,12 +491,43 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         else:
             self.choosePriority.setCurrentIndex(4)
 
+    def change_matrix_colors(self):
+        self.upLeft.setStyleSheet(f"background-color: {controller.do_color};")
+        self.upRight.setStyleSheet(f"background-color: {controller.schedule_color};")
+        self.downLeft.setStyleSheet(f"background-color: {controller.delegate_color};")
+        self.downRight.setStyleSheet(f"background-color: {controller.delete_color};")
+
+
+    def color_picker(self, prior):
+        qcolor = QColorDialog.getColor()
+        if qcolor.isValid():
+            color_hex = qcolor.name()
+
+            if color_hex == "#ffffff" or color_hex == "#000000" or color_hex == "#ff0000":
+                self.error_message(True, "Pick a different color")
+            else:
+                rgb = color_hex.lstrip('#')
+                rgb = tuple(int(rgb[i:i + 2], 16) for i in (0, 2, 4))
+
+                if prior == "do":
+                    controller.do_color = f"rgb{rgb}"
+                elif prior == "schedule":
+                    controller.schedule_color = f"rgb{rgb}"
+                elif prior == "delegate":
+                    controller.delegate_color = f"rgb{rgb}"
+                else:
+                    controller.delete_color = f"rgb{rgb}"
+
+                self.change_matrix_colors()
+                self.error_message(False, "Color was successfully changed")
+
     @staticmethod
     def log_out():
         multiple_screens.removeWidget(multiple_screens.widget(0))
         loginpage = LoginPage()
         multiple_screens.insertWidget(0, loginpage)
         multiple_screens.setCurrentIndex(0)
+
 
 # Login and Registration Page
 class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
@@ -585,6 +627,11 @@ class Controller:
     prior = ""
     position = -1
     task_list = False
+
+    do_color = "rgb(252, 158, 158)"
+    schedule_color = "rgb(166, 166, 255)"
+    delegate_color = "rgb(255, 255, 168)"
+    delete_color = "rgb(164, 255, 164)"
 
 
 # Spustenie aplikacie
