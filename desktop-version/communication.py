@@ -5,16 +5,6 @@ url = "http://wedevs.sk:8080"
 headers = {'Content-Type': 'application/json; charset=utf-8'}
 
 
-# Check response code
-def check_response_code(code: int) -> bool:
-    if code == 200:
-        return True
-    elif code == 404:  # TODO: vypisat nejaku hlasku
-        return False
-    elif code == 500:  # TODO: vypisat nejaku hlasku
-        return False
-
-
 # Create new user
 # POST http://localhost:8080/users    body: {
 #                                         username : "example",
@@ -51,12 +41,8 @@ def log_in_user(username: str, password: str):
 
     response = requests.post(f"{url}/login", json=user_data, headers=headers, verify=False)
 
-    print(response)
-    print(response.text)
-    # TODO: uzivatel sa prihlasi, mozno nieco vratit z funkcie
     if response.status_code == 200:
         return response.text
-    # TODO: vypisat chybovu hlasku, uzivatel sa neprihlasi
     else:
         return "Error"
 
@@ -66,8 +52,6 @@ def log_in_user(username: str, password: str):
 def find_user(username : str) -> None:
     response = requests.get(f"{url}/users/{username}")
 
-    print(response)
-    print(response.text)
     if response.status_code == 200:
         pass
     else:
@@ -79,8 +63,6 @@ def find_user(username : str) -> None:
 def delete_user(username: str) -> None:
     response = requests.delete(f"{url}/users/{username}")
 
-    print(response)
-    print(response.text)
     if response.status_code == 200:
         pass
     else:
@@ -92,12 +74,9 @@ def delete_user(username: str) -> None:
 def load_user_tasks(username: str):  # zmenit navratovy typ
     response = requests.get(f"{url}/tasks/{username}")
 
-    print(response)
-    print(response.text)
     json_data = "NotFound"
     if response.text != "NotFound":
         json_data = json.loads(response.text)
-    print(json_data)
     if response.status_code == 200:
         return json_data  # response.content
     else:
@@ -112,7 +91,7 @@ def load_user_tasks(username: str):  # zmenit navratovy typ
 #                                         "complete" : 0,
 #                                         "user" : "example"
 #                                     }
-def create_new_task(name: str, info: str, prior: str, date: str, complete: int, username: str) -> None:
+def create_new_task(name: str, info: str, prior: str, date: str, complete: int, username: str):
     task_data = {\
         "name": name,\
         "description": info,\
@@ -124,10 +103,8 @@ def create_new_task(name: str, info: str, prior: str, date: str, complete: int, 
 
     response = requests.post(f"{url}/tasks", json=task_data, headers=headers, verify=False)
 
-    print(response)
-    json_data = json.loads(response.text)
-    print(json_data)
     if response.status_code == 200:
+        json_data = json.loads(response.text)
         return json_data
     else:
         return "Error"
@@ -154,10 +131,8 @@ def update_task(task_id: int, name: str, info: str, prior: str, date: str, compl
 
     response = requests.put(f"{url}/tasks/{task_id}", json=task_data, headers=headers, verify=False)
 
-    print(response)
-    json_data = json.loads(response.text)
-    print(json_data)
     if response.status_code == 200:
+        json_data = json.loads(response.text)
         return json_data
     else:
         return "Error"
@@ -165,11 +140,9 @@ def update_task(task_id: int, name: str, info: str, prior: str, date: str, compl
 
 # Delete all tasks by user
 # DELETE http://localhost:8080/taskByUser/example
-def delete_user_tasks(username : str) -> None:
+def delete_user_tasks(username : str):
     response = requests.delete(f"{url}/taskByUser/{username}")
 
-    print(response)
-    print(response.text)
     if response.status_code == 200:
         pass
     else:
@@ -179,7 +152,7 @@ def delete_user_tasks(username : str) -> None:
 
 # Delete task by id
 #DELETE http://localhost:8080/taskById/1
-def delete_task_by_id(id: str) -> None:
+def delete_task_by_id(id: str):
     response = requests.delete(f"{url}/taskById/{id}")
 
     if response.text == "NotFound":
