@@ -1,13 +1,14 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from login import Ui_LoginPage
+from PyQt5.QtWidgets import QApplication, QStackedWidget
 import datetime
 import sys
-from PyQt5.QtWidgets import QApplication, QStackedWidget
 
 from responsive import Ui_Window
+from login import Ui_LoginPage
 from communication import *
 
 
+# Main Window
 class Window(QtWidgets.QMainWindow, Ui_Window):
     def __init__(self):
         super().__init__()
@@ -20,6 +21,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.RightBar.setTabOrder(self.dateEdit, self.saveTaskButton)
         self.RightBar.setTabOrder(self.saveTaskButton, self.deleteTaskButton)
 
+        # TAB FOCUS - QTEXTEDIT
         self.taskDescription.setTabChangesFocus(True)
 
         # BUTTONS - HOME, TASK LIST, GUIDE, LOG OUT, SAVE, DELETE
@@ -37,7 +39,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.addDelegateTask.clicked.connect(lambda: self.add_prior_task("delegate"))
         self.addDeleteTask.clicked.connect(lambda: self.add_prior_task("delete"))
 
-        # TASKs BUTTONS
+        # TASKS BUTTONS
         self.do_task1_button.clicked.connect(lambda: self.load_task_data(1, self.do_task1_button.property("ID")))
         self.do_task2_button.clicked.connect(lambda: self.load_task_data(2, self.do_task2_button.property("ID")))
         self.do_task3_button.clicked.connect(lambda: self.load_task_data(3, self.do_task3_button.property("ID")))
@@ -67,7 +69,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.delete_task6_button.clicked.connect(lambda: self.load_task_data(6, self.delete_task6_button.property("ID")))
 
         # DATE
-        # TODO: set minimum date
         self.dateEdit.setDate(datetime.datetime.now().date())
 
         # INIT MATRIX
@@ -363,7 +364,6 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
 
     def get_pos(self, prior, id):
-
         for i in range(1, 7):
             if eval(f"{id} == self.{prior}_task{i}_button.property(\"ID\")"):
                 controller.position = i
@@ -395,13 +395,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                         controller.prior = "delete"
                         self.choosePriority.setCurrentIndex(4)
 
-                    #self.get_pos(controller.prior, controller.id)
                     controller.task_list = True
 
                     date = message[i]["deadline"]
                     date_format = datetime.date.fromisoformat(date[:10])
                     self.dateEdit.setDate(date_format)
-
                     break
 
     def load_task_data(self, pos, task_id):
@@ -482,15 +480,15 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         else:
             self.choosePriority.setCurrentIndex(4)
 
-    def log_out(self):
+    @staticmethod
+    def log_out():
         multiple_screens.removeWidget(multiple_screens.widget(0))
         loginpage = LoginPage()
         multiple_screens.insertWidget(0, loginpage)
         multiple_screens.setCurrentIndex(0)
 
-
+# Login and Registration Page
 class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
-
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -580,7 +578,6 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             return True
 
 
-# Kontroler
 class Controller:
     max_length = 20
     token = ""
@@ -590,19 +587,20 @@ class Controller:
     task_list = False
 
 
-controller = Controller()
-
 # Spustenie aplikacie
-app = QApplication(sys.argv)
-login_page = LoginPage()
-window = Window()
-multiple_screens = QStackedWidget()
-multiple_screens.setWindowFlags(QtCore.Qt.WindowType.CustomizeWindowHint | QtCore.Qt.WindowType.WindowCloseButtonHint | QtCore.Qt.WindowType.WindowMinimizeButtonHint)
-multiple_screens.insertWidget(0, login_page)
-multiple_screens.insertWidget(1, window)
-multiple_screens.setCurrentIndex(0)
-multiple_screens.setWindowTitle("Brainfree")
-multiple_screens.setWindowIcon(QtGui.QIcon('user/check.png'))
-multiple_screens.showMaximized()
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    controller = Controller()
+    login_page = LoginPage()
+    window = Window()
+
+    multiple_screens = QStackedWidget()
+    multiple_screens.setWindowFlags(QtCore.Qt.WindowType.CustomizeWindowHint | QtCore.Qt.WindowType.WindowCloseButtonHint | QtCore.Qt.WindowType.WindowMinimizeButtonHint)
+    multiple_screens.insertWidget(0, login_page)
+    multiple_screens.insertWidget(1, window)
+    multiple_screens.setCurrentIndex(0)
+    multiple_screens.setWindowTitle("Brainfree")
+    multiple_screens.setWindowIcon(QtGui.QIcon('user/check.png'))
+    multiple_screens.showMaximized()
 
 sys.exit(app.exec_())
