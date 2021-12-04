@@ -19,7 +19,7 @@ Webova verzia bola vytvorena Daliborom Králikom (xkrali20)
             Mozete si uzivatelky ucet vytvorit alebo pouzit uzivatelsky ucet, pomocou ktoreho sa vyvijala webova aplikacia. 
             Username: example1
             Password: example1
-    2. online webova verzia aplikacie sa nachadza na: http://www.stud.fit.vutbr.cz/~xkrali20/brainfree/
+    2. online webova verzia aplikacie sa nachadza na: http://www.stud.fit.vutbr.cz/~xkrali20/brainfree/web-version/
         - Je potrebne web otvarat s protokolom http a nie s protokolom https. Pri protokole https vznikne problem v komunikaci s databazou, pretoze AJAX requesty podporuju iba http komunikaciu a nie https.
 
 
