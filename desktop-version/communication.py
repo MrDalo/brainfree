@@ -1,3 +1,10 @@
+##
+#   @file communication.py
+#
+#   @brief Contains communication with server and database
+#   @author Partik Sehnoutek, xsehno01
+#
+
 import requests
 import json
 
@@ -5,12 +12,14 @@ url = "http://wedevs.sk:8080"
 headers = {'Content-Type': 'application/json; charset=utf-8'}
 
 
-# Create new user
-# POST http://localhost:8080/users    body: {
-#                                         username : "example",
-#                                         password : "example",
-#                                         email : "example"
-#                                     }
+## Function find_user
+# @brief Sends request to create a new user in database
+#
+# @param username User name
+# @param password User Password
+# @param email User email address
+#
+# @return Returns response text or Error if request was not successful
 def create_new_user(username: str, password: str, email: str):
     new_user = {\
         "username": username,\
@@ -20,19 +29,19 @@ def create_new_user(username: str, password: str, email: str):
 
     response = requests.post(f"{url}/users", json=new_user, headers=headers, verify=False)
 
-    print(response)
-    print(response.text)
     if response.status_code == 200:
         return response.text
     else:
         return "Error"
 
 
-# Log in user
-# POST http://localhost:8080/login    body: {
-#                                         username: "example"
-#                                         password: "example"
-#                                     }
+## Function log_in_user
+# @brief Sends request to log user to application
+#
+# @param username User name
+# @param password User password
+#
+# @return Returns response text or Error if request was not successful
 def log_in_user(username: str, password: str):
     user_data = {\
         "username": username,\
@@ -47,50 +56,68 @@ def log_in_user(username: str, password: str):
         return "Error"
 
 
-# Find user by username /users/{username}
-# GET http://localhost:8080/users/example
-def find_user(username : str) -> None:
+## Function find_user
+# @brief Sends request to find user from database
+#
+# @param username User name
+#
+# @return Returns response text or Error if request was not successful
+def find_user(username: str):
     response = requests.get(f"{url}/users/{username}")
 
     if response.status_code == 200:
-        pass
+        return response.text
     else:
-        pass
+        "Error"
 
 
-# Delete user
-# DELETE http://localhost:8080/users/example
-def delete_user(username: str) -> None:
+## Function delete_user
+# @brief Sends request to delete user from database
+#
+# @param username User name
+#
+# @return Returns response text or Error if request was not successful
+def delete_user(username: str):
     response = requests.delete(f"{url}/users/{username}")
 
     if response.status_code == 200:
-        pass
+        return response.text
     else:
-        pass
+        "Error"
 
 
-# Load user tasks /tasks
-# GET http://localhost:8080/tasks/example
-def load_user_tasks(username: str):  # zmenit navratovy typ
+## Function load_user_tasks
+# @brief Sends request to load all user tasks data
+#
+# @param username User name
+# @param password User password
+#
+# @return Returns response text in a json format or Error
+# if request was not successful
+def load_user_tasks(username: str):
     response = requests.get(f"{url}/tasks/{username}")
 
     json_data = "NotFound"
     if response.text != "NotFound":
         json_data = json.loads(response.text)
     if response.status_code == 200:
-        return json_data  # response.content
+        return json_data
     else:
-        return "Error"  # chyba
+        return "Error"
 
-# Create new tasks
-# POST http://localhost:8080/tasks    body: {
-#                                         "name" : "example",
-#                                         "description" : "example",
-#                                         "priority" : "example",
-#                                         "deadline" : "1111-11-11",
-#                                         "complete" : 0,
-#                                         "user" : "example"
-#                                     }
+
+## Function create_new_task
+# @brief Sends request to create a new task in database
+#
+# @param name Task name
+# @param info Task Description
+# @param prior Task priority
+# @param date Task deadline
+# @param complete Completed/Incompleted task
+# @param username User name
+#
+# @return Returns response text in a json format or Error
+# if request was not successful
 def create_new_task(name: str, info: str, prior: str, date: str, complete: int, username: str):
     task_data = {\
         "name": name,\
@@ -110,15 +137,19 @@ def create_new_task(name: str, info: str, prior: str, date: str, complete: int, 
         return "Error"
 
 
-# Update task
-#PUT http://localhost:8080/tasks/1   body: {
-#                                        "name" : "example",
-#                                        "description" : "example",
-#                                        "priority" : "example",
-#                                        "deadline" : "1111-11-11",
-#                                        "complete" : 0
-#                                        "user" : "example"
-#                                    }
+## Function update_task
+# @brief Sends request to update task data in database
+#
+# @param task_id Task ID
+# @param name Task name
+# @param info Task Description
+# @param prior Task priority
+# @param date Task deadline
+# @param complete Completed/Incompleted task
+# @param username User name
+#
+# @return Returns response text in a json format or Error
+# if request was not successful
 def update_task(task_id: int, name: str, info: str, prior: str, date: str, complete: int, username: str):
     task_data = {\
         "name": name,\
@@ -138,22 +169,30 @@ def update_task(task_id: int, name: str, info: str, prior: str, date: str, compl
         return "Error"
 
 
-# Delete all tasks by user
-# DELETE http://localhost:8080/taskByUser/example
-def delete_user_tasks(username : str):
+## Function delete_user_tasks
+# @brief Sends request to delete all user tasks
+#
+# @param username User name
+#
+# @return Returns response text or Error if request was not successful
+def delete_user_tasks(username: str):
     response = requests.delete(f"{url}/taskByUser/{username}")
 
     if response.status_code == 200:
-        pass
+        return response.text
     else:
-        pass
+        return "Error"
 
 
-
-# Delete task by id
-#DELETE http://localhost:8080/taskById/1
-def delete_task_by_id(id: str):
-    response = requests.delete(f"{url}/taskById/{id}")
+## Function delete_task_by_id
+# @brief Sends request to delete a task with the given ID
+#
+# @param task_id Task ID
+#
+# @return Returns response text in a json format or Error
+# if request was not successful
+def delete_task_by_id(task_id: int):
+    response = requests.delete(f"{url}/taskById/{task_id}")
 
     if response.text == "NotFound":
         return response.text

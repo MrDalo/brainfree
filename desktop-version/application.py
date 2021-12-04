@@ -1,3 +1,10 @@
+##
+#   @file application.py
+#
+#   @brief Contains functionality of GUI
+#   @author Partik Sehnoutek, xsehno01
+#
+
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QStackedWidget
 import datetime
@@ -9,8 +16,14 @@ from login import Ui_LoginPage
 from communication import *
 
 
-# Main Window
+##
+# @brief Class Window contains initialization and button methods
+#
 class Window(QtWidgets.QMainWindow, Ui_Window):
+    ## Method __init__
+    # @brief Function for initialization
+    #
+    # @param self The object pointer.
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -117,12 +130,20 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         # MATRIX COLORS
         self.change_matrix_colors()
 
+    ## Method empty_task_list
+    # @brief Hides tasks from the Task List
+    #
+    # @param self The object pointer.
     def empty_task_list(self):
         for i in range(1, 25):
             eval(f"self.task_color_{i}.setVisible(False)")
             eval(f"self.task_btn_{i}.setVisible(False)")
             eval(f"self.taskdate_{i}.setVisible(False)")
 
+    ## Method init_matrix
+    # @brief Disables all buttons in the matrix
+    #
+    # @param self The object pointer.
     def init_matrix(self):
         for i in range(1, 7):
             style = "\"border: 1px dashed;\" \"border-color: red;\" \"border-radius: 10px;\""
@@ -147,11 +168,21 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             eval(f"self.delete_task{i}_button.setEnabled(False)")
             eval(f"self.delete_task{i}_button.setText(\"\")")
 
+    ## Static Method date_format
+    # @brief Changes date format to database's date format
+    #
+    # @param date String representation of a date
     @staticmethod
     def date_format(date):
         new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
         return new_format
 
+    ## Method error_message
+    # @brief Displays messages to user
+    #
+    # @param self The object pointer.
+    # @param error True if error, False if not
+    # @param text Error message
     def error_message(self, error, text):
         if error:
             style = "background-color: rgba(255,0,0,1);"
@@ -161,47 +192,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         self.errorMessageLabel.setStyleSheet(style)
         self.errorMessageLabel.setText(text)
 
-    def load_task_list(self):
-        self.empty_task_list()
-        message = load_user_tasks(controller.token)
-
-        if message == "Error":
-            self.error_message(True, "Internal Error")
-            return
-        elif message == "NotFound":
-            return
-        else:
-            for i in range(len(message)):
-                prior = message[i]["priority"]
-                eval(f"self.task_color_{i+1}.setVisible(True)")
-                eval(f"self.task_btn_{i+1}.setVisible(True)")
-                eval(f"self.taskdate_{i+1}.setVisible(True)")
-
-                if prior == "Urgent - Important":
-                    color = controller.do_color
-                elif prior == "Urgent - Not Important":
-                    color = controller.delegate_color
-                elif prior == "Not Urgent - Important":
-                    color = controller.schedule_color
-                else:
-                    color = controller.delete_color
-
-                eval(f"self.task_color_{i+1}.setStyleSheet(\"background-color: {color};\")")
-                eval(f"self.task_btn_{i+1}.setVisible(True)")
-                eval(f"self.taskdate_{i+1}.setVisible(True)")
-
-                name = message[i]["name"]
-                eval(f"self.task_btn_{i+1}.setText(\"{name}\")")
-
-                date = message[i]["deadline"][:10]
-                eval(f"self.taskdate_{i+1}.setText(\"{date}\")")
-
-                func = f"self.task_btn_{i+1}.setProperty"
-                eval(func)("ID", message[i]["id"])
-
-                func = f"self.task_color_{i+1}.setProperty"
-                eval(func)("prior", prior)
-
+    ## Method change_stack_widget
+    # @brief Changes the middle widget of Main Window
+    #
+    # @param self The object pointer.
+    # @param index Index of a window from the StackedWidget
     def change_stack_widget(self, index):
         if index == 1:
             self.empty_task_list()
@@ -212,6 +207,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
             self.load_tasks_data()
         self.stackedWidget.setCurrentIndex(index)
 
+    ## Method delete_task_from_matrix
+    # @brief Checks available space in matrix with the given priority
+    #
+    # @param self The object pointer.
+    # @param task_prior Task priority
     def check_availibility(self, task_prior):
         prior = ""
         if task_prior == "Urgent - Important":
@@ -230,6 +230,10 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
         return False, "", -1
 
+    ## Method delete_task_from_matrix
+    # @brief Deletes a task from the matrix
+    #
+    # @param self The object pointer.
     def delete_task_from_matrix(self):
         eval(f"self.{controller.prior}_task{controller.position}.setEnabled(False)")
         eval(f"self.{controller.prior}_task{controller.position}_button.setEnabled(False)")
@@ -242,6 +246,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         func = f"self.{controller.prior}_task{controller.position}_button.setProperty"
         eval(func)("ID", -1)
 
+    ## Method delete_task
+    # @brief Collects data about a particular task and sends them to
+    # communication.py in order to delete the task in the database
+    #
+    # @param self The object pointer.
     def delete_task(self):
         self.error_message(True, "Firstly select a task\nyou wish to delete")
 
@@ -278,6 +287,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 controller.id = -1
                 self.error_message(False, "Task was successfully\ndeleted")
 
+    ## Method save_task
+    # @brief Collects data about a particular task and sends them to
+    # communication.py in order to create or update the task in the database
+    #
+    # @param self The object pointer.
     def save_task(self):
         task_name = self.taskNameInput.text()
         description = self.taskDescription.toPlainText()
@@ -373,12 +387,68 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
                 self.error_message(False, "Task was successfully\nsaved")
 
+    ## Method load_task_list
+    # @brief Loads all tasks data to Task list
+    #
+    # @param self The object pointer.
+    def load_task_list(self):
+        self.empty_task_list()
+        message = load_user_tasks(controller.token)
 
+        if message == "Error":
+            self.error_message(True, "Internal Error")
+            return
+        elif message == "NotFound":
+            return
+        else:
+            for i in range(len(message)):
+                prior = message[i]["priority"]
+                eval(f"self.task_color_{i+1}.setVisible(True)")
+                eval(f"self.task_btn_{i+1}.setVisible(True)")
+                eval(f"self.taskdate_{i+1}.setVisible(True)")
+
+                if prior == "Urgent - Important":
+                    color = controller.do_color
+                elif prior == "Urgent - Not Important":
+                    color = controller.delegate_color
+                elif prior == "Not Urgent - Important":
+                    color = controller.schedule_color
+                else:
+                    color = controller.delete_color
+
+                eval(f"self.task_color_{i+1}.setStyleSheet(\"background-color: {color};\")")
+                eval(f"self.task_btn_{i+1}.setVisible(True)")
+                eval(f"self.taskdate_{i+1}.setVisible(True)")
+
+                name = message[i]["name"]
+                eval(f"self.task_btn_{i+1}.setText(\"{name}\")")
+
+                date = message[i]["deadline"][:10]
+                eval(f"self.taskdate_{i+1}.setText(\"{date}\")")
+
+                func = f"self.task_btn_{i+1}.setProperty"
+                eval(func)("ID", message[i]["id"])
+
+                func = f"self.task_color_{i+1}.setProperty"
+                eval(func)("prior", prior)
+
+    ## Method get_pos
+    # @brief Changes position variable in Controller according to task's
+    # priority and ID
+    #
+    # @param self The object pointer.
+    # @param prior Task priority
+    # @param task_id Integer value of task ID
     def get_pos(self, prior, id):
         for i in range(1, 7):
             if eval(f"{id} == self.{prior}_task{i}_button.property(\"ID\")"):
                 controller.position = i
 
+    ## Method load_list_task_data
+    # @brief Loads data of a clicked task button to the Left Bar
+    #
+    # @param self The object pointer.
+    # @param task_id Integer value of task ID
     def load_list_task_data(self, task_id):
         message = load_user_tasks(controller.token)
 
@@ -413,6 +483,12 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     self.dateEdit.setDate(date_format)
                     break
 
+    ## Method load_task_data
+    # @brief Loads task data after a particular task button was clicked
+    #
+    # @param self The object pointer.
+    # @param pos Position of a particular button in the matrix
+    # @param task_id Integer value of task ID
     def load_task_data(self, pos, task_id):
         message = load_user_tasks(controller.token)
 
@@ -446,6 +522,10 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                     controller.position = pos
                     break
 
+    ## Method color_picker
+    # @brief Loads all tasks data to matrix
+    #
+    # @param self The object pointer.
     def load_tasks_data(self):
         message = load_user_tasks(controller.token)
 
@@ -477,6 +557,11 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 func = f"self.{prior}_task{position}_button.setProperty"
                 eval(func)("ID", message[i]["id"])
 
+    ## Method add_prior_task
+    # @brief Autocompletes a priority in Left Bar
+    #
+    # @param self The object pointer.
+    # @param msg Button's parameter
     def add_prior_task(self, msg):
         controller.id = -1
         self.taskDescription.setText("")
@@ -491,13 +576,21 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         else:
             self.choosePriority.setCurrentIndex(4)
 
+    ## Method change_matrix_colors
+    # @brief Changes colors of backgrounds in a matrix
+    #
+    # @param self The object pointer.
     def change_matrix_colors(self):
         self.upLeft.setStyleSheet(f"background-color: {controller.do_color};")
         self.upRight.setStyleSheet(f"background-color: {controller.schedule_color};")
         self.downLeft.setStyleSheet(f"background-color: {controller.delegate_color};")
         self.downRight.setStyleSheet(f"background-color: {controller.delete_color};")
 
-
+    ## Method color_picker
+    # @brief Opens a color picker window
+    #
+    # @param self The object pointer.
+    # @param prior Task priority
     def color_picker(self, prior):
         qcolor = QColorDialog.getColor()
         if qcolor.isValid():
@@ -521,6 +614,8 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 self.change_matrix_colors()
                 self.error_message(False, "Color was successfully changed")
 
+    ## Static method check_registration
+    # @brief Logouts user and loads Login and Registration Page
     @staticmethod
     def log_out():
         multiple_screens.removeWidget(multiple_screens.widget(0))
@@ -529,8 +624,14 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
         multiple_screens.setCurrentIndex(0)
 
 
-# Login and Registration Page
+##
+# @brief Class LoginPage contains initialization and button methods
+#
 class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
+    ## Method __init__
+    # @brief Function for initialization
+    #
+    # @param self The object pointer.
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -543,6 +644,10 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
         self.loginBtn.clicked.connect(self.log_in)
         self.registerBtn.clicked.connect(self.register_user)
 
+    ## Method log_in
+    # @brief Loads MainWindow if login was successful
+    #
+    # @param self The object pointer.
     def log_in(self):
         if self.check_login():
             multiple_screens.setMinimumSize(1150, 720)
@@ -554,6 +659,10 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             multiple_screens.showMaximized()
             window.load_tasks_data()
 
+    ## Method check_registration
+    # @brief Checks if login was successful
+    #
+    # @param self The object pointer.
     def check_login(self):
         passwd = self.loginPassword.text()
         user_name = self.loginUserName.text()
@@ -581,6 +690,10 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             controller.token = message[10:len(message)-2]
             return True
 
+    ## Method register_user
+    # @brief Loads MainWindow if registration was successful
+    #
+    # @param self The object pointer.
     def register_user(self):
         if self.check_registration():
             multiple_screens.setMinimumSize(1150, 720)
@@ -592,6 +705,10 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             multiple_screens.showMaximized()
             window.load_tasks_data()
 
+    ## Method check_registration
+    # @brief Checks if registration was successful
+    #
+    # @param self The object pointer.
     def check_registration(self):
         user_name = self.userNameLineEdit.text()
         email = self.registerEmail.text()
@@ -620,6 +737,10 @@ class LoginPage(QtWidgets.QMainWindow, Ui_LoginPage):
             return True
 
 
+##
+# @brief Class Controller contains variables for controlling
+# application
+#
 class Controller:
     max_length = 20
     token = ""
@@ -634,7 +755,7 @@ class Controller:
     delete_color = "rgb(164, 255, 164)"
 
 
-# Spustenie aplikacie
+# Execute application
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     controller = Controller()
