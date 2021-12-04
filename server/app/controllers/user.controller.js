@@ -1,3 +1,8 @@
+/**
+ * @file user.controller.js
+ * @author Adam Kulla
+ * @bief Subor, ktory sluzi ako controller pre uzivatelov v DB - pracu s nimi
+ */
 const User = require("../models/user.model.js");
 
 exports.create = (req, res) => {

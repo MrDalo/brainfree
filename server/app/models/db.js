@@ -1,3 +1,8 @@
+/**
+ * @file db.js
+ * @author Adam Kulla
+ */
+
 const mysql = require("mysql2");
 //const Pool = require("mysql2/typings/mysql/lib/Pool");
 const db = require("../config/db.config.js");

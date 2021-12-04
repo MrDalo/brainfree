@@ -1,3 +1,13 @@
+/**
+ * Project: ITU2021
+ * @file script.js
+ * @author Dalibor Králik
+ * @brief JS file, ktory sa stara o index.html - logovanie uzivatelov, tvorba novych uzivatelov
+ * 
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 function createXmlHttpRequestObject()
 {
     var request;
@@ -31,6 +41,10 @@ function createXmlHttpRequestObject()
 
 let errorMssg;
 
+/**
+ * 
+ * @brief Funkcia, ktora sa stara o logovanie uzivatelov, posiela request na databazu pomocou AJAX. Osetruje spravne zadane udaje uzivatela pri loggingu
+ */
 function loginFormAction(){
     let name = document.getElementById("userNameLog");
     let password = document.getElementById("passwdLogin");
@@ -56,7 +70,7 @@ function loginFormAction(){
         {
             
             if(request.responseText == "notFound"){
-                console.log("Account doesnt exist");
+                //console.log("Account doesnt exist");
                 errorMssg = "Account doesnt exist";
                 
                 errorDiv.innerHTML = errorMssg;
@@ -66,7 +80,7 @@ function loginFormAction(){
                 }, 3000);
             }
             else if(request.responseText == "incorrectPassword"){
-                console.log("Incorrect password");
+                //console.log("Incorrect password");
                 errorMssg = "Incorrect password";                
                 errorDiv.innerHTML = errorMssg;
                 errorDiv.classList.add("visible");
@@ -76,7 +90,7 @@ function loginFormAction(){
                 
             }
             else if(request.responseText == "RequestEmpty"){
-                console.log("Requests fields are empty");
+                //console.log("Requests fields are empty");
                 errorMssg = "Empty login field";                
                 errorDiv.innerHTML = errorMssg;
                 errorDiv.classList.add("visible");
@@ -86,7 +100,7 @@ function loginFormAction(){
                 
             }
                 else{
-                    console.log("log in");
+                    //console.log("log in");
                     sessionStorage.setItem("token", name.value);
                     window.location.replace(window.location.href.replace('index.html', '')+ "user/index.html");     
                 }
@@ -110,6 +124,11 @@ function loginFormAction(){
     }
     
     
+
+    /**
+     * 
+     * @brief Funkcia, ktora zabezpecuje spravne vytvorenie noveho uzivatela. Posiela data na databazu pomocou AJAX requestov. Kontroluje vsetky potrebne udaje o uzivatelovi
+     */
     function createUser(){
         var request = createXmlHttpRequestObject();
 
@@ -120,7 +139,7 @@ function loginFormAction(){
     let errorDiv = document.getElementById("errorDiv");
     
     if(userpasswd != userpasswd2){
-        console.log("Passwords are not same");
+        //console.log("Passwords are not same");
         errorMssg = "Passwords are not same";
         errorDiv.innerHTML = errorMssg;
         errorDiv.classList.add("visible");
@@ -131,7 +150,8 @@ function loginFormAction(){
     }
     
     if(username == "" || userpasswd == "" || useremail == ""){
-        console.log("Empty input fields");
+        
+        //console.log("Empty input fields");
         errorMssg = "Empty input fields";
         errorDiv.innerHTML = errorMssg;
         errorDiv.classList.add("visible");
@@ -147,7 +167,7 @@ function loginFormAction(){
         {
             if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK
             {
-                console.log(request.responseText);
+                //console.log(request.responseText);
                 if(request.responseText == "RequestEmpty"){
                     errorMssg = "Empty input fields";
                     errorDiv.innerHTML = errorMssg;
@@ -158,7 +178,7 @@ function loginFormAction(){
                     
                 }
                 else if(request.responseText == "UserExists"){
-                    console.log("User already exists");
+                    //console.log("User already exists");
                     errorMssg = "User already exists";
                     errorDiv.innerHTML = errorMssg;
                     errorDiv.classList.add("visible");
@@ -170,7 +190,7 @@ function loginFormAction(){
                 else{
                     sessionStorage.setItem("token", username);
                     window.location.replace(window.location.href.replace('index.html', '')+ "user/index.html");
-                    console.log("User created");
+                    //console.log("User created");
                 }
             }
         }
@@ -182,7 +202,9 @@ function loginFormAction(){
 
 
 
-
+/**
+ * @brief Funkcia, ktora schovava logging form
+ */
 function closeForm(){
     document.getElementById("logForm").classList.add("hide");
     document.getElementById("loginForm").classList.add("hide");
@@ -191,22 +213,37 @@ function closeForm(){
 
 }
 
+/**
+ * 
+ * @brief Funkcia, ktora zobrazuje logging form 
+ */
 function openForm(object){
     document.getElementById("logForm").classList.remove("hide");
     document.getElementById(object).classList.remove("hide");
 }
 
-
+/**
+ * @brief Funkcia, ktora vklada SVG obrazok. Obrazok je ulozeny v JS aby v index.html nezneprehladnil kod
+ */
 function createClock(){
     document.getElementById("timeCircle").innerHTML=clockSVGImg;
 }
 
+/**
+ * @brief Funkcia zistuje, ci sa objekt nachadza vo viewporte uzivatela
+ * @param  element Objekt, s ktorm pracujeme a pytame sa ci je vo Viewporte uzivatela - teda ci je zobrazeny na obrazovke uzivatela 
+ * @param  offset Offset, s ktorym pracujeme vo vyslednok vzorci 
+ * 
+ */
 function isInViewport(element, offset){
     const rect = element.getBoundingClientRect();
     return ((window.innerHeight || document.documentElement.clientHeight) - offset - rect.top > 0 && rect.bottom - offset > 0); 
 }
 
 
+/**
+ * @brief Funkcia, ktora sa vykona na uzivatelsky scroll
+ */
 window.addEventListener("scroll", ()=>{
     if(isInViewport(document.getElementById("lastBottomPart"), 0)){
         
@@ -214,11 +251,7 @@ window.addEventListener("scroll", ()=>{
         const rect = document.getElementById("lastBottomPart").getBoundingClientRect();
         //console.log("yes: "+ valueOfScroll+ "Rect top: "+document.getElementById("lastBottomPart").offsetTop);
         
-        
-
-
-
-        lines.forEach(line=>{
+            lines.forEach(line=>{
             line.style.transform = `translateY(${+(valueOfScroll-2500) * 0.25}px)`;
         })
 

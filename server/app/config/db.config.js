@@ -1,3 +1,10 @@
+/**
+ * @file db.config.js
+ * @author Adam Kulla
+ * @bief Subor, ktory sluzi konfiguracia databazy
+ */
+
+
 module.exports = {
     host: "localhost",
     port: "3306",

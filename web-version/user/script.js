@@ -1,3 +1,14 @@
+/**
+ * Project: ITU2021
+ * @file /user/script.js
+ * @author Dalibor Králik
+ * @brief JS file, ktory sa stara o /user/index.html - uzivatelske akcie na tejto stranke, komunikacia so serverom/requesty
+ * 
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 let userName = sessionStorage.getItem("token");
 let errorMssg;
 let errorDiv = document.getElementById("errorDiv");
@@ -33,14 +44,11 @@ function createXmlHttpRequestObject()
 }
 
 
-function checkTest(){
-    let taskComplete = document.getElementById("taskCompleteCheckbox").checked;
-    
-    //console.log(taskComplete);
-    
-}
 
-
+/**
+ * @brief Funkcia updatuje vlastnosti tasku na zaklade uzivatelkych akcii
+ * @param  taskID - ID tasku, ktory ma by updatnuty 
+ */
 function updateTask(taskID){
     try{
         let request = createXmlHttpRequestObject();
@@ -117,6 +125,11 @@ function updateTask(taskID){
 
 }
 
+/**
+ * 
+ * @brief Funkcia, ktora sa stara o posielanie dat na databazu, Pouziva pre to AJAX requesty
+ */
+
 function dataTaskSend(){
     try{
         var request = createXmlHttpRequestObject();
@@ -127,6 +140,7 @@ function dataTaskSend(){
         let taskDescription = document.getElementById("taskDescription").value;
         let taskPriority = document.getElementById("priorityList").value;
         let taskDeadline = document.getElementById("calendar").value;
+        //console.log(taskDeadline);
         let taskComplete = document.getElementById("taskCompleteCheckbox").checked;
         let taskOwner = userName;
         let arrayOfKvadrants = document.getElementsByClassName("matrixKvadrant");
@@ -322,6 +336,10 @@ function dataTaskSend(){
 }
 
 
+/**
+ * @brief funkcia sa stara o spravne umiestnenie a vykreslenie taskov po loade stranky, natahane data z DB dostane v premennej arrayOfTasks a potom ich postupne ulozi podla ich parametrov
+ * @param  arrayOfTasks  - pole taskov, ktore sme dostali pomocou AJAX requestu z databazy na VPS
+ */
 
 function showLoadedTasks(arrayOfTasks){
     let matrixes = document.getElementsByClassName("contentOfMatrix");
@@ -341,10 +359,10 @@ function showLoadedTasks(arrayOfTasks){
             if(parseInt(doMatrix.dataset.numberoftasks)  == 6){
                 errorMssg = "Too much tasks in do matrix";
                 //TODO vypisat errorMssg
-                console.log(errorMssg);
+                //console.log(errorMssg);
             }
             else{
-                console.log(doMatrix);
+                //console.log(doMatrix);
                 doMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
                 doMatrix.dataset.numberoftasks = (parseInt(doMatrix.dataset.numberoftasks)+1);
                 //console.log("do"+ doMatrix.dataset.numberoftasks);
@@ -362,7 +380,7 @@ function showLoadedTasks(arrayOfTasks){
             if(parseInt(scheduleMatrix.dataset.numberoftasks)  == 6){
                 errorMssg = "Too much tasks in delegate matrix";
                 //TODO vypisat errorMssg
-                console.log(errorMssg);
+                //console.log(errorMssg);
             }
             else{
                 scheduleMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
@@ -381,7 +399,7 @@ function showLoadedTasks(arrayOfTasks){
             if(parseInt(delegateMatrix.dataset.numberoftasks)  == 6){
                 errorMssg = "Too much tasks in schedule matrix";
                 //TODO vypisat errorMssg
-                console.log(errorMssg);
+                //console.log(errorMssg);
             }
             else{
                 delegateMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
@@ -399,7 +417,7 @@ function showLoadedTasks(arrayOfTasks){
             if(parseInt(deleteMatrix.dataset.numberoftasks)  == 6){
                 errorMssg = "Too much tasks in delete matrix";
                 //TODO vypisat errorMssg
-                console.log(errorMssg);
+                //console.log(errorMssg);
             }
             else{
                 deleteMatrix.innerHTML += `<div class="task" data-id=${arrayOfTasks[i].id} onclick="selectedTask(this)">${arrayOfTasks[i].name}</div>`
@@ -417,6 +435,11 @@ function showLoadedTasks(arrayOfTasks){
     
 
 }
+
+
+/**
+ * @brief Funkcia, ktora sa vykona na load stranky. Poziada a nataha vsetky tasky daneho usera z databazy pomocou AJAX requestu
+ */
 
 window.addEventListener('load', ()=>{
     
@@ -438,7 +461,7 @@ window.addEventListener('load', ()=>{
                 else{
                     let pole = JSON.parse(data.responseText);
                         
-                        console.log(pole);
+                        //console.log(pole);
                     showLoadedTasks(pole);
 
                 }
@@ -453,7 +476,10 @@ window.addEventListener('load', ()=>{
 });
 
 
-
+/**
+ * @brief Funkcia, ktora sa vyvola po kliknuti na nejaky task v matici. Zabezpecuje ziskanie informacii o tasku z databazy a ulozenie tychto informacii do Task Manageru
+ * @param element - HTML element, ktory zavolal danu funkciu. Obsahuje ID tasku, na zaklade ktoreho vyhladavame dany task 
+ */
 function selectedTask(element){
     //console.log(element.dataset.id);
     try{
@@ -475,8 +501,9 @@ function selectedTask(element){
                             document.getElementById("priorityList").value = pole[i].priority;
                             //Preformatovany deadline, DB vratil aj hodingy a minuty, tak som to musel odseknut
                             document.getElementById("calendar").value = pole[i].deadline.substr(0,10);
+                            //console.log(pole[i].deadline);
                             document.getElementById("inputForm").dataset.taskid = pole[i].id;
-                            console.log(document.getElementById("inputForm").dataset.taskid);
+                            //console.log(document.getElementById("inputForm").dataset.taskid);
                         }
             
                     }    
@@ -494,23 +521,120 @@ function selectedTask(element){
 
 }
 
+/**
+ * @brief Funkcia, ktora sa stara o vymazanie zvoleneho tasku, ktoreho informacie sa nachadzaju v Task Manageri.
+ *          Robi to pomocou AJAX requestov na databazu
+ */
+
+function deleteTask(){
+    taskId = document.getElementById("inputForm").dataset.taskid;
+    if(taskId == "0"){
+        errorMssg = "Deleting not selected task";
+        //TODO vypisat do chyboveho okienka
+        errorDiv.innerHTML = errorMssg;
+        errorDiv.style.backgroundColor = "red";
+        errorDiv.classList.add("visible");
+        setTimeout(()=>{
+            errorDiv.classList.remove("visible");
+        }, 3000);
+        return;
+    } 
+    
+    try{
+        let data = createXmlHttpRequestObject();
+        
+        data.open("DELETE", `http://wedevs.sk:8080/taskById/${taskId}`, true);
+        data.onreadystatechange = function(){
+            if ((data.readyState == 4) && (data.status == 200)){
+                if(data.responseText == "NotFound"){
+                    errorMssg="Task was not found";
+                    errorDiv.style.backgroundColor = "red";
+                    errorDiv.innerHTML = errorMssg;
+                    errorDiv.classList.add("visible");
+                    setTimeout(()=>{
+                        errorDiv.classList.remove("visible");
+                    }, 3000);
+                    return;
+                    //TODO vypisat do chyboveh boxu
+                    
+                }
+                else{
+                    errorMssg="Task was successfully deleted";
+                    //console.log(errorMssg);
+                    let matrixElements = document.getElementsByClassName("task");
+                    Array.from(matrixElements).forEach(element=>{
+                        if(element.dataset.id == taskId){
+                            let matrix = element.parentNode;
+                            matrix.dataset.numberoftasks = parseInt(matrix.dataset.numberoftasks)-1; 
+                            element.remove();
+                            errorMssg = "Task deleted successfully";
+                            errorDiv.style.backgroundColor = "green";
+                            errorDiv.innerHTML = errorMssg;
+                            errorDiv.classList.add("visible");
+                            setTimeout(()=>{
+                                errorDiv.classList.remove("visible");
+                            }, 3000);
+                            
+                        }
+                        
+                    });
+                    
+                    document.getElementById("taskName").value = "";
+                    document.getElementById("taskDescription").value = "";
+                    //document.getElementById("priorityList").value = ""
+                    document.getElementById("calendar").value = "";
+                    document.getElementById("inputForm").dataset.taskid = "0";
+                    
+                    //TODO vymazanie z tasklistu
+                    let tableElements = document.getElementsByTagName("tr");
+                    Array.from(tableElements).forEach(element=>{
+                        if(element.dataset.id == taskId){
+                            element.remove();
+                        }
+                    });
+                }
+            }
+        }
+        
+        data.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        data.send();
+        
+    }
+    catch(e){
+    }
+    
+}
+
 
 function getData(){
    return false;
 }
 
-
+/**
+ * @brief Funkcia sa stara o zmenu backgroundu kvadrantu matice
+ * @param  input Hodnota farby, na ktoru si uzivatel zela zmenit vzhlad kvadrantu v matici 
+ * @param  index Index kvadrantu, ktory si uzivatel zela zmenit
+ */
 function colorChangeBackground(input, index){
     let arrayOfKvadrants = document.getElementsByClassName("matrixKvadrant");    
     arrayOfKvadrants[index].style.backgroundColor = input.value;
 }
 
+/**
+ * @brief  Funkcia sa stara o zmenu farby textu v matici 
+ * @param  input Hodnota farby, na ktoru si uzivatel zela zmenit farbu textu v matici 
+ * @param  index Index kvadrantu, ktory si uzivatel zela zmenit
+ */
 function colorChangeText(input, index){
     let arrayOfKvadrants = document.getElementsByClassName("matrixKvadrant");
     arrayOfKvadrants[index].getElementsByTagName('p')[0].style.color = input.value;
 }
 
 
+/**
+ * @brief  Funckia otvara nastavenia kvadrantu matice - nastavenia farieb
+ * @param  index Index matice, v ktorej chce nastavenia zmenit 
+ */
 function settingsOfMatrix(index){
     
     let settingsWindwos = document.getElementsByClassName("settingsWindow");
@@ -520,7 +644,7 @@ function settingsOfMatrix(index){
 
 
 /**
- * Function which react on click on right Burger Menu
+ * @biref Funkcia, ktora reaguje na uzivatelske kliknutie na Burger Menu
  */
 function burgerMenuTrigger(){
     let leftMenu = document.getElementById("leftMenu");
@@ -542,7 +666,7 @@ function burgerMenuTrigger(){
 }
 
 /**
- * Function which react on click on Arrow circle
+ * @brief Funkcia, ktora schovava task manager na zaklade uzivatelskeho kliknutia
  */
 function arrowCircleTrigger(index){
 
@@ -568,89 +692,10 @@ function arrowCircleTrigger(index){
 }
 
 
-function deleteTask(){
-    taskId = document.getElementById("inputForm").dataset.taskid;
-    if(taskId == "0"){
-        errorMssg = "Deleting not selected task";
-        //TODO vypisat do chyboveho okienka
-        errorDiv.innerHTML = errorMssg;
-        errorDiv.style.backgroundColor = "red";
-        errorDiv.classList.add("visible");
-        setTimeout(()=>{
-            errorDiv.classList.remove("visible");
-        }, 3000);
-        return;
-    } 
-
-    try{
-        let data = createXmlHttpRequestObject();
-        
-        data.open("DELETE", `http://wedevs.sk:8080/taskById/${taskId}`, true);
-        data.onreadystatechange = function(){
-            if ((data.readyState == 4) && (data.status == 200)){
-                if(data.responseText == "NotFound"){
-                    errorMssg="Task was not found";
-                    errorDiv.style.backgroundColor = "red";
-                    errorDiv.innerHTML = errorMssg;
-                    errorDiv.classList.add("visible");
-                    setTimeout(()=>{
-                        errorDiv.classList.remove("visible");
-                    }, 3000);
-                    return;
-                    //TODO vypisat do chyboveh boxu
-                    
-                }
-                else{
-                    errorMssg="Task was successfully deleted";
-                    console.log(errorMssg);
-                    let matrixElements = document.getElementsByClassName("task");
-                    Array.from(matrixElements).forEach(element=>{
-                        if(element.dataset.id == taskId){
-                            let matrix = element.parentNode;
-                            matrix.dataset.numberoftasks = parseInt(matrix.dataset.numberoftasks)-1; 
-                            element.remove();
-                            errorMssg = "Task deleted successfully";
-                            errorDiv.style.backgroundColor = "green";
-                            errorDiv.innerHTML = errorMssg;
-                            errorDiv.classList.add("visible");
-                            setTimeout(()=>{
-                                errorDiv.classList.remove("visible");
-                            }, 3000);
-
-                        }
-
-                    });
-
-                    document.getElementById("taskName").value = "";
-                    document.getElementById("taskDescription").value = "";
-                    //document.getElementById("priorityList").value = ""
-                    document.getElementById("calendar").value = "";
-                    document.getElementById("inputForm").dataset.taskid = "0";
-                    
-                    //TODO vymazanie z tasklistu
-                    let tableElements = document.getElementsByTagName("tr");
-                    Array.from(tableElements).forEach(element=>{
-                        if(element.dataset.id == taskId){
-                            element.remove();
-                        }
-                    });
-                }
-            }
-        }
-
-        data.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        data.send();
-
-    }
-    catch(e){
-    }
-
-}
-
 
 /**
-     * Function which react on click on '+' in matrix
-     */
+ * @brief Funkcia, ktora reaguje na kliknutie na '+' v kvadrante matice. Stara sa o tvorbu noveho tasku
+*/
 function createNewTask(index){
     
     arrowCircleTrigger(index);

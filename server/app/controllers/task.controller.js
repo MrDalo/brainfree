@@ -1,3 +1,9 @@
+/**
+ * @file task.controller.js
+ * @author Adam Kulla
+ * @bief Subor, ktory sluzi ako controller pre uzivatelske tasky v DB - pracu s nimi
+ */
+
 const Task = require("../models/task.model.js");
 
 exports.create = (req, res) => {

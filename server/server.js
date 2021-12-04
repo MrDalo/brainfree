@@ -1,3 +1,9 @@
+/**
+ * @file server.js
+ * @author Adam Kulla
+ * @bief Subor, ktory sluzi ako server, ktory sa spusta vzdialene na VPS
+ */
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();

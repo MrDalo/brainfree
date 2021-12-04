@@ -1,3 +1,9 @@
+/**
+ * @file task.model.js
+ * @author Adam Kulla
+ * @bief Subor, ktory sluzi ako model pre uzivatelske tasky v DB - pracu s nimi
+ */
+
 const connection = require("./db.js");
 
 const Task = function(task) {

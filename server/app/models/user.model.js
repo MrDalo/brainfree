@@ -1,3 +1,9 @@
+/**
+ * @file user.model.js
+ * @author Adam Kulla
+ * @bief Subor, ktory sluzi ako model pre uzivatelske konta v DB - pracu s nimi
+ */
+
 const { user } = require("../config/db.config.js");
 const connection = require("./db.js");
 
