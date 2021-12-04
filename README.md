@@ -1,76 +1,48 @@
 # BrainFree
 ITU project 2021/2022
 
-Createdd by:
+Created by:
 Dalibor Králik (xkrali20)
 Patrik Sehnoutek (xsehno01)
 Adam Kulla (xkulla01)
 
 
-node.js inštalácia: https://expressjs.com/en/starter/installing.html
-inšpirácia: https://codeshack.io/basic-login-system-nodejs-express-mysql/
-
-
-API refference:
-
-post /users //create new user
-
-    POST http://localhost:8080/users    body: {
-                                            username : "example",
-                                            password : "example",
-                                            email : "example"
-                                        }
-
-
-get /users/:username //find user by username
-
-    GET http://localhost:8080/users/example
+BrainFree je aplikacia, ktora pomaha zlepsit Time management studentov a beznych ludi. Implementuje techniku Eisenhowerovej matice.
 
 
 
-delete /users/:username //delete user by username
-
-    DELETE http://localhost:8080/users/example
-
-
-post /login //check user credentials, returns token when correct
-
-    POST http://localhost:8080/login    body: {
-                                            username: "example"
-                                            password: "example"
-                                        }
-
-post /tasks //create new task
-
-    POST http://localhost:8080/tasks    body: {
-                                            "name" : "example",
-                                            "description" : "example",
-                                            "priority" : "example",
-                                            "deadline" : "1111-11-11",
-                                            "complete" : 0,
-                                            "user" : "example"
-                                        }
+web-version:
+Webova verzia bola vytvorena Daliborom Králikom (xkrali20)
+    1.Spustenie, instalace: 
+        -Webova verzia bolo vyvíjaná na live serveri vo Visual studio Code. Pre spustenie webovej aplikacie otvorte prosim v priecinku "web-version" subor index.html.
+            V priehliadaci sa otvori webova stranka, ktora je plne funkcna. Pre presmerovanie do uzivatelskeho dashboardu s Eisenhowerovou maticou je potrebne sa prihlasit.
+            Mozete si uzivatelky ucet vytvorit alebo pouzit uzivatelsky ucet, pomocou ktoreho sa vyvijala webova aplikacia. 
+            Username: example1
+            Password: example1
+    2. online webova verzia aplikacie sa nachadza na: http://www.stud.fit.vutbr.cz/~xkrali20/brainfree/
+        - Je potrebne web otvarat s protokolom http a nie s protokolom https. Pri protokole https vznikne problem v komunikaci s databazou, pretoze AJAX requesty podporuju iba http komunikaciu a nie https.
 
 
-get /tasks/:user //find all tasks from user
 
-    GET http://localhost:8080/tasks/example
+Desktop-version:
+Desktopovu verziu vyvijal Patrik Sehnoutek (xsehno01)
+    1.poziadavky na spustenie desktop-verzie:
+        OS: Windows
+        Potrebný software na spustenie aplikácie:
+        python3 - version < 3.10
+        Python knižnice:
+        	PyQt5
+        	PySide2
+        	requests
 
-put /tasks/:taskId //update properties of task by id
+    2.Spustenie desktopovej verzie aplikacie:
+        Po nainštalovaní potrebných závislostí je možné spustiť aplikáciu, napríklad cez príkazový riadok(cmd) v adresári brainfree/desktop-version niektorým z nižšie uvedených príkazov:
+        	python application.py
+        	python3 application.py
 
-    PUT http://localhost:8080/tasks/1   body: {
-                                            "name" : "example",
-                                            "description" : "example",
-                                            "priority" : "example",
-                                            "deadline" : "1111-11-11",
-                                            "complete" : 0
-                                        }
+    Z dôvodu obmedzenej veľkosti odovzdávaného zip archívu sa v adresári nenachádza .exe súbor aplikácie.
 
 
-delete /taskById/:taskId //delete a task by id
+Mobile-version:
+Mobilnu verziu vyvijal Adam Kulla (xkulla01)
 
-    DELETE http://localhost:8080/taskById/1
-
-delete /taskByUser/:user //delete all tasks created by user
-
-    DELETE http://localhost:8080/taskById/example
