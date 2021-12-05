@@ -424,7 +424,9 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
                 eval(f"self.task_btn_{i+1}.setText(\"{name}\")")
 
                 date = message[i]["deadline"][:10]
-                eval(f"self.taskdate_{i+1}.setText(\"{date}\")")
+                date_format = datetime.date.fromisoformat(date)
+                date_format += datetime.timedelta(days=1)
+                eval(f"self.taskdate_{i+1}.setText(\"{date_format}\")")
 
                 func = f"self.task_btn_{i+1}.setProperty"
                 eval(func)("ID", message[i]["id"])
@@ -480,6 +482,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
                     date = message[i]["deadline"]
                     date_format = datetime.date.fromisoformat(date[:10])
+                    date_format += datetime.timedelta(days=1)
                     self.dateEdit.setDate(date_format)
                     break
 
@@ -518,6 +521,7 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
 
                     date = message[i]["deadline"]
                     date_format = datetime.date.fromisoformat(date[:10])
+                    date_format += datetime.timedelta(days=1)
                     self.dateEdit.setDate(date_format)
                     controller.position = pos
                     break
@@ -771,4 +775,4 @@ if __name__ == "__main__":
     multiple_screens.setWindowIcon(QtGui.QIcon('user/check.png'))
     multiple_screens.showMaximized()
 
-sys.exit(app.exec_())
+    sys.exit(app.exec_())
