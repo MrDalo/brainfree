@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">brainfree</string>
+    <string name="task_content">name</string>
+    <string name="task_priority">priority</string>
+    <string name="task_deadline">deadline</string>
+    <string name="button_insert">Insert</string>
+    <string-array name="urgencies">
+        <item>urgent - important</item>
+        <item>urgent - not important</item>
+        <item>not urgent - important</item>
+        <item>not urgent - not important</item>
+    </string-array>
+    <string-array name="filters">
+        <item>current</item>
+        <item>all</item>
+        <item>complete</item>
+    </string-array>
+</resources>

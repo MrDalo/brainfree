@@ -50,3 +50,16 @@ Z dôvodu obmedzenej veľkosti odovzdávaného zip archívu sa v adresári nenac
 **Autor:** Adam Kulla (xkulla01)
 
 
+1. Preloženie:
+Je potrebný tool gradlew, pre spustenie prekladu treba spustiť: 
+```
+gradlew build
+```
+ 
+v priečinku **brainfree/android_version**
+
+2. Spustenie:
+
+Po úspešnom preklade sa výsledný .apk súbor nachádza v priečinku **brainfree/android_version/app/build/outputs/apk/release**, ktorý sa dá spustiť buď na virtuálnej 
+mašine, alebo fyzickom zariadení so systémom android
+
