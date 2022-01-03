@@ -174,7 +174,18 @@ class Window(QtWidgets.QMainWindow, Ui_Window):
     # @param date String representation of a date
     @staticmethod
     def date_format(date):
-        new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
+        if "." in date:
+            day = date[:date.find('.')]
+            if len(day) == 1:
+                day = "0" + day
+            month = date[date.find('.')+2:date.rfind('.')]
+            if len(month) == 1:
+                month = "0" + month
+            year = date[-4:]
+            new_format = f"{year}-{month}-{day}"
+            print(new_format)
+        else:
+            new_format = f"{date[-4:]}-{date[3:5]}-{date[0:2]}"
         return new_format
 
     ## Method error_message
