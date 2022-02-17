@@ -12,7 +12,7 @@ BrainFree je aplikácia, ktorá pomáha zlepšiť Time management študentov a b
 
 
 ## Web-version
-**Author:** Dalibor Králik (xkral20)
+**Author:** Dalibor Králik (xkrali20)
 ```
     1.Spustenie, instalace: 
         -Webova verzia bolo vyvíjaná na live serveri vo Visual studio Code. Pre spustenie webovej aplikacie otvorte prosim v priecinku "web-version" subor index.html.
