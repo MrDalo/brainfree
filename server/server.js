@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const cors = require('cors');
 const https = require("https");
+const http = require("http");
 const fs = require("fs");
 
 
@@ -46,6 +47,8 @@ app.get("/", (req, res) => {
 
 require("./app/routes/routes.js")(app);
 
+
+
 https
   .createServer(
 		// Provide the private and public key to the server by reading each
@@ -57,5 +60,9 @@ https
     app
   )
   .listen(8443, () => {
-    console.log("serever is runing at port 8443 https");
+    console.log("server is running at port 8443 HTTPS");
+  });
+
+  http.createServer(app).listen(8080, () =>{
+    console.log("server is running at port 8080 HTTP");
   });
