@@ -1,0 +1,7 @@
+1. V databaze pre uzivatela treba vytvorit aj polozky pre jeho nastavenia matice-> farba kvadrantov a farba textov, ktore sa poje nalogovani aplikuju. //ADAM - podla mna by bolo lepsie urobit zopar presetov na tie farby a ze si uzivatel bude moct vybrat, o vela to zjednodusi databazu 
+2. Poriesit automaticke preradovani priorit z Not Urgent na Urgent na zaklade uzivatelom zvoleneho casu
+
+
+Create v SQL
+Vytvorim riadok v databaze
+Overenie usera
