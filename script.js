@@ -63,7 +63,7 @@ function loginFormAction(){
     var request = createXmlHttpRequestObject();
     
     
-    request.open("POST","http://wedevs.sk:8080/login", true);
+    request.open("POST","https://wedevs.sk:8443/login", true);
     request.onreadystatechange = function()
     {
         if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK
@@ -162,7 +162,7 @@ function loginFormAction(){
     }
 
 
-    request.open("POST","http://wedevs.sk:8080/users", true);
+    request.open("POST","https://wedevs.sk:8443/users", true);
     request.onreadystatechange = function()
         {
             if ((request.readyState == 4) && (request.status == 200)) // process is completed and http status is OK

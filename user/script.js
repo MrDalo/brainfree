@@ -58,7 +58,7 @@ function updateTask(taskID){
         let taskPriority = document.getElementById("priorityList").value;
         let taskDeadline = document.getElementById("calendar").value;
         
-        request.open("PUT", `http://wedevs.sk:8080/tasks/${taskID}`, true);
+        request.open("PUT", `https://wedevs.sk:8443/tasks/${taskID}`, true);
         request.onreadystatechange = function(){
             if ((request.readyState == 4) && (request.status == 200)){
                 //console.log(request.responseText);
@@ -257,7 +257,7 @@ function dataTaskSend(){
 
 
 
-        request.open("POST","http://wedevs.sk:8080/tasks", true);
+        request.open("POST","https://wedevs.sk:8443/tasks", true);
         request.onreadystatechange = function()
             {
                 
@@ -452,7 +452,7 @@ window.addEventListener('load', ()=>{
     try{
         let data = createXmlHttpRequestObject();
         
-        data.open("GET", `http://wedevs.sk:8080/tasks/${userName}`, true);
+        data.open("GET", `https://wedevs.sk:8443/tasks/${userName}`, true);
         data.onreadystatechange = function(){
             if ((data.readyState == 4) && (data.status == 200)){
                 if(data.responseText == "NotFound"){
@@ -485,7 +485,7 @@ function selectedTask(element){
     try{
         let data = createXmlHttpRequestObject();
         
-        data.open("GET", `http://wedevs.sk:8080/tasks/${userName}`, true);
+        data.open("GET", `https://wedevs.sk:8443/tasks/${userName}`, true);
         data.onreadystatechange = function(){
             if ((data.readyState == 4) && (data.status == 200)){
                 if(data.responseText == "NotFound"){
@@ -543,7 +543,7 @@ function deleteTask(){
     try{
         let data = createXmlHttpRequestObject();
         
-        data.open("DELETE", `http://wedevs.sk:8080/taskById/${taskId}`, true);
+        data.open("DELETE", `https://wedevs.sk:8443/taskById/${taskId}`, true);
         data.onreadystatechange = function(){
             if ((data.readyState == 4) && (data.status == 200)){
                 if(data.responseText == "NotFound"){
