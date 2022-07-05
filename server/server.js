@@ -8,6 +8,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const cors = require('cors');
+const https = require("https");
+const fs = request("fs");
 
 
 
@@ -44,6 +46,16 @@ app.get("/", (req, res) => {
 
 require("./app/routes/routes.js")(app);
 
-app.listen(8080, () => {
-    console.log("Server is running on port 8080.");
-});
+https
+  .createServer(
+		// Provide the private and public key to the server by reading each
+		// file's content with the readFileSync() method.
+    {
+      key: fs.readFileSync("key.pem"),
+      cert: fs.readFileSync("cert.pem"),
+    },
+    app
+  )
+  .listen(8443, () => {
+    console.log("serever is runing at port 8443 https");
+  });
