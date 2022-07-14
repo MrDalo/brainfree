@@ -716,7 +716,7 @@ table td:nth-child(2){
 table td div{
     margin-left: 40%;
     width: 30%;
-    height: 50%;
+    aspect-ratio: 1;
     border-radius: 50%;
 }
 /*!center Content*/

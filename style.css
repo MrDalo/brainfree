@@ -28,15 +28,15 @@
   transition-duration: 2s;
   position: fixed;
   width: 40%;
-  
+
   left: 30%;
   right: 30%;
   background-color: #ffffff;
   opacity: 1;
   z-index: 11;
-  border: #202020 solid 3px;
+  border: #696969 solid 2px;
   box-shadow: #ffffff 10px -10px 10px ;
-  border-radius: 50px;
+  border-radius: 30px;
 }
 
 #loginForm{
@@ -68,7 +68,7 @@ form input, form label{
   padding-bottom: 1%;
 }
 
-input[type=submit]{ 
+input[type=submit]{
   margin-top: 3vh;
   width: 50%;
   align-self: center;
@@ -98,6 +98,7 @@ a{
 
 #navMenu {
   width: 100%;
+  min-height: 70px;
   height: 12vh;
   z-index: 2;
   background-color: #ffffff;
@@ -136,6 +137,7 @@ a{
 
 #leftNav :nth-child(3) p {
   transform: rotateY(0deg);
+  text-align: center;
   color: #202020;
   font-size: 1.25em;
   font-weight: 400;
@@ -145,7 +147,7 @@ a{
 #rightNav {
   width: 40%;
   height: 100%;
-  
+
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -155,6 +157,7 @@ a{
 #rightNav button{
     cursor: pointer;
     width: 20%;
+    min-height: 30px;
     height: 40%;
     border-radius: 25px;
     border: #202020 solid 2px;
@@ -168,21 +171,31 @@ a{
 #frontPage {
   position: relative;
   width: 100%;
+  min-height: 700px;
   height: 125vh;
   background: linear-gradient(to right bottom, #ae91ff 10%, #ff9191 90%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 #timeCircle {
-  position: absolute;
+  position: relative;
   width: 25vw;
   height: 25vw;
   border-radius: 50%;
   background-color: #ffffff;
-  left: 10%;
-  top: 20vh;
+  bottom: 15vh;
+  /* left: 10%;
+  top: 20vh; */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#timeCircle svg{
+  transform: scale(1);
 }
 
 #minutes {
@@ -195,7 +208,7 @@ a{
   transform-origin: 100% 85%;
   transform-box: fill-box;
   animation: minute linear 90s forwards infinite;
-  
+
 }
 
 @keyframes minute {
@@ -217,12 +230,16 @@ a{
 }
 
 #frontNadpis {
-  position: absolute;
+  position: relative;
   width: 50vw;
   height: 40vh;
   color: #ffffff;
-  top: 40vh;
-  right: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15%;
+  /* top: 40vh;
+  right: 8%; */
 }
 
 #frontNadpis h1,
@@ -244,6 +261,7 @@ a{
 #prioritizeParagraph {
   position: relative;
   width: 100%;
+  min-height: 400px;
   height: 110vh;
   background-color: #ffffff;
   display: flex;
@@ -285,6 +303,7 @@ a{
   cursor: pointer;
   border: 2px solid black;
   width: 20%;
+  min-height: 30px;
   height: 5vh;
   font-size: 1em;
   font-weight: 600;
@@ -301,7 +320,7 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 #rightPrioritize img {
@@ -311,6 +330,7 @@ a{
 
 #scheduleParagraph {
   width: 100%;
+  min-height: 700px;
   height: 100vh;
   background-color: #c5d9ff;
   display: flex;
@@ -364,6 +384,7 @@ li::before {
 #lastBottomPart{
   position: relative;
   width: 100%;
+  min-height: 600px;
   height: 120vh;
   display: flex;
   justify-content: flex-start;
@@ -383,7 +404,7 @@ li::before {
 #svg2{
   left: 30%;
   top: -38%;
-  
+
 }
 #svg3{
   left: 50%;
@@ -393,7 +414,7 @@ li::before {
 #svg4{
   left: 75%;
   top: -25%;
-  
+
 }
 
 #svg5{
@@ -422,7 +443,7 @@ li::before {
   text-align: center;
   font-size: 3.5em;
   font-weight: 200;
-  
+
 }
 
 #lastBottomPartLeft h1 b{
@@ -440,13 +461,14 @@ li::before {
 footer{
   position: relative;
   width: 100%;
+  min-height: 60px;
   height: 20vh;
   background-color: #dddddd;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 
@@ -456,9 +478,11 @@ footer{
 }
 
 #createdBy{
-  font-size: 0.6em;
-  width: 40%;
-  height: 60%;
+  position: absolute;
+  left: 25%;
+  font-size: 0.7em;
+  width: 50%;
+  height: 80%;
   align-items: flex-end;
 }
 
@@ -467,7 +491,6 @@ footer #leftNav a{
 }
 
 #contact{
-  
   width: 30%;
   height: 100%;
   align-items: center;
@@ -476,7 +499,12 @@ footer #leftNav a{
 #contact a{
   text-decoration: none;
   color: #202020;
+}
+
+#contact a p{
   font-size: 1.2em;
+  cursor: pointer;
+
 }
 
 #errorDiv{
@@ -505,24 +533,32 @@ footer #leftNav a{
 
 }
 
-
-@media only screen and (max-width: 1024px){
+@media only screen and (max-width: 1400px){
+  #timeCircle svg{
+    transform: scale(0.8);
+  }
+  
+  @media only screen and (max-width: 1024px){
   #rightNav button{
-    width: 40%;
+    width: 35%;
   }
 
   #timeCircle {
-    left: 35%;
-    top: 50vh;
     width: 35vw;
     height: 35vw;
+    bottom: 0;
 
+  }
+
+  #frontPage{
+    justify-content: space-evenly;
+    flex-direction: column-reverse;
   }
 
   #frontNadpis{
     width: 70vw;
-    top: 15vh;
-    right: 13%;
+    justify-content: center;
+    padding-bottom: 0;
   }
 
   #wave{
@@ -543,7 +579,7 @@ footer #leftNav a{
   #lastBottomPartRight img{
     padding-top: 30vh;
     width: 100%;
-  
+
   }
 
   #login {
@@ -559,108 +595,106 @@ footer #leftNav a{
     width: 70%;
     left: 15%;
   }
-
-  @media only screen and (max-width: 640px){
-
-    #timeCircle {
-      left: 25%;
-      top: 70vh;
-      width: 50vw;
-      height: 50vw;
   
-    }
-    #prioritizeParagraph {
-      height: 50vh;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+    @media only screen and (max-width: 640px){
 
-    #rightPrioritize, #leftSchedule, #lastBottomPartRight{
-      display: none;
-    }
+      #timeCircle {
+        width: 50vw;
+        height: 50vw;
 
-    #prioritizeNadpis{
-      width: 80%;
-    }
-
-    #scheduleParagraph{
-      flex-direction: column-reverse;
-      align-items: center;
-    }
-
-    
-
-    #lastBottomPart{
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    img{
-      display: none;
-    }
-
-    #rightPrioritize img {
-      
-      width: 100%;
-      z-index: 5;
-    }
-
-
-    #lastBottomPartRight img{
-      padding-top: 0;    
-    }
-
-    #login {
-      width: 50%;
-    }
-
-    #svg5{
-      display: none;
-    }
-
-    #rightNav button{
-      width: 60%;
-    }
-
-
-    #leftNav {
-      width: 50%;
+      }
+      #prioritizeParagraph {
+        height: 50vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
-    #rightNav{
-      width: 50%;
+      #rightPrioritize, #leftSchedule, #lastBottomPartRight{
+        display: none;
+      }
+
+      #prioritizeNadpis{
+        width: 80%;
+      }
+
+      #scheduleParagraph{
+        flex-direction: column-reverse;
+        align-items: center;
+        
+      }
+
+      #rightSchedule{
+        width: 86%;
+      }
+
+      li{
+        font-size: 1.2em;
+      }
+
+
+      #lastBottomPart{
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      img{
+        display: none;
+      }
+
+      #rightPrioritize img {
+
+        width: 100%;
+        z-index: 5;
+      }
+
+
+      #lastBottomPartRight img{
+        padding-top: 0;
+      }
+
+      #login {
+        width: 50%;
+      }
+
+      #svg5{
+        display: none;
+      }
+
+      #rightNav button{
+        width: 40%;
+      }
+
+
+      #leftNav {
+        width: 50%;
+        padding-left: 10%;
+        }
+
+      #rightNav{
+        width: 50%;
+      }
+
+      #prioritizeNadpis h1 {
+        font-size: 2.5em;
+      }
+
+      #frontNadpis h1{
+        font-size: 2.5em;
+      }
+
+      #frontPage{
+        height: 85vh;
+      }
+
+      #loginForm , #registerForm{
+        width: 80%;
+        left: 10%;
+      }
+
+      #errorDiv{
+        width: 60%;
+      }
     }
-
-    #prioritizeNadpis h1 {
-      font-size: 2em;
-    }
-
-    #frontNadpis h1{
-      font-size: 2em;
-    }
-
-    #frontPage{
-      height: 85vh;
-    }
-
-    #timeCircle {
-      left: 28%;
-      top: 40vh;
-    }
-
-    #loginForm , #registerForm{
-      width: 80%;
-      left: 10%;
-    }
-
-    #errorDiv{
-      width: 60%;
-    }
-
-
   }
-
-
 }
-
