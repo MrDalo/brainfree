@@ -365,7 +365,7 @@ li {
   font-size: 1em;
   list-style: none;
   padding-top: 5%;
-  text-align: center;
+  text-align: left;
   padding-bottom: 5%;
 }
 
@@ -519,11 +519,13 @@ footer #leftNav a{
   border: solid 1px #000000;
   bottom: 2vh;
   right: 2%;
+  padding: 5%;
   transition-duration: 1s;
   opacity: 0;
   position: fixed;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 #errorDiv.visible{
