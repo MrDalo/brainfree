@@ -274,7 +274,7 @@ a{
 #wave {
   overflow: hidden;
   position: absolute;
-  top: -35vh;
+  top: -30vh;
   width: 100%;
 }
 
@@ -408,18 +408,18 @@ li::before {
 }
 #svg3{
   left: 50%;
-  top: -25%;
+  top: -30%;
 }
 
 #svg4{
   left: 75%;
-  top: -25%;
+  top: -32%;
 
 }
 
 #svg5{
   left: 90%;
-  top: -20%;
+  top: -27%;
 }
 
 
@@ -439,6 +439,12 @@ li::before {
 
 }
 
+#lastBottomPartRight{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #lastBottomPartLeft h1{
   text-align: center;
   font-size: 3.5em;
@@ -453,7 +459,6 @@ li::before {
 
 
 #lastBottomPartRight img{
-  padding-top: 15vh;
   width: 80%;
 
 }
@@ -462,7 +467,7 @@ footer{
   position: relative;
   width: 100%;
   min-height: 60px;
-  height: 20vh;
+  height: 15vh;
   background-color: #dddddd;
   display: flex;
   flex-direction: row;
@@ -540,7 +545,7 @@ footer #leftNav a{
     transform: scale(0.8);
   }
   
-  @media only screen and (max-width: 1024px){
+  @media only screen and (max-width: 1025px){
   #rightNav button{
     width: 35%;
   }
@@ -568,6 +573,16 @@ footer #leftNav a{
     top: -25vh;
   }
 
+  #prioritizeParagraph {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #prioritizeNadpis{
+    left: 0;
+  }
+
   #rightPrioritize img {
     width: 80%;
     z-index: 5;
@@ -578,8 +593,12 @@ footer #leftNav a{
     height: auto;
   }
 
+  #lastBottomPart{
+        flex-direction: column;
+        justify-content: center;
+  }
+
   #lastBottomPartRight img{
-    padding-top: 30vh;
     width: 100%;
 
   }
@@ -588,6 +607,9 @@ footer #leftNav a{
     width: 30%;
   }
 
+  .svgLines{
+    display: none;
+  }
   
   #errorDiv{
     width: 40%;
@@ -605,6 +627,7 @@ footer #leftNav a{
         height: 50vw;
 
       }
+
       #prioritizeParagraph {
         height: 50vh;
         flex-direction: column;
