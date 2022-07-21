@@ -261,7 +261,7 @@ a{
 #prioritizeParagraph {
   position: relative;
   width: 100%;
-  min-height: 400px;
+  min-height: 700px;
   height: 110vh;
   background-color: #ffffff;
   display: flex;
@@ -384,7 +384,7 @@ li::before {
 #lastBottomPart{
   position: relative;
   width: 100%;
-  min-height: 600px;
+  min-height: 700px;
   height: 120vh;
   display: flex;
   justify-content: flex-start;
